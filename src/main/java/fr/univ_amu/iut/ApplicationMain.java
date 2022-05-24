@@ -1,9 +1,10 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.windows.Home;
+import javafx.scene.layout.Pane;
+import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ApplicationMain extends Application {
@@ -14,11 +15,12 @@ public class ApplicationMain extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Pane root = new Home();
-        Scene s = new Scene(root);
+        primaryStage.setResizable(true);
+        primaryStage.setTitle("Titre de l'application");
+        Scene s = new Scene(new MainWindow());
+        s.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
         primaryStage.setWidth(1200);
         primaryStage.setHeight(700);
-        primaryStage.setResizable(false);
         primaryStage.setScene(s);
         primaryStage.show();
     }
