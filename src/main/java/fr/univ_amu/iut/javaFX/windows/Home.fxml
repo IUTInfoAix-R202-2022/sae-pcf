@@ -6,41 +6,44 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <BorderPane prefHeight="400.0" prefWidth="300.0" />
-            <BorderPane prefHeight="400.0" prefWidth="10.0">
-               <center>
-                  <Line endY="50.0" startY="250.0" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
-            <BorderPane prefHeight="400.0" prefWidth="300.0">
-               <center>
-                  <VBox alignment="TOP_CENTER" maxWidth="200.0" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <TextField id="userNameField" alignment="CENTER" prefHeight="24.0" prefWidth="200.0" promptText="Nom d'uttilisateur">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <font>
-                              <Font name="JetBrains Mono Regular" size="13.0" />
-                           </font>
-                        </TextField>
-                        <Label id="errorMessage" text="Couple nom d'uttilisateur, mot de passe invalide" visible="false" />
-                        <PasswordField id="passwordField" alignment="CENTER" promptText="Mot de passe">
-                           <font>
-                              <Font name="JetBrains Mono Regular" size="13.0" />
-                           </font>
-                        </PasswordField>
-                     </children>
-                  </VBox>
-               </center>
-               <top>
-                  <Label alignment="BOTTOM_CENTER" prefHeight="157.0" prefWidth="218.0" text="Conexion en tant qu'administrateur" BorderPane.alignment="CENTER" />
-               </top>
-            </BorderPane>
-         </children></HBox>
-   </children>
-</Pane>
+<fx:root xmlns:fx="http://javafx.com/fxml"
+         type="javafx.scene.layout.Pane">
+    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+       <children>
+          <HBox prefHeight="400.0" prefWidth="600.0">
+             <children>
+                <BorderPane prefHeight="400.0" prefWidth="300.0" />
+                <BorderPane prefHeight="400.0" prefWidth="10.0">
+                   <center>
+                      <Line endY="50.0" startY="250.0" BorderPane.alignment="CENTER" />
+                   </center>
+                </BorderPane>
+                <BorderPane prefHeight="400.0" prefWidth="300.0">
+                   <center>
+                      <VBox alignment="TOP_CENTER" maxWidth="200.0" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                         <children>
+                            <TextField id="userNameField" alignment="CENTER" prefHeight="24.0" prefWidth="200.0" promptText="Nom d'uttilisateur">
+                               <opaqueInsets>
+                                  <Insets />
+                               </opaqueInsets>
+                               <font>
+                                  <Font name="JetBrains Mono Regular" size="13.0" />
+                               </font>
+                            </TextField>
+                            <Label id="errorMessage" text="Couple nom d'uttilisateur, mot de passe invalide" visible="false" />
+                            <PasswordField id="passwordField" alignment="CENTER" promptText="Mot de passe">
+                               <font>
+                                  <Font name="JetBrains Mono Regular" size="13.0" />
+                               </font>
+                            </PasswordField>
+                         </children>
+                      </VBox>
+                   </center>
+                   <top>
+                      <Label alignment="BOTTOM_CENTER" prefHeight="157.0" prefWidth="218.0" text="Conexion en tant qu'administrateur" BorderPane.alignment="CENTER" />
+                   </top>
+                </BorderPane>
+             </children></HBox>
+       </children>
+    </Pane>
+</fx:root>
