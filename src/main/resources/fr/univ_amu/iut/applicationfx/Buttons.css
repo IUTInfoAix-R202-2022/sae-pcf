@@ -8,16 +8,14 @@ root {
     -fx-text-fill: #456acf;
 }
 
+#buttonBar {
+}
+
 #buttonHelp {
-    background-color: #d9d9dc;
-    color: #FFFFFF;
-    border-color: #456acf;
 }
 
 #buttonContact {
-
 }
 
 #buttonSettings {
-
 }

@@ -35,5 +35,22 @@ public class MainWindow extends VBox {
 
     }
 
+    @FXML
+    public void settings() {
+        System.out.println("Settings button clicked !");
+        //TODO Implements settings button (pop up)
+    }
+
+    @FXML
+    public void help() {
+        System.out.println("Help button clicked !");
+        //TODO Implements help button (tutorial)
+    }
+
+    @FXML
+    public void contact() {
+        System.out.println("Contact button clicked !");
+        //TODO Implements contact button (pop up)
+    }
 
 }
