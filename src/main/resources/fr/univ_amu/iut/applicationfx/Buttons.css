@@ -1,0 +1,23 @@
+root {
+    -fx-font-family: Roboto;
+}
+
+.button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #456acf;
+    -fx-text-fill: #456acf;
+}
+
+#buttonHelp {
+    background-color: #d9d9dc;
+    color: #FFFFFF;
+    border-color: #456acf;
+}
+
+#buttonContact {
+
+}
+
+#buttonSettings {
+
+}

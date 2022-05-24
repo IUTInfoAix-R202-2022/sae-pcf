@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fr.univ_amu.iut.windows.MainWindow"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<fx:root alignment="BASELINE_RIGHT" prefHeight="700.0" prefWidth="1200.0" styleClass="root" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <ButtonBar prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+            <Button fx:id="buttonContact" text="Contact" />
+            <Button fx:id="buttonHelp" text="Aide" />
+            <Button fx:id="buttonSettings" text="Paramètres" />
+        </buttons>
+      <VBox.margin>
+         <Insets right="13.0" top="5.0" />
+      </VBox.margin>
+    </ButtonBar>
+</fx:root>
