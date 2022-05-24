@@ -13,7 +13,7 @@
              <children>
                 <BorderPane prefHeight="400.0" prefWidth="300.0">
                   <center>
-                     <Button id="dataAccessButton" mnemonicParsing="false" text="Acces aux données" BorderPane.alignment="CENTER" />
+                     <Button id="dataAccessButton" mnemonicParsing="false" onAction="#accessToData" text="Accès aux données" BorderPane.alignment="CENTER" />
                   </center></BorderPane>
                 <BorderPane prefHeight="400.0" prefWidth="10.0">
                    <center>
@@ -38,7 +38,7 @@
                                   <Font name="JetBrains Mono Regular" size="13.0" />
                                </font>
                             </PasswordField>
-                           <Button id="submitButton" mnemonicParsing="false" text="Soumettre">
+                           <Button id="submitButton" mnemonicParsing="false" onAction="#submit" text="Soumettre">
                               <VBox.margin>
                                  <Insets top="20.0" />
                               </VBox.margin>
