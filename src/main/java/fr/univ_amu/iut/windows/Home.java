@@ -2,10 +2,7 @@ package fr.univ_amu.iut.windows;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -48,6 +45,9 @@ public class Home extends Pane {
             errorMessage.setVisible(true);
         }
     }
+
+    @FXML
+    void accessToData(){}
 
     public boolean isConnected() {
         return connected;

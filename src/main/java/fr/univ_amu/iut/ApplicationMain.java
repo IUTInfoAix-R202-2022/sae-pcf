@@ -16,6 +16,9 @@ public class ApplicationMain extends Application {
     public void start(Stage primaryStage) {
         Pane root = new Home();
         Scene s = new Scene(root);
+        primaryStage.setWidth(1200);
+        primaryStage.setHeight(700);
+        primaryStage.setResizable(false);
         primaryStage.setScene(s);
         primaryStage.show();
     }
