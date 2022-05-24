@@ -6,13 +6,15 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.layout.Pane">
+<fx:root type="javafx.scene.layout.Pane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
     <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
        <children>
           <HBox prefHeight="400.0" prefWidth="600.0">
              <children>
-                <BorderPane prefHeight="400.0" prefWidth="300.0" />
+                <BorderPane prefHeight="400.0" prefWidth="300.0">
+                  <center>
+                     <Button id="dataAccessButton" mnemonicParsing="false" text="Acces aux données" BorderPane.alignment="CENTER" />
+                  </center></BorderPane>
                 <BorderPane prefHeight="400.0" prefWidth="10.0">
                    <center>
                       <Line endY="50.0" startY="250.0" BorderPane.alignment="CENTER" />
@@ -36,6 +38,11 @@
                                   <Font name="JetBrains Mono Regular" size="13.0" />
                                </font>
                             </PasswordField>
+                           <Button id="submitButton" mnemonicParsing="false" text="Soumettre">
+                              <VBox.margin>
+                                 <Insets top="20.0" />
+                              </VBox.margin>
+                           </Button>
                          </children>
                       </VBox>
                    </center>
