@@ -49,7 +49,7 @@ public class ApplicationMain extends Application {
 
     public void accesToData(){
         if (Home.isConnected()){
-            tabs.addATab("saisi",new Pane(),false);
+            tabs.addATab("Saisi",,false);
         }
         mainWindow.getChildren().set(1,tabs);
     }
