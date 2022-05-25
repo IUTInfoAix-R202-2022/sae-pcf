@@ -1,6 +1,7 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.windows.Home;
+import fr.univ_amu.iut.windows.Tabs;
 import javafx.scene.layout.Pane;
 import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
@@ -11,6 +12,8 @@ import javafx.stage.Stage;
 public class ApplicationMain extends Application {
 
     private Scene root;
+    private VBox mainWindow;
+    private Tabs tabs;
 
     public static void main(String[] args) {
         launch(args);
@@ -21,8 +24,8 @@ public class ApplicationMain extends Application {
 
         appBasis(stage);
 
-        VBox mainWindow = new MainWindow();
-        mainWindow.getChildren().add(new Home());
+        mainWindow = new MainWindow();
+        mainWindow.getChildren().add(new Home(this));
         root = new Scene(mainWindow);
         loadCSS();
 
@@ -35,9 +38,18 @@ public class ApplicationMain extends Application {
         stage.setTitle("Titre de l'application");
         stage.setWidth(1200);
         stage.setHeight(700);
+
+        tabs = new Tabs();
     }
 
     private void loadCSS(){
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
+    }
+
+    public void accesToData(){
+        if (Home.isConnected()){
+            tabs.addATab("saisi",new Pane(),false);
+        }
+        mainWindow.getChildren().set(1,tabs);
     }
 }
