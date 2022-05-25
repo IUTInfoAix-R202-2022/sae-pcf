@@ -2,6 +2,7 @@ package fr.univ_amu.iut.windows;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
@@ -28,8 +29,12 @@ public class Tabs extends Pane {
         }
     }
 
-    public void addATab(String tabTitle) {
-        tabs.getTabs().add(new Tab(tabTitle));
+    public void addATab(String tabTitle, Node content, boolean closeable) {
+        Tab newTab = new Tab(tabTitle);
+        newTab.setClosable(closeable);
+        newTab.setStyle("tabs");
+        newTab.setContent(content);
+        tabs.getTabs().add(newTab);
     }
 
 }
