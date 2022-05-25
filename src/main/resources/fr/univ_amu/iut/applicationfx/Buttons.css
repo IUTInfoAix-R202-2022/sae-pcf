@@ -9,21 +9,17 @@ root {
 }
 
 .button:hover {
-
-}
-
-#buttonBar {
-
-}
-
-.buttonButtonBar:hover {
     -fx-background-color: #456acf;
     -fx-text-fill: #FFFFFF;
 }
 
-.buttonButtonBar:pressed {
+.button:pressed {
     -fx-background-color: #202077;
     -fx-border-color: #456acf;
+
+}
+
+#buttonBar {
 
 }
 
