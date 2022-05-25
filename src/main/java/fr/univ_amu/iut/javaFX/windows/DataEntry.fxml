@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox spacing="50.0">
+         <children>
+            <Label alignment="CENTER" text="Tout les champs avec la mention * doivent être remplis">
+               <font>
+                  <Font name="JetBrains Mono Regular" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="250.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Thématique d'usage *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldThemeOfUse" />
+                     </items>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillThemeOfUse" text="Veuillez remplir ce champ" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Discipline *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldDiscipline" />
+                     </items>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillDiscipline" text="Veuillez remplir ce champ" visible="false" />
+              </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Degré *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldDegree" />
+                     </items>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillDegree" text="Veuillez remplir ce champ" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Académie *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldAcademy" />
+                     </items>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillAcademy" text="Veuillez remplir ce champ" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Région académique">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldAcademicRegion" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="18.0" />
+                     </VBox.margin>
+                  </SplitPane>
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Type d'acteurs *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldTypeOfActors" />
+                     </items>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillTypeOfActors" text="Veuillez remplir ce champ" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Identité des acteurs *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox spacing="20.0">
+                           <children>
+                              <TextField fx:id="fieldIdOfActorName" promptText="Nom" HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="fieldIdOfActorFirstName" promptText="Prénom" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </items>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillIdOfActor" text="Veuillez remplir ce champ" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Lien de la ressource *">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldResourceLink" />
+                     </items>
+                  </SplitPane>
+                  <Label fx:id="labelNotFillResourceLink" text="Veuillez remplir ce champ" visible="false" />
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Nom de la ressource">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldResourceName" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="18.0" />
+                     </VBox.margin>
+                  </SplitPane>
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label prefWidth="300.0" text="Type de source">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldSourceType" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="18.0" />
+                     </VBox.margin>
+                  </SplitPane>
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox>
+               <children>
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                     <items>
+                        <Label alignment="TOP_LEFT" prefWidth="300.0" text="Commentaires">
+                           <padding>
+                              <Insets left="5.0" right="50.0" />
+                           </padding>
+                           <font>
+                              <Font name="JetBrains Mono Regular" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="fieldComment" />
+                     </items>
+                     <VBox.margin>
+                        <Insets bottom="18.0" />
+                     </VBox.margin>
+                  </SplitPane>
+               </children>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </VBox>
+            <Button fx:id="submitButton" mnemonicParsing="false" onAction="#sumbitNewInnovation" text="Soumettre">
+               <VBox.margin>
+                  <Insets left="600.0" />
+               </VBox.margin>
+            </Button>
+
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
