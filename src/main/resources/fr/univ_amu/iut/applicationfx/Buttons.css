@@ -8,7 +8,23 @@ root {
     -fx-text-fill: #456acf;
 }
 
+.button:hover {
+
+}
+
 #buttonBar {
+
+}
+
+.buttonButtonBar:hover {
+    -fx-background-color: #456acf;
+    -fx-text-fill: #FFFFFF;
+}
+
+.buttonButtonBar:pressed {
+    -fx-background-color: #202077;
+    -fx-border-color: #456acf;
+
 }
 
 #buttonHelp {
