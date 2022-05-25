@@ -10,23 +10,46 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ApplicationMain extends Application {
+
+    private Scene root;
+    private VBox mainWindow;
+    private Tabs tabs;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setResizable(true);
-        primaryStage.setTitle("Titre de l'application");
-        VBox root = new MainWindow();
+    public void start(Stage stage) {
 
-        root.getChildren().add(new Tabs());
-        Scene s = new Scene(root);
+        appBasis(stage);
 
-        s.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
-        primaryStage.setWidth(1200);
-        primaryStage.setHeight(700);
-        primaryStage.setScene(s);
-        primaryStage.show();
+        mainWindow = new MainWindow();
+        mainWindow.getChildren().add(new Home(this));
+        root = new Scene(mainWindow);
+        loadCSS();
+
+        stage.setScene(root);
+        stage.show();
+    }
+
+    private void appBasis(Stage stage){
+        stage.setResizable(false);
+        stage.setTitle("Titre de l'application");
+        stage.setWidth(1200);
+        stage.setHeight(700);
+
+        tabs = new Tabs();
+    }
+
+    private void loadCSS(){
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
+    }
+
+    public void accesToData(){
+        if (Home.isConnected()){
+            tabs.addATab("saisi",new Pane(),false);
+        }
+        mainWindow.getChildren().set(1,tabs);
     }
 }
