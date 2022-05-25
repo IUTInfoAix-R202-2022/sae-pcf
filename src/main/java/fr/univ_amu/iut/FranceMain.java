@@ -10,6 +10,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class FranceMain extends Application {
@@ -21,9 +22,9 @@ public class FranceMain extends Application {
                 //.backgroundColor(Color.web("#4aa9d7"))
                 //.fillColor(Color.web("#dcb36c"))
                 //.strokeColor(Color.web("#987028"))
-                //.hoverColor(Color.web("#fec47e"))
+                .hoverColor(Color.web("#5395e8"))
                 //.pressedColor(Color.web("#6cee85"))
-                //.selectedColor(Color.MAGENTA)
+                .selectedColor(Color.web("#101aa2"))
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());

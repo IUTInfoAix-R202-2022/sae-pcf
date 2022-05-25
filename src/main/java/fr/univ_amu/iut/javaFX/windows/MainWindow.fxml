@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root alignment="BASELINE_RIGHT" prefHeight="700.0" prefWidth="1200.0" styleClass="root" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" prefHeight="700.0" prefWidth="1200.0" styleClass="root" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <ButtonBar prefHeight="40.0" prefWidth="200.0" fx:id="buttonBar">
         <buttons>
             <Button fx:id="buttonContact" text="Contact" onAction="#contact" />
