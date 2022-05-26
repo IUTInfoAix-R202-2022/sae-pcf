@@ -274,7 +274,7 @@
                   <Insets left="150.0" />
                </VBox.margin>
             </VBox>
-            <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#sumbitNewInnovation" text="Soumettre">
+            <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#submitNewInnovation" text="Soumettre">
                <VBox.margin>
                   <Insets bottom="200.0" left="600.0" />
                </VBox.margin>

@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -102,7 +103,7 @@ public class DataEntry extends ScrollPane {
         }
     }
 
-    private Boolean requiredFieldsManagment(){
+    private Boolean requiredFieldsManagement(){
         Boolean isRequiredFieldsFilled = true;
         for (int i = 0; i < requiredFields.length; ++i) {
             if (requiredFields[i].getText().strip().equals("")){
@@ -119,11 +120,16 @@ public class DataEntry extends ScrollPane {
     }
 
     @FXML
-    private void sumbitNewInnovation(){
-        if (requiredFieldsManagment()){
-            //TODO add in database
-            cleardFields();
-        }
+    private void submitNewInnovation(){
         System.out.println("SubmitNewDataButton clicked");
+        if (requiredFieldsManagement()){
+            ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrer dans la base de données.");
+            confirmation.show();
+            if (confirmation.getResult() == ButtonType.OK) {
+                cleardFields();
+                System.out.println("SubmitNewDataButton confirmed");
+                //TODO Enregistrement dans la base de données
+            }
+        }
     }
 }
