@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1400.0" prefWidth="1200.0" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox spacing="50.0">
          <children>
@@ -14,7 +14,7 @@
                   <Font name="JetBrains Mono Regular" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="250.0" top="10.0" />
+                  <Insets left="150.0" top="10.0" />
                </VBox.margin>
             </Label>
             <VBox>
@@ -35,7 +35,7 @@
                   <Label fx:id="labelNotFillThemeOfUse" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -56,7 +56,7 @@
                   <Label fx:id="labelNotFillDiscipline" text="Veuillez remplir ce champ" visible="false" />
               </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -80,7 +80,7 @@
                   <Label fx:id="labelNotFillDegree" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -104,7 +104,7 @@
                   <Label fx:id="labelNotFillAcademy" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -127,7 +127,7 @@
                   </SplitPane>
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -148,7 +148,7 @@
                   <Label fx:id="labelNotFillTypeOfActors" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -171,10 +171,17 @@
                         </HBox>
                      </items>
                   </SplitPane>
-                  <Label fx:id="labelNotFillIdOfActor" text="Veuillez remplir ce champ" visible="false" />
+                  <HBox spacing="158.0">
+                     <children>
+                        <Label fx:id="labelNotFillIdOfActorName" text="Veuillez remplir ce champ" visible="false">
+                           <HBox.margin>
+                              <Insets left="300.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="labelNotFillIdOfActorFirstName" text="Veuillez remplir ce champ" visible="false" />
+                     </children></HBox>
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -195,7 +202,7 @@
                   <Label fx:id="labelNotFillResourceLink" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -218,7 +225,7 @@
                   </SplitPane>
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -241,7 +248,7 @@
                   </SplitPane>
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <VBox>
@@ -264,12 +271,12 @@
                   </SplitPane>
                </children>
                <VBox.margin>
-                  <Insets left="250.0" />
+                  <Insets left="150.0" />
                </VBox.margin>
             </VBox>
             <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#sumbitNewInnovation" text="Soumettre">
                <VBox.margin>
-                  <Insets left="600.0" />
+                  <Insets bottom="200.0" left="600.0" />
                </VBox.margin>
             </Button>
 

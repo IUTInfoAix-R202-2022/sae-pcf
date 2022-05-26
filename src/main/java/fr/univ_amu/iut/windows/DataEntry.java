@@ -3,7 +3,6 @@ package fr.univ_amu.iut.windows;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 public class DataEntry extends ScrollPane {
@@ -61,7 +60,10 @@ public class DataEntry extends ScrollPane {
     private TextField fieldIdOfActorFirstName;
 
     @FXML
-    private Label labelNotFillIdOfActor;
+    private Label labelNotFillIdOfActorName;
+
+    @FXML
+    private Label labelNotFillIdOfActorFirstName;
 
     @FXML
     private TextField fieldResourceLink;
@@ -81,13 +83,14 @@ public class DataEntry extends ScrollPane {
     @FXML
     private Button submitNewDataButton;
 
-    private final TextInputControl[] fields = {fieldThemeOfUse,fieldDiscipline,fieldDegree,fieldAcademy,fieldAcademicRegion,fieldTypeOfActors,fieldIdOfActorName,fieldIdOfActorFirstName,fieldResourceLink,fieldResourceName,fieldSourceType,fieldComment}; //TextInputControl is the common parent of TextField and TextArea
-    private final TextInputControl[] requiredFields = {fieldThemeOfUse,fieldDiscipline,fieldDegree,fieldAcademy,fieldTypeOfActors,fieldIdOfActorName,fieldResourceLink}; //TextInputControl is the common parent of TextField and TextArea
-    private final Label[] requiredFieldsNotFilledLabels = {labelNotFillThemeOfUse,labelNotFillDiscipline,labelNotFillDegree,labelNotFillAcademy,labelNotFillTypeOfActors,labelNotFillIdOfActor,labelNotFillResourceLink};
-
+    private TextInputControl[] fields;
+    private TextInputControl[] requiredFields;
+    private Label[] requiredFieldsNotFilledLabels;
     @FXML
     private void initialize() {
-
+        fields = new TextInputControl[]{fieldThemeOfUse, fieldDiscipline, fieldDegree, fieldAcademy, fieldAcademicRegion, fieldTypeOfActors, fieldIdOfActorName, fieldIdOfActorFirstName, fieldResourceLink, fieldResourceName, fieldSourceType, fieldComment}; //TextInputControl is the common parent of TextField and TextArea
+        requiredFields = new TextInputControl[]{fieldThemeOfUse, fieldDiscipline, fieldDegree, fieldAcademy, fieldTypeOfActors, fieldIdOfActorName,fieldIdOfActorFirstName, fieldResourceLink}; //TextInputControl is the common parent of TextField and TextArea
+        requiredFieldsNotFilledLabels = new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName,labelNotFillIdOfActorFirstName, labelNotFillResourceLink};
     }
 
     private void cleardFields(){
