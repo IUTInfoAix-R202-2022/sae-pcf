@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1400.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1400.0" prefWidth="1200.0" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox spacing="50.0">
          <children>
@@ -267,7 +267,7 @@
                   <Insets left="250.0" />
                </VBox.margin>
             </VBox>
-            <Button fx:id="submitButton" mnemonicParsing="false" onAction="#sumbitNewInnovation" text="Soumettre">
+            <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#sumbitNewInnovation" text="Soumettre">
                <VBox.margin>
                   <Insets left="600.0" />
                </VBox.margin>
@@ -276,4 +276,4 @@
          </children>
       </VBox>
    </content>
-</ScrollPane>
+</fx:root>
