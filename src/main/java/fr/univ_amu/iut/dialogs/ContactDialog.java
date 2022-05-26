@@ -3,16 +3,30 @@ package fr.univ_amu.iut.dialogs;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-import java.util.Optional;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-public class ContactDialog {
-    Alert dialog;
-    Optional<ButtonType> result;
+public class ContactDialog extends SimpleDialog{
 
-    public ContactDialog(String header, String content){
-        dialog = new Alert(Alert.AlertType.CONFIRMATION);
-        dialog.setTitle("Confirmation");
-        dialog.setHeaderText(header);
-        dialog.setContentText(content);
+    private String URL;
+    public ContactDialog(String URL) {
+        super("Vous allez être rediriger vers le site : " + URL, "Si vous confirmer cette action, votre navigateur va s'ouvrir, nous ne pouvons pas sécuriser cette action");
+        this.URL = URL;
     }
+
+    @Override
+    public void show(){
+        result = dialog.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try {
+                Desktop.getDesktop().browse(new URI(this.URL));
+            } catch (IOException | URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
 }
