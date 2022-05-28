@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -13,9 +14,12 @@ public class Tabs extends Pane {
     @FXML
     TabPane tabs;
 
-    void main(){
+    @FXML
+    Tab themeTab;
 
-    }
+    @FXML
+    Tab mapTab;
+
     public Tabs() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fr/univ_amu/iut/javaFX/windows/Tabs.fxml"));
@@ -27,6 +31,10 @@ public class Tabs extends Pane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        GridPane gridPane = new GridPane();
+        gridPane.add(new Button("theme"), 1, 1);
+        ThemeVisualisation themeVisualisation = new ThemeVisualisation();
+        themeTab.setContent(themeVisualisation.getGridPane());
     }
 
     public void addATab(String tabTitle, Node content, boolean closeable) {
