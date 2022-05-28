@@ -177,7 +177,7 @@ public class DataEntry extends ScrollPane {
         if (vBoxIdOfActor.getChildren().size() == 3){
             Button removeButton = new Button("Supprimer un acteur");
             removeButton.setOnAction(actionEvent -> {
-                vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 5, vBoxIdOfActor.getChildren().size() - 3);
+                vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 4, vBoxIdOfActor.getChildren().size() - 2);
                 if (vBoxIdOfActor.getChildren().size() == 4) {
                     vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 1);
                 }
