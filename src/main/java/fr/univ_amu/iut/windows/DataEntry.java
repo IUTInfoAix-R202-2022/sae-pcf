@@ -1,8 +1,6 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -12,9 +10,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Properties;
 
 public class DataEntry extends ScrollPane {
 
@@ -109,7 +105,7 @@ public class DataEntry extends ScrollPane {
         requiredFieldsNotFilledLabels = new ArrayList (List.of(new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName,labelNotFillIdOfActorFirstName, labelNotFillResourceLink}));
     }
 
-    private void cleardFields(){
+    private void clearFields(){
         for (int i = 0; i < fields.size(); i++) {
             fields.get(i).clear();
         }
@@ -134,12 +130,12 @@ public class DataEntry extends ScrollPane {
         return isRequiredFieldsFilled;
     }
 
-    private HBox newHboxIdActor(){
+    private HBox newHBoxIdActor(){
         TextField name = new TextField();
         TextField firstName = new TextField();
 
-        name.setPromptText("nom");
-        firstName.setPromptText("prenom");
+        name.setPromptText("Nom");
+        firstName.setPromptText("Prenom");
 
         HBox.setHgrow(name, Priority.ALWAYS);
         HBox.setHgrow(firstName, Priority.ALWAYS);
@@ -156,7 +152,7 @@ public class DataEntry extends ScrollPane {
         return hbox;
     }
 
-    private HBox newHboxIdActorNotFillLabel(){
+    private HBox newHBoxIdActorNotFillLabel(){
         Label name = new Label("Veuillez remplir ce champ");
         Label firstName = new Label("Veuillez remplir ce champ");
 
@@ -192,8 +188,8 @@ public class DataEntry extends ScrollPane {
             });
             vBoxIdOfActor.getChildren().add(removeButton);
         }
-        HBox fieldsId = newHboxIdActor();
-        HBox labelsId = newHboxIdActorNotFillLabel();
+        HBox fieldsId = newHBoxIdActor();
+        HBox labelsId = newHBoxIdActorNotFillLabel();
 
         vBoxIdOfActor.getChildren().add(vBoxIdOfActor.getChildren().size()-2,fieldsId);
         vBoxIdOfActor.getChildren().add(vBoxIdOfActor.getChildren().size()-2,labelsId);
@@ -207,10 +203,66 @@ public class DataEntry extends ScrollPane {
             ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrer dans la base de données.");
             confirmation.show();
             if (confirmation.getResult() == ButtonType.OK) {
-                cleardFields();
+                clearFields();
                 System.out.println("SubmitNewDataButton confirmed");
                 //TODO Enregistrement dans la base de données
             }
         }
     }
+
+    public void setFieldThemeOfUse(String fieldThemeOfUse) {
+        this.fieldThemeOfUse.setText(fieldThemeOfUse);
+    }
+
+    public void setFieldDiscipline(String fieldDiscipline) {
+        this.fieldDiscipline.setText(fieldDiscipline);
+    }
+
+    public void setFieldDegree(String fieldDegree) {
+        this.fieldDegree.setText(fieldDegree);
+    }
+
+    public void setFieldAcademy(String fieldAcademy) {
+        this.fieldAcademy.setText(fieldAcademy);
+    }
+
+    public void setFieldAcademicRegion(String fieldAcademicRegion) {
+        this.fieldAcademicRegion.setText(fieldAcademicRegion);
+    }
+
+    public void setFieldTypeOfActors(String fieldTypeOfActors) {
+        this.fieldTypeOfActors.setText(fieldTypeOfActors);
+    }
+
+    public void setNames(String[] names){
+        this.fieldIdOfActorName.setText(names[0]);
+        this.fieldIdOfActorFirstName.setText(names[1]);
+
+        for (int i = 2; i < names.length;){
+            addIdOfActor();
+            this.fields.get(this.fields.size()-2).setText(names[i++]);
+            this.fields.get(this.fields.size()-1).setText(names[i++]);
+        }
+    }
+
+    public void setFieldResourceLink(String fieldResourceLink) {
+        this.fieldResourceLink.setText(fieldResourceLink);
+    }
+
+    public void setFieldResourceName(String fieldResourceName) {
+        this.fieldResourceName.setText(fieldResourceName);
+    }
+
+    public void setFieldSourceType(String fieldSourceType) {
+        this.fieldSourceType.setText(fieldSourceType);
+    }
+
+    public void setFieldComment(String fieldComment) {
+        this.fieldComment.setText(fieldComment);
+    }
+
+    public void hideSubmitButton(){
+        this.submitNewDataButton.setVisible(false);
+    }
+
 }
