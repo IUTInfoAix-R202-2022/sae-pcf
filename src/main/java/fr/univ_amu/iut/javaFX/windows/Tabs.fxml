@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <fx:root prefHeight="600.0" prefWidth="1000.0" type="javafx.scene.layout.Pane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-  <TabPane id="tabPane" fx:id="tabs" prefHeight="650.0" prefWidth="1200.0" tabClosingPolicy="ALL_TABS">
+  <TabPane fx:id="tabs" prefHeight="650.0" prefWidth="1200.0" tabClosingPolicy="ALL_TABS">
     <tabs>
       <Tab closable="false" styleClass="tabsMainWindow" text="Thèmes">
         <content>
