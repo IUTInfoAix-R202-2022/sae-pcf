@@ -3,11 +3,14 @@ root {
 }
 
 .button {
-    -fx-font-family: "JetBrains Mono";
-    -fx-font-size: 14px;
     -fx-background-color: #FFFFFF;
     -fx-border-color: #456acf;
     -fx-text-fill: #456acf;
+}
+
+.themeButton {
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 18px;
 }
 
 #buttonBar {
