@@ -31,10 +31,7 @@ public class Tabs extends Pane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        GridPane gridPane = new GridPane();
-        gridPane.add(new Button("theme"), 1, 1);
-        ThemeVisualisation themeVisualisation = new ThemeVisualisation();
-        themeTab.setContent(themeVisualisation.getGridPane());
+        themeTab.setContent(new ThemeScroll());
     }
 
     public void addATab(String tabTitle, Node content, boolean closeable) {
