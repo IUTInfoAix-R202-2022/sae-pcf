@@ -24,6 +24,7 @@ public class ApplicationMain extends Application {
         Scene s = new Scene(root);
 
         s.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
+        s.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Tabs.css");
         primaryStage.setWidth(1200);
         primaryStage.setHeight(700);
         primaryStage.setScene(s);
