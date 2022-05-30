@@ -138,8 +138,8 @@ public class DataEntry extends ScrollPane {
         TextField name = new TextField();
         TextField firstName = new TextField();
 
-        name.setPromptText("Nom");
-        firstName.setPromptText("Prenom");
+        name.setPromptText("nom");
+        firstName.setPromptText("prenom");
 
         HBox.setHgrow(name, Priority.ALWAYS);
         HBox.setHgrow(firstName, Priority.ALWAYS);
