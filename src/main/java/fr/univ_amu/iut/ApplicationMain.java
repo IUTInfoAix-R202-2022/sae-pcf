@@ -1,6 +1,7 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
+import fr.univ_amu.iut.dialogs.ContactDialog;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
 import fr.univ_amu.iut.windows.Tabs;
