@@ -1,6 +1,8 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -10,6 +12,8 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DataEntry extends ScrollPane {
@@ -28,31 +32,31 @@ public class DataEntry extends ScrollPane {
     }
 
     @FXML
-    private TextField fieldThemeOfUse;
+    private ChoiceBox choiceBoxThemeOfUse;
 
     @FXML
     private Label labelNotFillThemeOfUse;
 
     @FXML
-    private TextField fieldDiscipline;
+    private ChoiceBox choiceBoxDiscipline;
 
     @FXML
     private Label labelNotFillDiscipline;
 
     @FXML
-    private TextField fieldDegree;
+    private ChoiceBox choiceBoxDegree;
 
     @FXML
     private Label labelNotFillDegree;
 
     @FXML
-    private TextField fieldAcademy;
+    private ChoiceBox choiceBoxAcademy;
 
     @FXML
     private Label labelNotFillAcademy;
 
     @FXML
-    private TextField fieldAcademicRegion;
+    private ChoiceBox choiceBoxAcademicRegion;
 
     @FXML
     private TextField fieldTypeOfActors;
@@ -93,31 +97,98 @@ public class DataEntry extends ScrollPane {
     @FXML
     private Button submitNewDataButton;
 
-    private ArrayList<TextInputControl> fields;
-    private ArrayList<TextInputControl> requiredFields;
+    private ArrayList<StringProperty> fieldsStringProperties = new ArrayList<StringProperty>();
+    private ArrayList<StringProperty> requiredFieldsStringProperties = new ArrayList<StringProperty>();
     private ArrayList<Label> requiredFieldsNotFilledLabels;
 
     @FXML
     private void initialize() {
-        fields = new ArrayList (List.of(new TextInputControl[]{fieldThemeOfUse, fieldDiscipline, fieldDegree, fieldAcademy, fieldAcademicRegion, fieldTypeOfActors, fieldIdOfActorName, fieldIdOfActorFirstName, fieldResourceLink, fieldResourceName, fieldSourceType, fieldComment}));
-        requiredFields = new ArrayList (List.of(new TextInputControl[]{fieldThemeOfUse, fieldDiscipline, fieldDegree, fieldAcademy, fieldTypeOfActors, fieldIdOfActorName,fieldIdOfActorFirstName, fieldResourceLink}));
-        //TextInputControl is the common parent of TextField and TextArea
+        initializeFieldsStringProperties();
+
+        initializeRequiredFieldsStringProperties();
+
         requiredFieldsNotFilledLabels = new ArrayList (List.of(new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName,labelNotFillIdOfActorFirstName, labelNotFillResourceLink}));
+
+        initializeChoiceBox();
+    }
+
+    void initializeFieldsStringProperties(){
+        for (int i = 0; i < 12; ++i) {
+            fieldsStringProperties.add(new SimpleStringProperty(""));
+        }
+        //bindBidirectional choices box
+        choiceBoxThemeOfUse.valueProperty().bindBidirectional(fieldsStringProperties.get(0));
+        choiceBoxDiscipline.valueProperty().bindBidirectional(fieldsStringProperties.get(1));
+        choiceBoxDegree.valueProperty().bindBidirectional(fieldsStringProperties.get(2));
+        choiceBoxAcademy.valueProperty().bindBidirectional(fieldsStringProperties.get(3));
+        choiceBoxAcademicRegion.valueProperty().bindBidirectional(fieldsStringProperties.get(4));
+
+        //bindBidirectional texts fields
+        fieldTypeOfActors.textProperty().bindBidirectional(fieldsStringProperties.get(5));
+        fieldIdOfActorName.textProperty().bindBidirectional(fieldsStringProperties.get(10));
+        fieldIdOfActorFirstName.textProperty().bindBidirectional(fieldsStringProperties.get(11));
+        fieldResourceLink.textProperty().bindBidirectional(fieldsStringProperties.get(6));
+        fieldResourceName.textProperty().bindBidirectional(fieldsStringProperties.get(7));
+        fieldSourceType.textProperty().bindBidirectional(fieldsStringProperties.get(8));
+
+        //bindBidirectional texts areas
+        fieldComment.textProperty().bindBidirectional(fieldsStringProperties.get(9));
+    }
+
+    void initializeRequiredFieldsStringProperties(){
+        for (int i = 0; i < 8; ++i) {
+            requiredFieldsStringProperties.add(new SimpleStringProperty(""));
+        }
+
+        //bindBidirectional choices box
+        choiceBoxThemeOfUse.valueProperty().bindBidirectional(requiredFieldsStringProperties.get(0));
+        choiceBoxDiscipline.valueProperty().bindBidirectional(requiredFieldsStringProperties.get(1));
+        choiceBoxDegree.valueProperty().bindBidirectional(requiredFieldsStringProperties.get(2));
+        choiceBoxAcademy.valueProperty().bindBidirectional(requiredFieldsStringProperties.get(3));
+
+        //bindBidirectional texts fields
+        fieldTypeOfActors.textProperty().bindBidirectional(requiredFieldsStringProperties.get(4));
+        fieldIdOfActorName.textProperty().bindBidirectional(requiredFieldsStringProperties.get(5));
+        fieldIdOfActorFirstName.textProperty().bindBidirectional(requiredFieldsStringProperties.get(6));
+        fieldResourceLink.textProperty().bindBidirectional(requiredFieldsStringProperties.get(7));
+    }
+
+    void initializeChoiceBox(){
+        //TODO faire la requette SQL thématique
+        String[] themesOfUse = new String[]{"morancey be like","ludique","l'etat d'israel et la palestine"};
+
+        //TODO faire la requette SQL discipline
+        String[] disciplines = new String[]{"fiesta","dodo","gandodo","la sieste"};
+
+        //TODO faire la requette SQL dergé
+        String[] degrees = new String[]{"premier","second","troisieme comme les grands brulées"};
+
+        //TODO faire la requette SQL academie
+        String[] academies = new String[]{"AMU","Nice","Montpelier","Le reste"};
+
+        //TODO faire la requette SQL région académiques
+        String[] academicsRegions = new String[]{"je","ne","connais","meme","pas","la","difference","avec","academie"};
+
+        addTextChoiceBoxThemeOfUse(themesOfUse);
+        addTextChoiceBoxDiscipline(disciplines);
+        addTextChoiceBoxDegree(degrees);
+        addTextChoiceBoxAcademy(academies);
+        addTextChoiceBoxAcademicRegion(academicsRegions);
     }
 
     private void clearFields(){
-        for (int i = 0; i < fields.size(); i++) {
-            fields.get(i).clear();
+        for (int i = 0; i < requiredFieldsStringProperties.size(); ++i) {
+            requiredFieldsStringProperties.get(i).set("");
         }
-        for (int i = 0; i < requiredFieldsNotFilledLabels.size(); i++) {
+        for (int i = 0; i < requiredFieldsNotFilledLabels.size(); ++i) {
             requiredFieldsNotFilledLabels.get(i).setVisible(false);
         }
     }
 
-    private Boolean requiredFieldsManagement(){
+    public Boolean requiredFieldsManagement(){
         Boolean isRequiredFieldsFilled = true;
-        for (int i = 0; i < requiredFields.size(); ++i) {
-            if (requiredFields.get(i).getText().strip().equals("")){
+        for (int i = 0; i < requiredFieldsStringProperties.size(); ++i) {
+            if (requiredFieldsStringProperties.get(i).get().strip().equals("")){
                 requiredFieldsNotFilledLabels.get(i).setVisible(true);
                 if (isRequiredFieldsFilled){
                     isRequiredFieldsFilled = false;
@@ -140,10 +211,16 @@ public class DataEntry extends ScrollPane {
         HBox.setHgrow(name, Priority.ALWAYS);
         HBox.setHgrow(firstName, Priority.ALWAYS);
 
-        fields.add(name);
-        fields.add(firstName);
-        requiredFields.add(name);
-        requiredFields.add(firstName);
+        StringProperty nameStringProperty = new SimpleStringProperty("");
+        name.textProperty().bindBidirectional(nameStringProperty); // We bindBidirectional with a StringProperty
+        fieldsStringProperties.add(nameStringProperty); // We add this StringProperty to the ArrayList of string properties
+
+        StringProperty firstNameStringProperty = new SimpleStringProperty("");
+        firstName.textProperty().bindBidirectional(firstNameStringProperty); // We bindBidirectional with a StringProperty
+        fieldsStringProperties.add(firstNameStringProperty); // We add this StringProperty to the ArrayList of string properties
+
+        requiredFieldsStringProperties.add(nameStringProperty); // We add this StringProperty to the ArrayList of required string properties
+        requiredFieldsStringProperties.add(firstNameStringProperty); // We add this StringProperty to the ArrayList of required string properties
 
         HBox hbox = new HBox(name,firstName);
         hbox.setSpacing(20);
@@ -177,11 +254,11 @@ public class DataEntry extends ScrollPane {
                 if (vBoxIdOfActor.getChildren().size() == 4) {
                     vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 1);
                 }
-                fields.remove(fields.size() - 1);
-                fields.remove(fields.size() - 1);
+                fieldsStringProperties.remove(fieldsStringProperties.size() - 1);
+                fieldsStringProperties.remove(fieldsStringProperties.size() - 1);
 
-                requiredFields.remove(requiredFields.size() - 1);
-                requiredFields.remove(requiredFields.size() - 1);
+                requiredFieldsStringProperties.remove(requiredFieldsStringProperties.size() - 1);
+                requiredFieldsStringProperties.remove(requiredFieldsStringProperties.size() - 1);
 
                 requiredFieldsNotFilledLabels.remove(requiredFieldsNotFilledLabels.size() - 1);
                 requiredFieldsNotFilledLabels.remove(requiredFieldsNotFilledLabels.size() - 1);
@@ -197,8 +274,9 @@ public class DataEntry extends ScrollPane {
     }
 
     @FXML
-    private void submitNewInnovation(){
+    private void submit(){
         System.out.println("SubmitNewDataButton clicked");
+        System.out.println(Arrays.toString(getFieldsString()));
         if (requiredFieldsManagement()){
             ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrer dans la base de données.");
             confirmation.show();
@@ -210,24 +288,73 @@ public class DataEntry extends ScrollPane {
         }
     }
 
-    public void setFieldThemeOfUse(String fieldThemeOfUse) {
-        this.fieldThemeOfUse.setText(fieldThemeOfUse);
+    public String[] getFieldsString() { //return the array of strings of all controllers
+        String[] returnArray = new String[fieldsStringProperties.size()];
+        int i = 0;
+        for (StringProperty stringProperty : fieldsStringProperties) {
+            returnArray[i++] = stringProperty.get();
+        }
+        return returnArray;
     }
 
-    public void setFieldDiscipline(String fieldDiscipline) {
-        this.fieldDiscipline.setText(fieldDiscipline);
+    public void setTextChoiceBoxThemeOfUse(String textThemeOfUse) {
+        this.choiceBoxThemeOfUse.setValue(textThemeOfUse);
     }
 
-    public void setFieldDegree(String fieldDegree) {
-        this.fieldDegree.setText(fieldDegree);
+    public void addTextChoiceBoxThemeOfUse(String textThemeOfUse){
+        this.choiceBoxThemeOfUse.getItems().add(textThemeOfUse);
     }
 
-    public void setFieldAcademy(String fieldAcademy) {
-        this.fieldAcademy.setText(fieldAcademy);
+    public void addTextChoiceBoxThemeOfUse(String[] textThemeOfUse){
+        this.choiceBoxThemeOfUse.getItems().addAll(textThemeOfUse);
     }
 
-    public void setFieldAcademicRegion(String fieldAcademicRegion) {
-        this.fieldAcademicRegion.setText(fieldAcademicRegion);
+    public void setTextChoiceBoxDiscipline(String textDiscipline) {
+        this.choiceBoxDiscipline.setValue(textDiscipline);
+    }
+
+    public void addTextChoiceBoxDiscipline(String textDiscipline){
+        this.choiceBoxDiscipline.getItems().add(textDiscipline);
+    }
+
+    public void addTextChoiceBoxDiscipline(String[] textDiscipline){
+        this.choiceBoxDiscipline.getItems().addAll(textDiscipline);
+    }
+
+    public void setTextChoiceBoxDegree(String textDegree) {
+        this.choiceBoxDegree.setValue(textDegree);
+    }
+
+    public void addTextChoiceBoxDegree(String textDegree){
+        this.choiceBoxDegree.getItems().add(textDegree);
+    }
+
+    public void addTextChoiceBoxDegree(String[] textDegree){
+        this.choiceBoxDegree.getItems().addAll(textDegree);
+    }
+
+    public void setTextChoiceBoxAcademy(String textAcademy) {
+        this.choiceBoxAcademy.setValue(textAcademy);
+    }
+
+    public void addTextChoiceBoxAcademy(String textAcademy){
+        this.choiceBoxAcademy.getItems().add(textAcademy);
+    }
+
+    public void addTextChoiceBoxAcademy(String[] textAcademy){
+        this.choiceBoxAcademy.getItems().addAll(textAcademy);
+    }
+
+    public void setTextChoiceBoxAcademicRegion(String textAcademicRegion) {
+        this.choiceBoxAcademicRegion.setValue(textAcademicRegion);
+    }
+
+    public void addTextChoiceBoxAcademicRegion(String textAcademicRegion){
+        this.choiceBoxAcademicRegion.getItems().add(textAcademicRegion);
+    }
+
+    public void addTextChoiceBoxAcademicRegion(String[] textAcademicRegion){
+        this.choiceBoxAcademicRegion.getItems().addAll(textAcademicRegion);
     }
 
     public void setFieldTypeOfActors(String fieldTypeOfActors) {
@@ -240,8 +367,8 @@ public class DataEntry extends ScrollPane {
 
         for (int i = 2; i < names.length;){
             addIdOfActor();
-            this.fields.get(this.fields.size()-2).setText(names[i++]);
-            this.fields.get(this.fields.size()-1).setText(names[i++]);
+            this.fieldsStringProperties.get(this.fieldsStringProperties.size()-2).set(names[i++]);
+            this.fieldsStringProperties.get(this.fieldsStringProperties.size()-1).set(names[i++]);
         }
     }
 
