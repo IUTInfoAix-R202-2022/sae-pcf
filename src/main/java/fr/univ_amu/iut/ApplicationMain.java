@@ -1,11 +1,9 @@
 package fr.univ_amu.iut;
 
-import fr.univ_amu.iut.dialogs.ConfirmationDialog;
-import fr.univ_amu.iut.dialogs.ContactDialog;
+import fr.univ_amu.iut.dialogs.EditDataDialog;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
 import fr.univ_amu.iut.windows.Tabs;
-import javafx.scene.layout.Pane;
 import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -53,6 +51,9 @@ public class ApplicationMain extends Application {
     public void accesToData(){
         if (Home.isConnected()){
             tabs.addATab("Saisi",new DataEntry(),false);
+
+            EditDataDialog editDataDialog = new EditDataDialog();
+            editDataDialog.show();
         }
         mainWindow.getChildren().set(1,tabs);
     }
