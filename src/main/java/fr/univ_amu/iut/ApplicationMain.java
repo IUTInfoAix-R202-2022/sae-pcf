@@ -51,9 +51,6 @@ public class ApplicationMain extends Application {
     public void accesToData(){
         if (Home.isConnected()){
             tabs.addATab("Saisi",new DataEntry(),false);
-
-            EditDataDialog editDataDialog = new EditDataDialog();
-            editDataDialog.show();
         }
         mainWindow.getChildren().set(1,tabs);
     }

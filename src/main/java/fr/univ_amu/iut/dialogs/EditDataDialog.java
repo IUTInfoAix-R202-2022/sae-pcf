@@ -13,10 +13,6 @@ public class EditDataDialog extends DialogPane{
     private DataEntry dataEntry = new DataEntry();
 
     public EditDataDialog(){
-        dataEntry.hideSubmitButton();
-        dataEntry.setFieldAcademy("bite");
-        dataEntry.setNames(new String[]{"Marius","PISTORESI","Alexis","MARIOTTI"});
-
         this.setContent(dataEntry);
 
         alert.setDialogPane(this);
