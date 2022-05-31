@@ -29,7 +29,7 @@
                               <Font name="JetBrains Mono Regular" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="fieldThemeOfUse" />
+                        <ChoiceBox fx:id="choiceBoxThemeOfUse" prefWidth="600.0" />
                      </items>
                   </SplitPane>
                   <Label fx:id="labelNotFillThemeOfUse" text="Veuillez remplir ce champ" visible="false" />
@@ -50,7 +50,7 @@
                               <Font name="JetBrains Mono Regular" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="fieldDiscipline" />
+                        <ChoiceBox fx:id="choiceBoxDiscipline" prefWidth="600.0" />
                      </items>
                   </SplitPane>
                   <Label fx:id="labelNotFillDiscipline" text="Veuillez remplir ce champ" visible="false" />
@@ -71,7 +71,7 @@
                               <Font name="JetBrains Mono Regular" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="fieldDegree" />
+                        <ChoiceBox fx:id="choiceBoxDegree" prefWidth="600.0" />
                      </items>
                      <VBox.margin>
                         <Insets />
@@ -95,7 +95,7 @@
                               <Font name="JetBrains Mono Regular" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="fieldAcademy" />
+                        <ChoiceBox fx:id="choiceBoxAcademy" prefWidth="600.0" />
                      </items>
                      <VBox.margin>
                         <Insets />
@@ -119,7 +119,7 @@
                               <Font name="JetBrains Mono Regular" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="fieldAcademicRegion" />
+                        <ChoiceBox fx:id="choiceBoxAcademicRegion" prefWidth="600.0" />
                      </items>
                      <VBox.margin>
                         <Insets bottom="18.0" />
@@ -284,7 +284,7 @@
                   <Insets left="150.0" />
                </VBox.margin>
             </VBox>
-            <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#submitNewInnovation" text="Soumettre">
+            <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#submit" text="Soumettre">
                <VBox.margin>
                   <Insets bottom="200.0" left="600.0" />
                </VBox.margin>
