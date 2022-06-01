@@ -12,7 +12,7 @@ public class ContactDialog extends SimpleDialog{
 
     private String URL;
     public ContactDialog(String URL) {
-        super("Vous allez être rediriger vers le site : " + URL, "Si vous confirmer cette action, votre navigateur va s'ouvrir, nous ne pouvons pas sécuriser cette action");
+        super("Vous allez être redirigé vers le site : " + URL, "Si vous confirmez cette action, votre navigateur va s'ouvrir, nous ne pouvons pas sécuriser cette action");
         this.URL = URL;
     }
 
