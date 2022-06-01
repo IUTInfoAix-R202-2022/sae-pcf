@@ -46,7 +46,7 @@
                             <Font name="JetBrains Mono Regular" size="13.0" />
                          </font>
                       </PasswordField>
-                      <Label fx:id="errorMessage" text="Couple nom d'uttilisateur, mot de passe invalide" visible="false" />
+                      <Label fx:id="errorMessage" text="Couple nom d'uttilisateur, mot de passe invalide" styleClass="error" visible="false" />
                      <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submit" text="Soumettre">
                         <VBox.margin>
                            <Insets />
