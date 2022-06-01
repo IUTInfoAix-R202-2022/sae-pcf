@@ -7,9 +7,9 @@
 <fx:root alignment="TOP_CENTER" prefHeight="700.0" prefWidth="1200.0" styleClass="root" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
     <ButtonBar prefHeight="40.0" prefWidth="200.0" fx:id="buttonBar">
         <buttons>
-            <Button fx:id="buttonContact" text="Contact" onAction="#contact" />
-            <Button fx:id="buttonHelp" text="Aide" onAction="#help" />
-            <Button fx:id="buttonSettings" text="Paramètres" onAction="#settings" />
+            <Button fx:id="buttonContact" onAction="#contact" styleClass="buttonButtonBar" text="Contact" />
+            <Button fx:id="buttonHelp" onAction="#help" styleClass="buttonButtonBar" text="Aide" />
+            <Button fx:id="buttonSettings" onAction="#settings" styleClass="buttonButtonBar" text="Paramètres" />
         </buttons>
       <VBox.margin>
          <Insets right="13.0" top="5.0" />

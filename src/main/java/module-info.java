@@ -8,6 +8,7 @@ open module francefx {
     requires transitive org.kordamp.ikonli.core;
 
     requires jakarta.persistence;
+    requires java.desktop;
 
     exports fr.univ_amu.iut.view.map;
     exports fr.univ_amu.iut.model;

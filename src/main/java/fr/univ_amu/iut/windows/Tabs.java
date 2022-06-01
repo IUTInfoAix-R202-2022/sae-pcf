@@ -37,7 +37,7 @@ public class Tabs extends Pane {
     public void addATab(String tabTitle, Node content, boolean closeable) {
         Tab newTab = new Tab(tabTitle);
         newTab.setClosable(closeable);
-        newTab.setStyle("tabs");
+        newTab.getStyleClass().add("tabs");
         newTab.setContent(content);
         tabs.getTabs().add(newTab);
     }
