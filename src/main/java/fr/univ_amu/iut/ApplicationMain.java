@@ -2,11 +2,8 @@ package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import fr.univ_amu.iut.dialogs.ContactDialog;
-import fr.univ_amu.iut.windows.DataEntry;
-import fr.univ_amu.iut.windows.Home;
-import fr.univ_amu.iut.windows.Tabs;
+import fr.univ_amu.iut.windows.*;
 import javafx.scene.layout.Pane;
-import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -43,6 +40,7 @@ public class ApplicationMain extends Application {
         stage.setHeight(700);
 
         tabs = new Tabs();
+        tabs.addATab("Résultats", new ResultsTab(), true);
     }
 
     private void loadCSS(){
