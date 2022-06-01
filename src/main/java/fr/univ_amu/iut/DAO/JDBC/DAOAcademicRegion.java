@@ -7,12 +7,12 @@ import java.util.List;
 import java.sql.*;
 
 public class DAOAcademicRegion implements fr.univ_amu.iut.DAO.DAOAcademicRegion {
-    private final PreparedStatement findAllStatement;
-    private final PreparedStatement getByIdStatement;
-    private final PreparedStatement insertStatement;
+    //private final PreparedStatement findAllStatement;
+    //private final PreparedStatement getByIdStatement;
+    //private final PreparedStatement insertStatement;
 
     public DAOAcademicRegion(){
-        findAllStatement;
+        //findAllStatement;
     }
 
     @Override
