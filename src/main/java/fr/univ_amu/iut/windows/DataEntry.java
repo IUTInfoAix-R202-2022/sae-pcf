@@ -232,6 +232,8 @@ public class DataEntry extends ScrollPane {
     private HBox newHBoxIdActorNotFillLabel(){
         Label name = new Label("Veuillez remplir ce champ");
         Label firstName = new Label("Veuillez remplir ce champ");
+        name.getStyleClass().add("error");
+        firstName.getStyleClass().add("error");
 
         name.setVisible(false);
         firstName.setVisible(false);
@@ -278,7 +280,7 @@ public class DataEntry extends ScrollPane {
         System.out.println("SubmitNewDataButton clicked");
         System.out.println(Arrays.toString(getFieldsString()));
         if (requiredFieldsManagement()){
-            ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrer dans la base de données.");
+            ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrées dans la base de données.");
             confirmation.show();
             if (confirmation.getResult() == ButtonType.OK) {
                 clearFields();

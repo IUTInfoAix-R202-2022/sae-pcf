@@ -46,11 +46,12 @@ public class ApplicationMain extends Application {
     private void loadCSS(){
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Tabs.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Error_messages.css");
     }
 
     public void accesToData(){
         if (Home.isConnected()){
-            tabs.addATab("Saisi",new DataEntry(),false);
+            tabs.addATab("Saisie",new DataEntry(),false);
         }
         mainWindow.getChildren().set(1,tabs);
     }
