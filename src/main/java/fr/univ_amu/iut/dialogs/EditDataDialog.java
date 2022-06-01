@@ -15,15 +15,21 @@ public class EditDataDialog extends DialogPane{
     public EditDataDialog(){
         this.setContent(dataEntry);
 
+        dataEntry.hideSubmitButton();
+
         alert.setDialogPane(this);
 
-        this.getButtonTypes().addAll(new ButtonType("Soumettre", ButtonBar.ButtonData.OK_DONE),new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE));
+        ButtonType submitButton = new ButtonType("Soumettre", ButtonBar.ButtonData.OK_DONE);
+
+        this.getButtonTypes().addAll(submitButton,new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE));
     }
 
     public void show(){
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            //TODO update data base
+        if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE){
+            if (!dataEntry.requiredFieldsManagement()){
+                this.show();
+            }
         }
     }
 }
