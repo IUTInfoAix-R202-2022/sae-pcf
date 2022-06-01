@@ -297,6 +297,36 @@ public class DataEntry extends ScrollPane {
         return returnArray;
     }
 
+    @FXML
+    private void addAThemeOfUse(){
+        //TODO inplement
+    }
+
+    @FXML
+    private void addADiscipline(){
+        //TODO inplement
+    }
+
+    @FXML
+    private void addADegree(){
+        //TODO inplement
+    }
+
+    @FXML
+    private void addAnAcademy(){
+        //TODO inplement
+    }
+
+    @FXML
+    private void addAAcademicRegion(){
+        //TODO inplement
+    }
+
+    @FXML
+    private void addATypeOfActors(){
+        //TODO inplement
+    }
+
     public void setTextChoiceBoxThemeOfUse(String textThemeOfUse) {
         this.choiceBoxThemeOfUse.setValue(textThemeOfUse);
     }
