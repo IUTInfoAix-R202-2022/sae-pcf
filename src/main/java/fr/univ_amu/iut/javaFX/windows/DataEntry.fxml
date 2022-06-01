@@ -19,7 +19,7 @@
             </Label>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Thématique d'usage *">
                            <padding>
@@ -30,7 +30,15 @@
                            </font>
                         </Label>
                         <ChoiceBox fx:id="choiceBoxThemeOfUse" prefWidth="600.0" />
+                        <Button fx:id="addButtonThemeOfUse" mnemonicParsing="false" onAction="#addAThemeOfUse" text="+">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
                      </items>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </SplitPane>
                   <Label fx:id="labelNotFillThemeOfUse" text="Veuillez remplir ce champ" visible="false" />
                </children>
@@ -40,7 +48,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Discipline *">
                            <padding>
@@ -51,6 +59,7 @@
                            </font>
                         </Label>
                         <ChoiceBox fx:id="choiceBoxDiscipline" prefWidth="600.0" />
+                        <Button fx:id="addButtonDiscipline" mnemonicParsing="false" onAction="#addADiscipline" text="+" />
                      </items>
                   </SplitPane>
                   <Label fx:id="labelNotFillDiscipline" text="Veuillez remplir ce champ" visible="false" />
@@ -61,7 +70,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Degré *">
                            <padding>
@@ -72,6 +81,7 @@
                            </font>
                         </Label>
                         <ChoiceBox fx:id="choiceBoxDegree" prefWidth="600.0" />
+                        <Button fx:id="addButtonDegree" mnemonicParsing="false" onAction="#addADegree" text="+" />
                      </items>
                      <VBox.margin>
                         <Insets />
@@ -85,7 +95,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Académie *">
                            <padding>
@@ -96,6 +106,7 @@
                            </font>
                         </Label>
                         <ChoiceBox fx:id="choiceBoxAcademy" prefWidth="600.0" />
+                        <Button fx:id="addButtonAcademy" mnemonicParsing="false" onAction="#addAnAcademy" text="+" />
                      </items>
                      <VBox.margin>
                         <Insets />
@@ -109,7 +120,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Région académique">
                            <padding>
@@ -120,6 +131,7 @@
                            </font>
                         </Label>
                         <ChoiceBox fx:id="choiceBoxAcademicRegion" prefWidth="600.0" />
+                        <Button fx:id="addButtonAcademicRegion" mnemonicParsing="false" onAction="#addAAcademicRegion" text="+" />
                      </items>
                      <VBox.margin>
                         <Insets bottom="18.0" />
@@ -132,7 +144,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Type d'acteurs *">
                            <padding>
@@ -143,6 +155,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="fieldTypeOfActors" />
+                        <Button fx:id="addButtonTypeOfActors" mnemonicParsing="false" onAction="#addATypeOfActors" text="+" />
                      </items>
                   </SplitPane>
                   <Label fx:id="labelNotFillTypeOfActors" text="Veuillez remplir ce champ" visible="false" />
