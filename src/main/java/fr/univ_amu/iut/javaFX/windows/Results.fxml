@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root alignment="TOP_CENTER" gridLinesVisible="false" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Intitulés" styleClass="ResultTitles"/>
+      <Label text="Usages" GridPane.columnIndex="1" styleClass="ResultTitles"/>
+      <Label text="Disciplines" GridPane.columnIndex="2" styleClass="ResultTitles"/>
+      <Label text="Types de ressources" GridPane.columnIndex="3" styleClass="ResultTitles"/>
+      <Button mnemonicParsing="false" text="Propositions et mise en partage de séquences" GridPane.rowIndex="1" styleClass="IntituleButton"/>
+      <Button mnemonicParsing="false" text="Enseigner à distance" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="ResultButton"/>
+      <Button mnemonicParsing="false" text="Arts plastiques" GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="ResultButton"/>
+      <Button mnemonicParsing="false" text="Scénarios pédagogiques" GridPane.columnIndex="3" GridPane.rowIndex="1" styleClass="ResultButton"/>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints halignment="CENTER" />
+      <ColumnConstraints halignment="CENTER" />
+      <ColumnConstraints halignment="CENTER" />
+      <ColumnConstraints halignment="CENTER" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints valignment="CENTER" />
+      <RowConstraints valignment="CENTER" />
+   </rowConstraints>
+</fx:root>
