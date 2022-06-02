@@ -32,6 +32,7 @@ public class Tabs extends Pane {
             throw new RuntimeException(exception);
         }
         themeTab.setContent(new ThemeScroll());
+        mapTab.setContent(new MapTab());
     }
 
     public void addATab(String tabTitle, Node content, boolean closeable) {
