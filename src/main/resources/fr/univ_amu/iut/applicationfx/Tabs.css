@@ -1,24 +1,20 @@
-.root {
-    -tab-text-color: -fx-text-base-color ;
-}
-
-.tabsMainWindow {
+.tabs {
     -fx-border-color: #09c4fd;
     -fx-background-color: #FFFFFF;
     -fx-text-fill: #09c4fd;
 }
 
-.tabsMainWindow:hover {
+.tabs:hover {
     -fx-background-color: #09c4fd;
     -fx-border-color: #FFFFFF;
 }
 
-.tabsMainWindow:pressed {
+.tabs:pressed {
     -fx-background-color: #456acf;
     -fx-border-color: #456acf;
 }
 
-.tabsMainWindow:selected {
+.tabs:selected {
     -fx-background-color: #09c4fd;
     -fx-border-color: #FFFFFF;
     -fx-text-fill: #FFFFFF;
