@@ -20,7 +20,7 @@ public class Academy {
         return name;
     }
 
-    public void setName(String nom) {
+    public void setName(String name) {
         this.name = name;
     }
 }
