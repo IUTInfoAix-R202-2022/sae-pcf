@@ -46,6 +46,9 @@ public class ApplicationMain extends Application {
     private void loadCSS(){
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Tabs.css");
+
+
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Result.css");
     }
 
     public void accesToData(){
