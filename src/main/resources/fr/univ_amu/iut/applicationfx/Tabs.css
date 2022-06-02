@@ -1,21 +1,37 @@
 .tabs {
-    -fx-border-color: #09c4fd;
+    -fx-border-color: #9a46ff;
     -fx-background-color: #FFFFFF;
-    -fx-text-fill: #09c4fd;
+    -fx-text-fill: #9a46ff;
+    -fx-font-size: 14px;
 }
 
 .tabs:hover {
-    -fx-background-color: #09c4fd;
+    -fx-background-color: #9a46ff;
     -fx-border-color: #FFFFFF;
 }
 
 .tabs:pressed {
-    -fx-background-color: #456acf;
-    -fx-border-color: #456acf;
+    -fx-background-color: #0000b9;
+    -fx-border-color: #0000b9;
 }
 
 .tabs:selected {
-    -fx-background-color: #09c4fd;
+    -fx-background-color: #9a46ff;
     -fx-border-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #9a46ff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.tabs:hover .tab-label{
+    -fx-background-color: #9a46ff;
     -fx-text-fill: #FFFFFF;
 }
