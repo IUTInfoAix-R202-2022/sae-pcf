@@ -1,5 +1,9 @@
 package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.DAO.ConnectionManager;
+import fr.univ_amu.iut.DAO.JDBC.DAOAcademicRegion;
+import fr.univ_amu.iut.DAO.entities.AcademicRegion;
+import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
@@ -34,6 +38,11 @@ public class ApplicationMain extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop(){
+        ConnectionManager.getInstance().closeConnection();
+    }
+
     private void appBasis(Stage stage){
         stage.setResizable(false);
         stage.setTitle("Titre de l'application");
@@ -48,7 +57,7 @@ public class ApplicationMain extends Application {
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Tabs.css");
     }
 
-    public void accesToData(){
+    public void accessToData(){
         if (Home.isConnected()){
             tabs.addATab("Saisi",new DataEntry(),false);
         }

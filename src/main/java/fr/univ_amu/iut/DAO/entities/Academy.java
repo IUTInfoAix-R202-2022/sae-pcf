@@ -2,7 +2,7 @@ package fr.univ_amu.iut.DAO.entities;
 
 public class Academy {
     private int id;
-    private String nom;
+    private String name;
 
     public Academy(){
 
@@ -16,11 +16,11 @@ public class Academy {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = name;
     }
 }

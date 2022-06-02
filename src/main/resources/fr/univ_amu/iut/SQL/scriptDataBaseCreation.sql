@@ -1,30 +1,30 @@
 CREATE TABLE ThemeOfUse (
 idThemeOfUse INT,
-nomThemeOfUse VARCHAR(30),
+nameThemeOfUse VARCHAR(30),
 
 CONSTRAINT pk_theme_of_use PRIMARY KEY (idThemeOfUse));
 
 CREATE TABLE Discipline (
 idDiscipline INT,
-nomDiscipline VARCHAR(30),
+nameDiscipline VARCHAR(30),
 
 CONSTRAINT pk_discipline PRIMARY KEY (idDiscipline));
 
 CREATE TABLE Degree (
 idDegree INT,
-nomDegree VARCHAR(30),
+nameDegree VARCHAR(30),
 
 CONSTRAINT pk_degree PRIMARY KEY (idDegree));
 
 CREATE TABLE Academy (
 idAcademy INT,
-nomAcademy VARCHAR(30),
+nameAcademy VARCHAR(30),
 
 CONSTRAINT pk_academy PRIMARY KEY (idAcademy));
 
 CREATE TABLE AcademicRegion (
 idAcademicRegion INT,
-nomAcademicRegion VARCHAR(30),
+nameAcademicRegion VARCHAR(30),
 
 CONSTRAINT pk_academic_region PRIMARY KEY (idAcademicRegion));
 

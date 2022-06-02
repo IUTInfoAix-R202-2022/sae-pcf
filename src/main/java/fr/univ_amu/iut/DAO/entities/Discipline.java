@@ -2,7 +2,7 @@ package fr.univ_amu.iut.DAO.entities;
 
 public class Discipline {
     private int id;
-    private String nom;
+    private String name;
 
     public Discipline(){
 
@@ -16,11 +16,11 @@ public class Discipline {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 }

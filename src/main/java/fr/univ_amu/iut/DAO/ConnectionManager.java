@@ -4,17 +4,13 @@ import java.sql.*;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    static private final String URL = "jdbc:postgresql://rogue.db.elephantsql.com/zizafbet";
-    static private final String LOGIN = "zizfbet";
-    static private final String PASSWORD = "UJSPDbZ3RxceJ1mpEwRtfPCeTqnXmnYx";
+    private static final String URL = "jdbc:postgresql://rogue.db.elephantsql.com/zizafbet";
+    private static final String LOGIN = "zizafbet";
+    private static final String PASSWORD = "UJSPDbZ3RxceJ1mpEwRtfPCeTqnXmnYx";
+    private static ConnectionManager instance;
     private Connection connection;
 
-    public ConnectionManager(){
-        try {
-            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    private ConnectionManager(){
     }
 
     public void closeConnection(){
@@ -27,5 +23,34 @@ public class ConnectionManager {
 
     public Connection getConnection(){
         return this.connection;
+    }
+
+    public void commit(){
+        try {
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ConnectionManager getInstance(){
+        if (instance == null){
+            instance = new ConnectionManager();
+            try {
+                instance.connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try {
+                if (instance.connection.isClosed()){
+                    instance.connection = DriverManager.getConnection(URL, LOGIN,PASSWORD);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return instance;
     }
 }

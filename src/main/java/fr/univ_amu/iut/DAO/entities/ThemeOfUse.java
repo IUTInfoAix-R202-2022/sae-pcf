@@ -3,7 +3,7 @@ package fr.univ_amu.iut.DAO.entities;
 public class ThemeOfUse{
 
     private int id;
-    private String nom;
+    private String name;
 
     public ThemeOfUse(){
 
@@ -17,11 +17,11 @@ public class ThemeOfUse{
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 }
