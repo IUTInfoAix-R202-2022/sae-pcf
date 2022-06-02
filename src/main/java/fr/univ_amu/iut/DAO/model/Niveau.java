@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.model;
+package fr.univ_amu.iut.DAO.model;
 
 public enum Niveau {
     Tous("Tous"),

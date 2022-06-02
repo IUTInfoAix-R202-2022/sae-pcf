@@ -1,5 +1,10 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.DAO.DAODiscipline;
+import fr.univ_amu.iut.DAO.DAOThemeOfUse;
+import fr.univ_amu.iut.DAO.entities.Discipline;
+import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
+import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -154,11 +159,11 @@ public class DataEntry extends ScrollPane {
     }
 
     void initializeChoiceBox(){
-        //TODO faire la requette SQL thématique
-        String[] themesOfUse = new String[]{"morancey be like","ludique","l'etat d'israel et la palestine"};
+        DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
+        List<ThemeOfUse> themesOfUse = daoThemeOfUse.findAll();
 
-        //TODO faire la requette SQL discipline
-        String[] disciplines = new String[]{"fiesta","dodo","gandodo","la sieste"};
+        DAODiscipline daoDiscipline = DAOFactoryProducer.getFactory().createDiscipline();
+        List<Discipline> disciplines = daoDiscipline.findAll();
 
         //TODO faire la requette SQL dergé
         String[] degrees = new String[]{"premier","second","troisieme comme les grands brulées"};
@@ -305,8 +310,10 @@ public class DataEntry extends ScrollPane {
         this.choiceBoxThemeOfUse.getItems().add(textThemeOfUse);
     }
 
-    public void addTextChoiceBoxThemeOfUse(String[] textThemeOfUse){
-        this.choiceBoxThemeOfUse.getItems().addAll(textThemeOfUse);
+    public void addTextChoiceBoxThemeOfUse(List<ThemeOfUse> themeOfUses){
+        for(ThemeOfUse themeOfUse : themeOfUses){
+            this.choiceBoxThemeOfUse.getItems().add(themeOfUse.getName());
+        }
     }
 
     public void setTextChoiceBoxDiscipline(String textDiscipline) {
@@ -317,12 +324,14 @@ public class DataEntry extends ScrollPane {
         this.choiceBoxDiscipline.getItems().add(textDiscipline);
     }
 
-    public void addTextChoiceBoxDiscipline(String[] textDiscipline){
-        this.choiceBoxDiscipline.getItems().addAll(textDiscipline);
-    }
-
     public void setTextChoiceBoxDegree(String textDegree) {
         this.choiceBoxDegree.setValue(textDegree);
+    }
+
+    public void addTextChoiceBoxDiscipline(List<Discipline> disciplines){
+        for(Discipline discipline : disciplines){
+            this.choiceBoxDiscipline.getItems().add(discipline.getName());
+        }
     }
 
     public void addTextChoiceBoxDegree(String textDegree){

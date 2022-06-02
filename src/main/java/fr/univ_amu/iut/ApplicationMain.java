@@ -1,8 +1,10 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.DAO.ConnectionManager;
+import fr.univ_amu.iut.DAO.DAOTypology;
 import fr.univ_amu.iut.DAO.entities.AcademicRegion;
 import fr.univ_amu.iut.DAO.entities.Academy;
+import fr.univ_amu.iut.DAO.entities.Typology;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
@@ -63,14 +65,5 @@ public class ApplicationMain extends Application {
             tabs.addATab("Saisi",new DataEntry(),false);
         }
         mainWindow.getChildren().set(1,tabs);
-
-        Academy academy = new Academy();
-        academy.setId(15);
-        academy.setName("nice");
-
-        DAOFactoryProducer.getFactory().createDAOAcademy().insert(academy);
-
-
-        ConnectionManager.getInstance().commit();
     }
 }
