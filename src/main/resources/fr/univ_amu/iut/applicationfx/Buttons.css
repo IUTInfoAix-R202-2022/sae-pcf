@@ -10,6 +10,11 @@ root {
     -fx-text-fill: #456acf;
 }
 
+.themeButton {
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 18px;
+}
+
 .button:hover {
     -fx-background-color: #456acf;
     -fx-text-fill: #FFFFFF;
@@ -18,7 +23,6 @@ root {
 .button:pressed {
     -fx-background-color: #202077;
     -fx-border-color: #456acf;
-
 }
 
 .buttonButtonBar {
