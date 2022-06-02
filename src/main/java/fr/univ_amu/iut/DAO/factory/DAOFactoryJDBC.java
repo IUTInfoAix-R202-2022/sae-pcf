@@ -1,7 +1,6 @@
 package fr.univ_amu.iut.DAO.factory;
 
-import fr.univ_amu.iut.DAO.JDBC.DAOAcademicRegion;
-import fr.univ_amu.iut.DAO.JDBC.Database;
+import fr.univ_amu.iut.DAO.JDBC.*;
 
 public class DAOFactoryJDBC implements DAOFactory{
     static{
@@ -11,5 +10,35 @@ public class DAOFactoryJDBC implements DAOFactory{
     @Override
     public DAOAcademicRegion createDAOAcademicRegion(){
         return new DAOAcademicRegion();
+    }
+
+    @Override
+    public DAOAcademy createDAOAcademy() {
+        return new DAOAcademy();
+    }
+
+    @Override
+    public DAOActorIdentity createDaoActorIdentity() {
+        return new DAOActorIdentity();
+    }
+
+    @Override
+    public DAODegree createDaoDegree() {
+        return new DAODegree();
+    }
+
+    @Override
+    public fr.univ_amu.iut.DAO.DAODiscipline createDiscipline() {
+        return new DAODiscipline();
+    }
+
+    @Override
+    public DAOThemeOfUse createDaoThemeOfUse() {
+        return new DAOThemeOfUse();
+    }
+
+    @Override
+    public DAOTypology createDaoTypology() {
+        return new DAOTypology();
     }
 }

@@ -1,10 +1,8 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.DAO.ConnectionManager;
-import fr.univ_amu.iut.DAO.JDBC.DAOAcademicRegion;
-import fr.univ_amu.iut.DAO.entities.AcademicRegion;
+import fr.univ_amu.iut.DAO.entities.Academy;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
-import fr.univ_amu.iut.dialogs.EditDataDialog;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
 import fr.univ_amu.iut.windows.Tabs;
@@ -13,6 +11,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.sql.Connection;
 
 public class ApplicationMain extends Application {
 
@@ -62,5 +62,13 @@ public class ApplicationMain extends Application {
             tabs.addATab("Saisi",new DataEntry(),false);
         }
         mainWindow.getChildren().set(1,tabs);
+
+        Academy academy = new Academy();
+        academy.setId(7);
+        academy.setName("nice");
+
+        DAOFactoryProducer.getFactory().createDAOAcademy().insert(academy);
+
+        ConnectionManager.getInstance().commit();
     }
 }

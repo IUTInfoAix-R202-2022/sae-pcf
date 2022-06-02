@@ -4,9 +4,9 @@ public class Typology {
     private int id;
     private int idThemeOfUse;
     private int idDiscipline;
-    private int degree;
-    private int academy;
-    private int academicRegion;
+    private int idDegree;
+    private int idAcademy;
+    private int idAcademicRegion;
     private String actorType;
     private String link;
     private String resourceName;
@@ -37,28 +37,28 @@ public class Typology {
         this.idDiscipline = idDiscipline;
     }
 
-    public int getDegree() {
-        return degree;
+    public int getIdDegree() {
+        return idDegree;
     }
 
-    public void setDegree(int degree) {
-        this.degree = degree;
+    public void setIdDegree(int id) {
+        this.idDegree = id;
     }
 
-    public int getAcademy() {
-        return academy;
+    public int getIdAcademy() {
+        return idAcademy;
     }
 
-    public void setAcademy(int academy) {
-        this.academy = academy;
+    public void setIdAcademy(int id) {
+        this.idAcademy = id;
     }
 
-    public int getAcademicRegion() {
-        return academicRegion;
+    public int getIdAcademicRegion() {
+        return idAcademicRegion;
     }
 
-    public void setAcademicRegion(int academicRegion) {
-        this.academicRegion = academicRegion;
+    public void setIdAcademicRegion(int id) {
+        this.idAcademicRegion = id;
     }
 
     public String getActorType() {
