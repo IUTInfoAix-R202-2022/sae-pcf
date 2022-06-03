@@ -1,9 +1,10 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.DAO.DAOAcademy;
+import fr.univ_amu.iut.DAO.DAODegree;
 import fr.univ_amu.iut.DAO.DAODiscipline;
 import fr.univ_amu.iut.DAO.DAOThemeOfUse;
-import fr.univ_amu.iut.DAO.entities.Discipline;
-import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
+import fr.univ_amu.iut.DAO.entities.*;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import javafx.beans.property.SimpleStringProperty;
@@ -159,26 +160,21 @@ public class DataEntry extends ScrollPane {
     }
 
     void initializeChoiceBox(){
-        DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
-        List<ThemeOfUse> themesOfUse = daoThemeOfUse.findAll();
+        List<ThemeOfUse> themesOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse().findAll();
 
-        DAODiscipline daoDiscipline = DAOFactoryProducer.getFactory().createDiscipline();
-        List<Discipline> disciplines = daoDiscipline.findAll();
+        List<Discipline> disciplines = DAOFactoryProducer.getFactory().createDiscipline().findAll();
 
-        //TODO faire la requette SQL dergé
-        String[] degrees = new String[]{"premier","second","troisieme comme les grands brulées"};
+        List<Degree> degrees = DAOFactoryProducer.getFactory().createDaoDegree().findAll();
 
-        //TODO faire la requette SQL academie
-        String[] academies = new String[]{"AMU","Nice","Montpelier","Le reste"};
+        List<Academy> academies = DAOFactoryProducer.getFactory().createDAOAcademy().findAll();
 
-        //TODO faire la requette SQL région académiques
-        String[] academicsRegions = new String[]{"je","ne","connais","meme","pas","la","difference","avec","academie"};
+        List<AcademicRegion> academicRegions = DAOFactoryProducer.getFactory().createDAOAcademicRegion().findAll();
 
         addTextChoiceBoxThemeOfUse(themesOfUse);
         addTextChoiceBoxDiscipline(disciplines);
         addTextChoiceBoxDegree(degrees);
         addTextChoiceBoxAcademy(academies);
-        addTextChoiceBoxAcademicRegion(academicsRegions);
+        addTextChoiceBoxAcademicRegion(academicRegions);
     }
 
     private void clearFields(){
@@ -370,8 +366,10 @@ public class DataEntry extends ScrollPane {
         this.choiceBoxDegree.getItems().add(textDegree);
     }
 
-    public void addTextChoiceBoxDegree(String[] textDegree){
-        this.choiceBoxDegree.getItems().addAll(textDegree);
+    public void addTextChoiceBoxDegree(List<Degree> degrees){
+        for (Degree degree : degrees){
+            this.choiceBoxDegree.getItems().add(degree.getName());
+        }
     }
 
     public void setTextChoiceBoxAcademy(String textAcademy) {
@@ -382,8 +380,10 @@ public class DataEntry extends ScrollPane {
         this.choiceBoxAcademy.getItems().add(textAcademy);
     }
 
-    public void addTextChoiceBoxAcademy(String[] textAcademy){
-        this.choiceBoxAcademy.getItems().addAll(textAcademy);
+    public void addTextChoiceBoxAcademy(List<Academy> academies){
+        for (Academy academy : academies){
+            this.choiceBoxAcademy.getItems().add(academy.getName());
+        }
     }
 
     public void setTextChoiceBoxAcademicRegion(String textAcademicRegion) {
@@ -394,8 +394,10 @@ public class DataEntry extends ScrollPane {
         this.choiceBoxAcademicRegion.getItems().add(textAcademicRegion);
     }
 
-    public void addTextChoiceBoxAcademicRegion(String[] textAcademicRegion){
-        this.choiceBoxAcademicRegion.getItems().addAll(textAcademicRegion);
+    public void addTextChoiceBoxAcademicRegion(List<AcademicRegion> academicRegionList){
+        for (AcademicRegion academicRegion : academicRegionList){
+            this.choiceBoxAcademicRegion.getItems().add(academicRegion.getName());
+        }
     }
 
     public void setFieldTypeOfActors(String fieldTypeOfActors) {
