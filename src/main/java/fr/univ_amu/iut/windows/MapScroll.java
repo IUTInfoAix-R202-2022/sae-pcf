@@ -17,9 +17,9 @@ public class MapScroll extends ScrollPane {
                 .backgroundColor(Color.web("#f4f4f4"))
                 .fillColor(Color.web("#f4f4f4"))
                 .strokeColor(Color.web("#00587d"))
-                .hoverColor(Color.web("#5395e8"))
+                .hoverColor(Color.web("#5e00ed"))
                 //.pressedColor(Color.web("#6cee85"))
-                .selectedColor(Color.web("#101aa2"))
+                .selectedColor(Color.web("#202077"))
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
