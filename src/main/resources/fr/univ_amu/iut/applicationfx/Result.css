@@ -22,4 +22,7 @@
 .ResultTitles {
     -fx-text-fill: #202077;
     -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-alignment: CENTER;
+    -fx-padding: 12px;
 }
