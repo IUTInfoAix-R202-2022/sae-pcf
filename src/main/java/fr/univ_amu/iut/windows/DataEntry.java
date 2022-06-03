@@ -170,8 +170,8 @@ public class DataEntry extends ScrollPane {
     }
 
     private void clearFields(){
-        for (int i = 0; i < requiredFieldsStringProperties.size(); ++i) {
-            requiredFieldsStringProperties.get(i).set("");
+        for (int i = 0; i < fieldsStringProperties.size(); ++i) {
+            fieldsStringProperties.get(i).set("");
         }
         for (int i = 0; i < requiredFieldsNotFilledLabels.size(); ++i) {
             requiredFieldsNotFilledLabels.get(i).setVisible(false);
