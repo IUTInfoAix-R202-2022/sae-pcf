@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MapTheme extends GridPane {
     public MapTheme() {
-        this.add(new Button("Thème 1"), 0,0);
+        this.add(new Theme("Thème 1"), 0,0);
     }
 
     public void addThemes(List<Button> themeList) {
@@ -23,5 +23,10 @@ public class MapTheme extends GridPane {
             }
             this.add(themeList.get(i), column, row);
         }
+    }
+
+    public List<Theme> getThemes() {
+        //TODO Implements getThemes() to connect to the SGBD
+        return null;
     }
 }
