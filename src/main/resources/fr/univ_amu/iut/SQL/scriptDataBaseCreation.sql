@@ -24,7 +24,7 @@ CONSTRAINT pk_academy PRIMARY KEY (idAcademy));
 
 CREATE TABLE AcademicRegion (
 idAcademicRegion INT,
-nameAcademicRegion VARCHAR(30),
+nameAcademicRegion VARCHAR(50),
 
 CONSTRAINT pk_academic_region PRIMARY KEY (idAcademicRegion));
 
@@ -51,8 +51,7 @@ CONSTRAINT fk_idAcademicRegion_academicRegion FOREIGN KEY (idAcademicRegion) REF
 CREATE TABLE ActorIdentity (
 idActorIdentity INT,
 idTypology INT,
-name VARCHAR(30),
-firstName VARCHAR(30),
+name VARCHAR(100),
 
 CONSTRAINT pk_actorIdentity PRIMARY KEY (idActorIdentity),
 CONSTRAINT fk_idTypology_Typology FOREIGN KEY (idTypology) REFERENCES typology(idTypology));
