@@ -22,10 +22,10 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     public DAOTypology(){
         findAllStatement = Database.prepare("SELECT * FROM Typology");
         getByIdStatement = Database.prepare("SELECT * FROM Typology WHERE idTypology = ?");
-        insertStatement = Database.prepareInsert("INSERT INTO Typology (idTypology, idTypology, name, firstName) VALUES (?, ?, ?, ?)");
+        insertStatement = Database.prepareInsert("INSERT INTO Typology (idTypology, idThemeOfUse, idDiscipline, idDegree, idAcademy, idAcademicRegion, actorType, link, resourceName, resourceType, commentary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         updateStatement = Database.prepare("UPDATE Typology SET idTypology = ?, idTypology = ?, name = ?, firstName = ?");
         deleteStatement = Database.prepare("DELETE FROM Typology WHERE idTypology = ?");
-        getNextIdStatement = Database.prepare("SELECT IdTypology FROM Typology WHERE IdTypology >= (SELECT IdTypology FROM Typology");
+        getNextIdStatement = Database.prepare("SELECT IdTypology FROM Typology WHERE IdTypology >=ALL (SELECT IdTypology FROM Typology)");
     }
 
     public static Typology extractTypology(ResultSet resultSet) throws SQLException {
@@ -131,9 +131,11 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     @Override
     public int getNextId() {
         try {
-            ResultSet resultSet = getNextIdStatement.executeQuery();
-            return resultSet.getInt(0);
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
         } catch (SQLException e) {
+            e.printStackTrace();
             return 0;
         }
     }

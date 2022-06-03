@@ -25,7 +25,7 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         insertStatement = Database.prepareInsert("INSERT INTO actorIdentity (idActorIdentity, idTypology, name) VALUES (?, ?, ?)");
         updateStatement = Database.prepare("UPDATE actorIdentity SET idActorIdentity = ?, idTypology = ?, name = ?, firstName = ?");
         deleteStatement = Database.prepare("DELETE FROM actorIdentity WHERE idActorIdentity = ?");
-        getNextIdStatement = Database.prepare("SELECT IdActorIdentity FROM ActorIdentity WHERE IdActorIdentity >= (SELECT IdActorIdentity FROM ActorIdentity");
+        getNextIdStatement = Database.prepare("SELECT IdActorIdentity FROM ActorIdentity WHERE IdActorIdentity >=ALL (SELECT IdActorIdentity FROM ActorIdentity)");
     }
 
     public static ActorIdentity extractActorIdentity(ResultSet resultSet) throws SQLException {
@@ -74,7 +74,8 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         synchronized (Objects.requireNonNull(insertStatement)) {
             try {
                 insertStatement.setInt(1,object.getId());
-                insertStatement.setString(2,object.getName());
+                insertStatement.setInt(2,object.getIdTypo());
+                insertStatement.setString(3,object.getName());
                 insertStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -115,9 +116,11 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
     @Override
     public int getNextId() {
         try {
-            ResultSet resultSet = getNextIdStatement.executeQuery();
-            return resultSet.getInt(0);
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
         } catch (SQLException e) {
+            e.printStackTrace();
             return 0;
         }
     }

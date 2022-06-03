@@ -14,10 +14,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class DataEntry extends ScrollPane {
 
@@ -116,7 +113,7 @@ public class DataEntry extends ScrollPane {
     }
 
     void initializeFieldsStringProperties(){
-        for (int i = 0; i < 12; ++i) {
+        for (int i = 0; i < 11; ++i) {
             fieldsStringProperties.add(new SimpleStringProperty(""));
         }
         //bindBidirectional choices box
@@ -258,14 +255,10 @@ public class DataEntry extends ScrollPane {
 
     @FXML
     private void submit(){
-        System.out.println("SubmitNewDataButton clicked");
-        System.out.println(Arrays.toString(getFieldsString()));
         if (requiredFieldsManagement()){
             ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrées dans la base de données.");
             confirmation.show();
             if (confirmation.getResult() == ButtonType.OK) {
-                System.out.println("SubmitNewDataButton confirmed");
-
                 DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
                 Typology typology = generateTypology(daoTypology);
                 daoTypology.insert(typology);
@@ -289,7 +282,9 @@ public class DataEntry extends ScrollPane {
         typology.setIdDiscipline(Discipline.findByName(this.disciplines,getFieldsString()[1]).getId());
         typology.setIdDegree(Degree.findByName(this.degrees,getFieldsString()[2]).getId());
         typology.setIdAcademy(Academy.findByName(this.academies,getFieldsString()[3]).getId());
-        typology.setIdAcademicRegion(AcademicRegion.findByName(this.academicRegions,getFieldsString()[4]).getId());
+        if (!Objects.equals(getFieldsString()[4],"")){
+            typology.setIdAcademicRegion(AcademicRegion.findByName(this.academicRegions,getFieldsString()[4]).getId());
+        }
         typology.setActorType(getFieldsString()[5]);
         typology.setLink(getFieldsString()[6]);
         typology.setResourceName(getFieldsString()[7]);
@@ -301,7 +296,7 @@ public class DataEntry extends ScrollPane {
 
     private void addActors(Typology typology){
         DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
-        for (int i = 10; i < getFieldsString().length-1; ++i){
+        for (int i = 10; i < getFieldsString().length; ++i){
             ActorIdentity actorIdentity = new ActorIdentity();
             actorIdentity.setId(daoActorIdentity.getNextId());
             actorIdentity.setIdTypo(typology.getId());
