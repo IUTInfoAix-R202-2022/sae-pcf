@@ -4,32 +4,31 @@ root {
 
 .button {
     -fx-font-family: "JetBrains Mono";
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #456acf;
-    -fx-text-fill: #456acf;
+    -fx-border-color: #202077;
+    -fx-text-fill: #202077;
+}
+
+.themeButton {
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 18px;
 }
 
 .button:hover {
-    -fx-background-color: #456acf;
+    -fx-background-color: #202077;
     -fx-text-fill: #FFFFFF;
 }
 
 .button:pressed {
-    -fx-background-color: #202077;
-    -fx-border-color: #456acf;
-
+    -fx-background-color: #040442;
+    -fx-border-color: #202077;
 }
 
-#buttonBar {
-
+.buttonButtonBar {
+    -fx-font-size: 14px;
 }
 
-#buttonHelp {
-}
-
-#buttonContact {
-}
-
-#buttonSettings {
+.accessToData {
+    -fx-font-size: 22px;
 }

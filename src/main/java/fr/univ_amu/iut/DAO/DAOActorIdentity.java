@@ -6,4 +6,6 @@ public interface DAOActorIdentity extends DAO<ActorIdentity, Integer>{
     boolean update(ActorIdentity object);
 
     boolean delete(ActorIdentity object);
+
+    int getNextId();
 }

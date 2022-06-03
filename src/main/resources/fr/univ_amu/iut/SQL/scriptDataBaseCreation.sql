@@ -24,7 +24,7 @@ CONSTRAINT pk_academy PRIMARY KEY (idAcademy));
 
 CREATE TABLE AcademicRegion (
 idAcademicRegion INT,
-nameAcademicRegion VARCHAR(30),
+nameAcademicRegion VARCHAR(50),
 
 CONSTRAINT pk_academic_region PRIMARY KEY (idAcademicRegion));
 

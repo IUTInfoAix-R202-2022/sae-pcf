@@ -1,25 +1,37 @@
-.root {
-    -tab-text-color: -fx-text-base-color ;
-}
-
-.tabsMainWindow {
-    -fx-border-color: #09c4fd;
+.tabs {
+    -fx-border-color: #5548a7;
     -fx-background-color: #FFFFFF;
-    -fx-text-fill: #09c4fd;
+    -fx-text-fill: #5548a7;
+    -fx-font-size: 14px;
 }
 
-.tabsMainWindow:hover {
-    -fx-background-color: #09c4fd;
+.tabs:hover {
+    -fx-background-color: #5548a7;
     -fx-border-color: #FFFFFF;
 }
 
-.tabsMainWindow:pressed {
-    -fx-background-color: #456acf;
-    -fx-border-color: #456acf;
+.tabs:pressed {
+    -fx-background-color: #0000b9;
+    -fx-border-color: #0000b9;
 }
 
-.tabsMainWindow:selected {
-    -fx-background-color: #09c4fd;
+.tabs:selected {
+    -fx-background-color: #5548a7;
     -fx-border-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #5548a7;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.tabs:hover .tab-label{
+    -fx-background-color: #5548a7;
     -fx-text-fill: #FFFFFF;
 }

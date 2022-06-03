@@ -1,8 +1,20 @@
 package fr.univ_amu.iut.DAO.entities;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Academy {
     private int id;
     private String name;
+
+    public static Academy findByName(List<Academy> academies, String name){
+        for (Academy academy : academies){
+            if (Objects.equals(academy.getName(),name)){
+                return academy;
+            }
+        }
+        return null;
+    }
 
     public Academy(){
 
