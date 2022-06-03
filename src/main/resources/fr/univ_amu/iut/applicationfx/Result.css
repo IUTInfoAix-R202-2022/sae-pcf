@@ -1,15 +1,15 @@
 .IntituleButton {
-    -fx-background-color: #00587D;
-    -fx-border-color: #00587D;
+    -fx-background-color: #202077;
+    -fx-border-color: #202077;
     -fx-text-fill: #FFFFFF;
 }
 
 .IntituleButton:hover {
-    -fx-background-color: #00587D;
+    -fx-background-color: #202077;
 }
 
 .ResultButton {
-    -fx-border-color: #00587D;
+    -fx-border-color: #202077;
     -fx-text-fill: #6c6c6c;
 }
 
@@ -20,6 +20,6 @@
 }
 
 .ResultTitles {
-    -fx-text-fill: #00587D;
+    -fx-text-fill: #202077;
     -fx-font-weight: bold;
 }
