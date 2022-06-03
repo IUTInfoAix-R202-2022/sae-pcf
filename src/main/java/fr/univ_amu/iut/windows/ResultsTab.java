@@ -6,8 +6,8 @@ import javafx.scene.layout.VBox;
 import java.util.List;
 
 public class ResultsTab extends VBox {
-    public ResultsTab(Tabs tabs) {
-        this.getChildren().add(new Results(tabs));
+    public ResultsTab() {
+        this.getChildren().add(new Results());
         this.setAlignment(Pos.TOP_CENTER);
     }
 }

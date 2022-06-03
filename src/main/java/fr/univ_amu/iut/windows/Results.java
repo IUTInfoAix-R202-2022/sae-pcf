@@ -15,7 +15,7 @@ public class Results extends GridPane {
 
     Tabs tabs;
 
-    public Results(Tabs tabs) {
+    public Results() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fr/univ_amu/iut/javaFX/windows/Results.fxml"));
         fxmlLoader.setRoot(this);

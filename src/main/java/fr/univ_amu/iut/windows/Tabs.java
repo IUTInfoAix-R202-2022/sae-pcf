@@ -11,6 +11,15 @@ import java.io.IOException;
 
 public class Tabs extends Pane {
 
+    private static Tabs instance;
+
+    public static Tabs getInstance(){
+        if (instance == null){
+            instance = new Tabs();
+        }
+        return instance;
+    }
+
     @FXML
     TabPane tabs;
 
