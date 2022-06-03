@@ -1,6 +1,6 @@
 package fr.univ_amu.iut.view.map;
 
-import fr.univ_amu.iut.model.Academie;
+import fr.univ_amu.iut.DAO.model.Academie;
 import javafx.scene.control.Tooltip;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.transform.Transform;

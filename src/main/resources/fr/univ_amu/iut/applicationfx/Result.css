@@ -1,0 +1,28 @@
+.IntituleButton {
+    -fx-background-color: #202077;
+    -fx-border-color: #202077;
+    -fx-text-fill: #FFFFFF;
+}
+
+.IntituleButton:hover {
+    -fx-background-color: #202077;
+}
+
+.ResultButton {
+    -fx-border-color: #202077;
+    -fx-text-fill: #6c6c6c;
+}
+
+.ResultButton:hover {
+    -fx-border-color: #456acf;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #456acf;
+}
+
+.ResultTitles {
+    -fx-text-fill: #202077;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-alignment: CENTER;
+    -fx-padding: 12px;
+}
