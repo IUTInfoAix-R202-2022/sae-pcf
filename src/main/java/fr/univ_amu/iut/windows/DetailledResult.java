@@ -1,9 +1,11 @@
 package fr.univ_amu.iut.windows;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -24,7 +26,11 @@ public class DetailledResult extends FlowPane {
         this.setAlignment(Pos.TOP_CENTER);
 
         if (Home.isConnected()) {
-            //TODO add buttons if admin is connected, to modify and delete the result
+            Button modifyBtn = new Button("Modifier");
+            //TODO eventHandler of modify button
+            Button deleteBtn = new Button("Supprimer");
+            //TODO eventHandler of delete button
+            this.getChildren().add(new HBox(modifyBtn, deleteBtn));
         }
     }
 }

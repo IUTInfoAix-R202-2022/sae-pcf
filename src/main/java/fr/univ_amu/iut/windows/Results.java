@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -24,6 +26,8 @@ public class Results extends GridPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        MenuButton adminBtn = new MenuButton("...");
+        this.add(adminBtn, 4, 1);
     }
 
     public void addResults(List<String[]> results) {
@@ -40,6 +44,12 @@ public class Results extends GridPane {
                             actionEvent -> tabs.addATab("Random tab name", new DetailledResult(results.get(finalI)), true)
                     );
                     this.add(data, j, i);
+                    MenuButton adminBtn = new MenuButton("...");
+                    MenuItem modify = new MenuItem("Modifier");
+                    //TODO eventHandler of the modify button
+                    MenuItem delete = new MenuItem("Supprimer");
+                    //TODO eventHandler of the delete button
+                    adminBtn.getItems().addAll(modify, delete);
                 }
             }
         }
