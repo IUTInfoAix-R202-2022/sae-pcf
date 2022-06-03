@@ -29,15 +29,18 @@ public class Results extends GridPane {
     public void addResults(List<String[]> results) {
         for (int i = 0; i < results.size(); i++) {
             for (int j = 0; j < results.get(i).length; j++) {
-                Button data = new Button(results.get(i)[j]);
-                if (j==1)
-                    data.getStyleClass().add("IntituleButton");
-                else
-                    data.getStyleClass().add("ResultButton");
-                data.setOnAction(
-                        actionEvent -> tabs.addATab("Random tab name", new DetailledResult(), true)
-                );
-                this.add(data, j, i);
+                if (j == 7 || j == 1 || j == 2 || j == 8) {
+                    Button data = new Button(results.get(i)[j]);
+                    if (j == 7)
+                        data.getStyleClass().add("IntituleButton");
+                    else
+                        data.getStyleClass().add("ResultButton");
+                    int finalI = i;
+                    data.setOnAction(
+                            actionEvent -> tabs.addATab("Random tab name", new DetailledResult(results.get(finalI)), true)
+                    );
+                    this.add(data, j, i);
+                }
             }
         }
     }
