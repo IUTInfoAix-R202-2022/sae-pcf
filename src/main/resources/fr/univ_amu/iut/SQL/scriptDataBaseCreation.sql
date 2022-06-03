@@ -35,10 +35,10 @@ idDiscipline INT,
 idDegree INT,
 idAcademy INT,
 idAcademicRegion INT,
-actorType VARCHAR(30),
+actorType VARCHAR(200),
 link text,
-resourceName VARCHAR(50),
-resourceType VARCHAR(30),
+resourceName VARCHAR(200),
+resourceType VARCHAR(200),
 commentary text,
 
 CONSTRAINT pk_typology PRIMARY KEY (idTypology),
@@ -51,8 +51,7 @@ CONSTRAINT fk_idAcademicRegion_academicRegion FOREIGN KEY (idAcademicRegion) REF
 CREATE TABLE ActorIdentity (
 idActorIdentity INT,
 idTypology INT,
-name VARCHAR(30),
-firstName VARCHAR(30),
+name VARCHAR(100),
 
 CONSTRAINT pk_actorIdentity PRIMARY KEY (idActorIdentity),
 CONSTRAINT fk_idTypology_Typology FOREIGN KEY (idTypology) REFERENCES typology(idTypology));
