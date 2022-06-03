@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.DAO.JDBC;
 
 import fr.univ_amu.iut.DAO.entities.Typology;
+import javafx.scene.chart.PieChart;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     private final PreparedStatement insertStatement;
     private final PreparedStatement updateStatement;
     private final PreparedStatement deleteStatement;
+    private final PreparedStatement getNextIdStatement;
 
     public DAOTypology(){
         findAllStatement = Database.prepare("SELECT * FROM Typology");
@@ -23,6 +25,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         insertStatement = Database.prepareInsert("INSERT INTO Typology (idTypology, idTypology, name, firstName) VALUES (?, ?, ?, ?)");
         updateStatement = Database.prepare("UPDATE Typology SET idTypology = ?, idTypology = ?, name = ?, firstName = ?");
         deleteStatement = Database.prepare("DELETE FROM Typology WHERE idTypology = ?");
+        getNextIdStatement = Database.prepare("SELECT IdTypology FROM Typology WHERE IdTypology >= (SELECT IdTypology FROM Typology");
     }
 
     public static Typology extractTypology(ResultSet resultSet) throws SQLException {
@@ -123,6 +126,16 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
             }
         }
         return true;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = getNextIdStatement.executeQuery();
+            return resultSet.getInt(0);
+        } catch (SQLException e) {
+            return 0;
+        }
     }
 
     @Override

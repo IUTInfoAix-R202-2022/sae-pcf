@@ -1,9 +1,6 @@
 package fr.univ_amu.iut.windows;
 
-import fr.univ_amu.iut.DAO.DAOAcademy;
-import fr.univ_amu.iut.DAO.DAODegree;
-import fr.univ_amu.iut.DAO.DAODiscipline;
-import fr.univ_amu.iut.DAO.DAOThemeOfUse;
+import fr.univ_amu.iut.DAO.*;
 import fr.univ_amu.iut.DAO.entities.*;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
@@ -23,6 +20,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class DataEntry extends ScrollPane {
+
+    private List<ThemeOfUse> themeOfUseList;
+    private List<Discipline> disciplines;
+    private List<Degree> degrees;
+    private List<Academy> academies;
+    private List<AcademicRegion> academicRegions;
 
     public DataEntry() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
@@ -77,13 +80,7 @@ public class DataEntry extends ScrollPane {
     private TextField fieldIdOfActorName;
 
     @FXML
-    private TextField fieldIdOfActorFirstName;
-
-    @FXML
     private Label labelNotFillIdOfActorName;
-
-    @FXML
-    private Label labelNotFillIdOfActorFirstName;
 
     @FXML
     private TextField fieldResourceLink;
@@ -113,7 +110,7 @@ public class DataEntry extends ScrollPane {
 
         initializeRequiredFieldsStringProperties();
 
-        requiredFieldsNotFilledLabels = new ArrayList (List.of(new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName,labelNotFillIdOfActorFirstName, labelNotFillResourceLink}));
+        requiredFieldsNotFilledLabels = new ArrayList (List.of(new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName, labelNotFillResourceLink}));
 
         initializeChoiceBox();
     }
@@ -132,7 +129,6 @@ public class DataEntry extends ScrollPane {
         //bindBidirectional texts fields
         fieldTypeOfActors.textProperty().bindBidirectional(fieldsStringProperties.get(5));
         fieldIdOfActorName.textProperty().bindBidirectional(fieldsStringProperties.get(10));
-        fieldIdOfActorFirstName.textProperty().bindBidirectional(fieldsStringProperties.get(11));
         fieldResourceLink.textProperty().bindBidirectional(fieldsStringProperties.get(6));
         fieldResourceName.textProperty().bindBidirectional(fieldsStringProperties.get(7));
         fieldSourceType.textProperty().bindBidirectional(fieldsStringProperties.get(8));
@@ -142,7 +138,7 @@ public class DataEntry extends ScrollPane {
     }
 
     void initializeRequiredFieldsStringProperties(){
-        for (int i = 0; i < 8; ++i) {
+        for (int i = 0; i < 7; ++i) {
             requiredFieldsStringProperties.add(new SimpleStringProperty(""));
         }
 
@@ -155,22 +151,21 @@ public class DataEntry extends ScrollPane {
         //bindBidirectional texts fields
         fieldTypeOfActors.textProperty().bindBidirectional(requiredFieldsStringProperties.get(4));
         fieldIdOfActorName.textProperty().bindBidirectional(requiredFieldsStringProperties.get(5));
-        fieldIdOfActorFirstName.textProperty().bindBidirectional(requiredFieldsStringProperties.get(6));
-        fieldResourceLink.textProperty().bindBidirectional(requiredFieldsStringProperties.get(7));
+        fieldResourceLink.textProperty().bindBidirectional(requiredFieldsStringProperties.get(6));
     }
 
     void initializeChoiceBox(){
-        List<ThemeOfUse> themesOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse().findAll();
+        themeOfUseList = DAOFactoryProducer.getFactory().createDaoThemeOfUse().findAll();
 
-        List<Discipline> disciplines = DAOFactoryProducer.getFactory().createDiscipline().findAll();
+        disciplines = DAOFactoryProducer.getFactory().createDiscipline().findAll();
 
-        List<Degree> degrees = DAOFactoryProducer.getFactory().createDaoDegree().findAll();
+        degrees = DAOFactoryProducer.getFactory().createDaoDegree().findAll();
 
-        List<Academy> academies = DAOFactoryProducer.getFactory().createDAOAcademy().findAll();
+        academies = DAOFactoryProducer.getFactory().createDAOAcademy().findAll();
 
-        List<AcademicRegion> academicRegions = DAOFactoryProducer.getFactory().createDAOAcademicRegion().findAll();
+        academicRegions = DAOFactoryProducer.getFactory().createDAOAcademicRegion().findAll();
 
-        addTextChoiceBoxThemeOfUse(themesOfUse);
+        addTextChoiceBoxThemeOfUse(themeOfUseList);
         addTextChoiceBoxDiscipline(disciplines);
         addTextChoiceBoxDegree(degrees);
         addTextChoiceBoxAcademy(academies);
@@ -204,26 +199,18 @@ public class DataEntry extends ScrollPane {
 
     private HBox newHBoxIdActor(){
         TextField name = new TextField();
-        TextField firstName = new TextField();
 
         name.setPromptText("Nom");
-        firstName.setPromptText("Prenom");
 
         HBox.setHgrow(name, Priority.ALWAYS);
-        HBox.setHgrow(firstName, Priority.ALWAYS);
 
         StringProperty nameStringProperty = new SimpleStringProperty("");
         name.textProperty().bindBidirectional(nameStringProperty); // We bindBidirectional with a StringProperty
         fieldsStringProperties.add(nameStringProperty); // We add this StringProperty to the ArrayList of string properties
 
-        StringProperty firstNameStringProperty = new SimpleStringProperty("");
-        firstName.textProperty().bindBidirectional(firstNameStringProperty); // We bindBidirectional with a StringProperty
-        fieldsStringProperties.add(firstNameStringProperty); // We add this StringProperty to the ArrayList of string properties
-
         requiredFieldsStringProperties.add(nameStringProperty); // We add this StringProperty to the ArrayList of required string properties
-        requiredFieldsStringProperties.add(firstNameStringProperty); // We add this StringProperty to the ArrayList of required string properties
 
-        HBox hbox = new HBox(name,firstName);
+        HBox hbox = new HBox(name);
         hbox.setSpacing(20);
 
 
@@ -232,17 +219,13 @@ public class DataEntry extends ScrollPane {
 
     private HBox newHBoxIdActorNotFillLabel(){
         Label name = new Label("Veuillez remplir ce champ");
-        Label firstName = new Label("Veuillez remplir ce champ");
         name.getStyleClass().add("error");
-        firstName.getStyleClass().add("error");
 
         name.setVisible(false);
-        firstName.setVisible(false);
 
         requiredFieldsNotFilledLabels.add(name);
-        requiredFieldsNotFilledLabels.add(firstName);
 
-        HBox hbox = new HBox(name,firstName);
+        HBox hbox = new HBox(name);
         hbox.setSpacing(148);
 
         return hbox;
@@ -258,12 +241,9 @@ public class DataEntry extends ScrollPane {
                     vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 1);
                 }
                 fieldsStringProperties.remove(fieldsStringProperties.size() - 1);
-                fieldsStringProperties.remove(fieldsStringProperties.size() - 1);
 
                 requiredFieldsStringProperties.remove(requiredFieldsStringProperties.size() - 1);
-                requiredFieldsStringProperties.remove(requiredFieldsStringProperties.size() - 1);
 
-                requiredFieldsNotFilledLabels.remove(requiredFieldsNotFilledLabels.size() - 1);
                 requiredFieldsNotFilledLabels.remove(requiredFieldsNotFilledLabels.size() - 1);
             });
             vBoxIdOfActor.getChildren().add(removeButton);
@@ -284,10 +264,50 @@ public class DataEntry extends ScrollPane {
             ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.","Les données saisis vont être enregistrées dans la base de données.");
             confirmation.show();
             if (confirmation.getResult() == ButtonType.OK) {
-                clearFields();
                 System.out.println("SubmitNewDataButton confirmed");
-                //TODO Enregistrement dans la base de données
+
+                DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
+                Typology typology = generateTypology(daoTypology);
+                daoTypology.insert(typology);
+                this.addActors(typology);
+
+                ConnectionManager.getInstance().commit();
+
+                clearFields();
             }
+        }
+    }
+
+    private Typology generateTypology(DAOTypology daoTypology){
+        Typology typology = new Typology();
+
+        typology.setId(daoTypology.getNextId());
+
+        System.out.println(getFieldsString()[0]);
+
+        typology.setIdThemeOfUse(ThemeOfUse.findByName(this.themeOfUseList,getFieldsString()[0]).getId());
+        typology.setIdDiscipline(Discipline.findByName(this.disciplines,getFieldsString()[1]).getId());
+        typology.setIdDegree(Degree.findByName(this.degrees,getFieldsString()[2]).getId());
+        typology.setIdAcademy(Academy.findByName(this.academies,getFieldsString()[3]).getId());
+        typology.setIdAcademicRegion(AcademicRegion.findByName(this.academicRegions,getFieldsString()[4]).getId());
+        typology.setActorType(getFieldsString()[5]);
+        typology.setLink(getFieldsString()[6]);
+        typology.setResourceName(getFieldsString()[7]);
+        typology.setResourceType(getFieldsString()[8]);
+        typology.setCommentary(getFieldsString()[9]);
+
+        return typology;
+    }
+
+    private void addActors(Typology typology){
+        DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
+        for (int i = 10; i < getFieldsString().length-1; ++i){
+            ActorIdentity actorIdentity = new ActorIdentity();
+            actorIdentity.setId(daoActorIdentity.getNextId());
+            actorIdentity.setIdTypo(typology.getId());
+            actorIdentity.setName(getFieldsString()[i]);
+
+            daoActorIdentity.insert(actorIdentity);
         }
     }
 
@@ -406,11 +426,9 @@ public class DataEntry extends ScrollPane {
 
     public void setNames(String[] names){
         this.fieldIdOfActorName.setText(names[0]);
-        this.fieldIdOfActorFirstName.setText(names[1]);
 
-        for (int i = 2; i < names.length;){
+        for (int i = 1; i < names.length;){
             addIdOfActor();
-            this.fieldsStringProperties.get(this.fieldsStringProperties.size()-2).set(names[i++]);
             this.fieldsStringProperties.get(this.fieldsStringProperties.size()-1).set(names[i++]);
         }
     }
