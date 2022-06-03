@@ -50,7 +50,7 @@ public class Home extends Pane {
     void submit(){
         if (userNameField.getText().equals("admin") && passwordField.getText().equals("admin")){
             connected = true;
-            application.accesToData();
+            application.accessToData();
         }
         else {
             errorMessage.setVisible(true);
@@ -59,6 +59,6 @@ public class Home extends Pane {
 
     @FXML
     void accessToData(){
-        application.accesToData();
+        application.accessToData();
     }
 }

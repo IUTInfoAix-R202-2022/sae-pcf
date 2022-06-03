@@ -1,5 +1,6 @@
 package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.DAO.ConnectionManager;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import fr.univ_amu.iut.dialogs.ContactDialog;
 import fr.univ_amu.iut.windows.*;
@@ -29,6 +30,8 @@ public class ApplicationMain extends Application {
 
         appBasis(stage);
 
+        ConnectionManager.getInstance();
+
         mainWindow = new MainWindow();
         mainWindow.getChildren().add(new Home(this));
         root = new Scene(mainWindow);
@@ -36,6 +39,11 @@ public class ApplicationMain extends Application {
 
         stage.setScene(root);
         stage.show();
+    }
+
+    @Override
+    public void stop(){
+        ConnectionManager.getInstance().closeConnection();
     }
 
     private void appBasis(Stage stage){
@@ -57,7 +65,7 @@ public class ApplicationMain extends Application {
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/ThemeButtons.css");
     }
 
-    public void accesToData(){
+    public void accessToData(){
         if (Home.isConnected()){
             tabs.addATab("Saisie",new DataEntry(),false);
         }

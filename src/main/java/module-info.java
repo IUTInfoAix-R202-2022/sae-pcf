@@ -11,8 +11,8 @@ open module francefx {
     requires java.desktop;
 
     exports fr.univ_amu.iut.view.map;
-    exports fr.univ_amu.iut.model;
+    exports fr.univ_amu.iut.DAO.model;
     exports fr.univ_amu.iut;
-    exports fr.univ_amu.iut.dao;
-    exports fr.univ_amu.iut.dao.factory;
+    exports fr.univ_amu.iut.DAO;
+    exports fr.univ_amu.iut.DAO.factory;
 }
