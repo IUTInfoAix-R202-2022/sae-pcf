@@ -44,6 +44,7 @@ public class ApplicationMain extends Application {
     @Override
     public void stop(){
         ConnectionManager.getInstance().closeConnection();
+        System.exit(0);
     }
 
     private void appBasis(Stage stage){
