@@ -1,8 +1,20 @@
 package fr.univ_amu.iut.DAO.entities;
 
+import java.util.List;
+import java.util.Objects;
+
 public class AcademicRegion {
     private int id;
     private String name;
+
+    public static AcademicRegion findByName(List<AcademicRegion> academies, String name){
+        for (AcademicRegion AcademicRegion : academies){
+            if (Objects.equals(AcademicRegion.getName(),name)){
+                return AcademicRegion;
+            }
+        }
+        return null;
+    }
 
     public AcademicRegion(){
 

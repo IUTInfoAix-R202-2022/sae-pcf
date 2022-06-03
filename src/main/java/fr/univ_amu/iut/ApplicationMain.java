@@ -52,8 +52,7 @@ public class ApplicationMain extends Application {
         stage.setWidth(1200);
         stage.setHeight(700);
 
-        tabs = new Tabs();
-        tabs.addATab("Résultats", new ResultsTab(), true);
+        tabs = Tabs.getInstance();
     }
 
     private void loadCSS(){
