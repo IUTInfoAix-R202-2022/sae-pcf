@@ -1,11 +1,10 @@
 package fr.univ_amu.iut;
 
-import fr.univ_amu.iut.DAO.ConnectionManager;
-import fr.univ_amu.iut.DAO.DAOTypology;
-import fr.univ_amu.iut.DAO.entities.AcademicRegion;
-import fr.univ_amu.iut.DAO.entities.Academy;
-import fr.univ_amu.iut.DAO.entities.Typology;
-import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dialogs.ConfirmationDialog;
+import fr.univ_amu.iut.dialogs.ContactDialog;
+import fr.univ_amu.iut.windows.*;
+import javafx.scene.layout.Pane;
+import fr.univ_amu.iut.dialogs.EditDataDialog;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
 import fr.univ_amu.iut.windows.Tabs;
@@ -14,8 +13,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.sql.Connection;
 
 public class ApplicationMain extends Application {
 
@@ -41,11 +38,6 @@ public class ApplicationMain extends Application {
         stage.show();
     }
 
-    @Override
-    public void stop(){
-        ConnectionManager.getInstance().closeConnection();
-    }
-
     private void appBasis(Stage stage){
         stage.setResizable(false);
         stage.setTitle("Titre de l'application");
@@ -53,16 +45,21 @@ public class ApplicationMain extends Application {
         stage.setHeight(700);
 
         tabs = new Tabs();
+        tabs.addATab("Résultats", new ResultsTab(), true);
     }
 
     private void loadCSS(){
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Tabs.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Result.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Error_messages.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Bold_messages.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/ThemeButtons.css");
     }
 
-    public void accessToData(){
+    public void accesToData(){
         if (Home.isConnected()){
-            tabs.addATab("Saisi",new DataEntry(),false);
+            tabs.addATab("Saisie",new DataEntry(),false);
         }
         mainWindow.getChildren().set(1,tabs);
     }
