@@ -20,13 +20,13 @@ public class submitEntryTest extends ApplicationTest {
         clickOn("#submitButton");
         clickOn("Saisie");
         clickOn("#choiceBoxThemeOfUse");
-        clickOn("ludique");
+        clickOn("TNE");
         clickOn("#choiceBoxDiscipline");
-        clickOn("gandodo");
+        clickOn("EPS");
         clickOn("#choiceBoxDegree");
-        clickOn("premier");
+        clickOn("Premier degré");
         clickOn("#choiceBoxAcademy");
-        clickOn("AMU");
+        clickOn("Académie d Aix-Marseille");
         scroll(VerticalDirection.DOWN);
         scroll(VerticalDirection.DOWN);
         scroll(VerticalDirection.DOWN);
@@ -49,7 +49,7 @@ public class submitEntryTest extends ApplicationTest {
         clickOn("#fieldIdOfActorFirstName");
         write("Alexandre");
         clickOn("#fieldResourceLink");
-        write("https://www.youtube.com");
+        write("Test");
         scroll(VerticalDirection.DOWN);
         scroll(VerticalDirection.DOWN);
         scroll(VerticalDirection.DOWN);
