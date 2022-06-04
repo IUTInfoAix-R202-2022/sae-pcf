@@ -38,7 +38,7 @@ public class MapTheme extends GridPane {
 
         List<Theme> themeList = new ArrayList<>();
         for (ThemeOfUse themeOfUse : themeOfUseList){
-            themeList.add(new Theme(themeOfUse.getName()));
+            themeList.add(new Theme(themeOfUse.getName(),themeOfUse.getId()));
         }
 
         return themeList;

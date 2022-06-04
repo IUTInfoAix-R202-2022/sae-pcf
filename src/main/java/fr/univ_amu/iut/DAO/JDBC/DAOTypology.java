@@ -19,6 +19,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     private final PreparedStatement updateStatement;
     private final PreparedStatement deleteStatement;
     private final PreparedStatement getNextIdStatement;
+    private final PreparedStatement getByThemeStatement;
 
     public DAOTypology(){
         findAllStatement = Database.prepare("SELECT * FROM Typology");
@@ -27,6 +28,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         updateStatement = Database.prepare("UPDATE Typology SET idTypology = ?, idTypology = ?, name = ?, firstName = ?");
         deleteStatement = Database.prepare("DELETE FROM Typology WHERE idTypology = ?");
         getNextIdStatement = Database.prepare("SELECT IdTypology FROM Typology WHERE IdTypology >=ALL (SELECT IdTypology FROM Typology)");
+        getByThemeStatement = Database.prepare("SELECT * FROM Typology WHERE IdThemeOfUse = ?");
     }
 
     public static Typology extractTypology(ResultSet resultSet) throws SQLException {
@@ -45,9 +47,9 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         return Typology;
     }
 
-    private void extractTypology(ResultSet resultSet, List<Typology> actorIdentities) throws SQLException {
+    private void extractTypology(ResultSet resultSet, List<Typology> typologies) throws SQLException {
         while (resultSet.next()){
-            actorIdentities.add(extractTypology(resultSet));
+            typologies.add(extractTypology(resultSet));
         }
     }
 
@@ -139,6 +141,21 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
             e.printStackTrace();
             return 0;
         }
+    }
+
+    @Override
+    public List<Typology> findByThemeId(int themeId) {
+        List<Typology> typologies = new ArrayList<>();
+        synchronized (Objects.requireNonNull(getByThemeStatement)){
+            try {
+                getByThemeStatement.setInt(1,themeId);
+                ResultSet resultSet = getByThemeStatement.executeQuery();
+                extractTypology(resultSet,typologies);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return typologies;
     }
 
     @Override

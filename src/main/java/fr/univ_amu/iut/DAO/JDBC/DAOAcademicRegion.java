@@ -52,7 +52,7 @@ public class DAOAcademicRegion implements fr.univ_amu.iut.DAO.DAOAcademicRegion 
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 academicRegion = extractAcademicRegion(resultSet);
             }
         } catch (SQLException e) {

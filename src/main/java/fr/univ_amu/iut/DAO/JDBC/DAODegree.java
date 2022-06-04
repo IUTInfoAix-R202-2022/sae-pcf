@@ -52,7 +52,7 @@ public class DAODegree implements fr.univ_amu.iut.DAO.DAODegree {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 Degree = extractDegree(resultSet);
             }
         } catch (SQLException e) {

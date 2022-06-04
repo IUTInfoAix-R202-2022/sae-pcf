@@ -60,7 +60,7 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 actorIdentity = extractActorIdentity(resultSet);
             }
         } catch (SQLException e) {
