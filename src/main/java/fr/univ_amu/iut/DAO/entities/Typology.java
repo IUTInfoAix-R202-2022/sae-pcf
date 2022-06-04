@@ -7,7 +7,7 @@ public class Typology {
 
     public static String[] getStrings(Typology typology){
         DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
-        DAODiscipline daoDiscipline = DAOFactoryProducer.getFactory().createDiscipline();
+        DAODiscipline daoDiscipline = DAOFactoryProducer.getFactory().createDAODiscipline();
         DAODegree daoDegree = DAOFactoryProducer.getFactory().createDaoDegree();
         DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
         DAOAcademicRegion daoAcademicRegion = DAOFactoryProducer.getFactory().createDAOAcademicRegion();
