@@ -50,7 +50,7 @@ public class DAOThemeOfUse implements fr.univ_amu.iut.DAO.DAOThemeOfUse {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 ThemeOfUse = extractThemeOfUse(resultSet);
             }
         } catch (SQLException e) {

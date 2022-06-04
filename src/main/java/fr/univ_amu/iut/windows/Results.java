@@ -1,7 +1,5 @@
 package fr.univ_amu.iut.windows;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -13,9 +11,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class Results extends GridPane {
-
-    Tabs tabs;
-
     public Results() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fr/univ_amu/iut/javaFX/windows/Results.fxml"));
@@ -27,41 +22,46 @@ public class Results extends GridPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        MenuButton adminBtn = new MenuButton("...");
-        adminBtn.getStyleClass().add("adminBtn");
-        setMargin(adminBtn, new Insets(0, 0, 0, 13));
-        MenuItem modify = new MenuItem("Modifier");
-        //TODO eventHandler of the modify button
-        MenuItem delete = new MenuItem("Supprimer");
-        //TODO eventHandler of the delete button
-        adminBtn.getItems().addAll(modify, delete);
-        this.add(adminBtn, 4, 1);
     }
 
     public void addResults(List<String[]> results) {
-        for (int i = 0; i < results.size(); i++) {
-            for (int j = 0; j < results.get(i).length; j++) {
-                if (j == 7 || j == 1 || j == 2 || j == 8) {
-                    Button data = new Button(results.get(i)[j]);
-                    if (j == 7)
+        for (int i = 0; i < results.size(); ++i) {
+            for (int j = 0; j <= 3; ++j) {
+                Button data;
+                switch (j){
+                    case(0):
+                        data = new Button(results.get(i)[9]);
                         data.getStyleClass().add("IntituleButton");
-                    else
+                        break;
+                    case(1):
+                        data = new Button(results.get(i)[1]);
                         data.getStyleClass().add("ResultButton");
-                    int finalI = i;
-                    data.setOnAction(
-                            actionEvent -> tabs.addATab("Random tab name", new DetailledResult(results.get(finalI)), true)
-                    );
-                    this.add(data, j, i);
-                    MenuButton adminBtn = new MenuButton("...");
-                    setMargin(adminBtn, new Insets(0, 0, 0, 13));
-                    adminBtn.getStyleClass().add("adminBtn");
-                    MenuItem modify = new MenuItem("Modifier");
-                    //TODO eventHandler of the modify button
-                    MenuItem delete = new MenuItem("Supprimer");
-                    //TODO eventHandler of the delete button
-                    adminBtn.getItems().addAll(modify, delete);
+                        break;
+                    case(2):
+                        data = new Button(results.get(i)[2]);
+                        data.getStyleClass().add("ResultButton");
+                        break;
+                    default:
+                        data = new Button(results.get(i)[10]);
+                        data.getStyleClass().add("ResultButton");
+
                 }
+                int finalI = i;
+                data.setOnAction(
+                        actionEvent -> Tabs.getInstance().addATab("Random tab name", new DetailedResult(results.get(finalI)), true)
+                );
+                this.add(data, j, i+1);
+
             }
+            MenuButton adminBtn = new MenuButton("...");
+            setMargin(adminBtn, new Insets(0, 0, 0, 13));
+            adminBtn.getStyleClass().add("adminBtn");
+            MenuItem modify = new MenuItem("Modifier");
+            //TODO eventHandler of the modify button
+            MenuItem delete = new MenuItem("Supprimer");
+            //TODO eventHandler of the delete button
+            adminBtn.getItems().addAll(modify, delete);
+            this.add(adminBtn,4,i+1);
         }
     }
 }

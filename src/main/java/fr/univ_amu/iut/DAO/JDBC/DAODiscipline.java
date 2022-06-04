@@ -50,7 +50,7 @@ public class DAODiscipline implements fr.univ_amu.iut.DAO.DAODiscipline {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 Discipline = extractDiscipline(resultSet);
             }
         } catch (SQLException e) {
