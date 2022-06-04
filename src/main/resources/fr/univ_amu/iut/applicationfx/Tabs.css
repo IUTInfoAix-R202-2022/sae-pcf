@@ -1,21 +1,77 @@
-.tabs {
-    -fx-border-color: #09c4fd;
+/*.tabs {
+    -fx-border-color: #5548a7;
     -fx-background-color: #FFFFFF;
-    -fx-text-fill: #09c4fd;
+    -fx-text-fill: #5548a7;
+    -fx-font-size: 16px;
+    -fx-padding: 5px;
 }
 
+ */
+
+.tab{
+    -fx-background-insets: 0 2 0 2,0,0;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.tab:hover .tab-label {
+    -fx-text-fill: #5548a7 ;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #5548a7 ;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:100px;
+}
+
+.tab-pane .tab
+{
+    -fx-background-color: #5548a7;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #FFFFFF;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #FFFFFF;
+}
+
+/*
 .tabs:hover {
-    -fx-background-color: #09c4fd;
+    -fx-background-color: #5548a7;
     -fx-border-color: #FFFFFF;
 }
 
 .tabs:pressed {
-    -fx-background-color: #456acf;
-    -fx-border-color: #456acf;
+    -fx-background-color: #0000b9;
+    -fx-border-color: #0000b9;
 }
 
 .tabs:selected {
-    -fx-background-color: #09c4fd;
+    -fx-background-color: #5548a7;
     -fx-border-color: #FFFFFF;
     -fx-text-fill: #FFFFFF;
 }
+
+.tab:selected .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.tabs:hover .tab-label{
+    -fx-background-color: #5548a7;
+    -fx-text-fill: #FFFFFF;
+}
+
+ */

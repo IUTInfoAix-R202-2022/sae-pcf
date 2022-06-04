@@ -11,7 +11,7 @@
        <children>
           <BorderPane HBox.hgrow="ALWAYS">
             <center>
-               <Button fx:id="dataAccessButton" mnemonicParsing="false" onAction="#accessToData" text="Accès aux données" BorderPane.alignment="CENTER" />
+               <Button fx:id="dataAccessButton" mnemonicParsing="false" onAction="#accessToData" text="Accès aux données" BorderPane.alignment="CENTER" styleClass="accessToData"/>
             </center>
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -29,7 +29,7 @@
              <center>
                 <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                    <children>
-                      <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" text="Connexion en tant qu'administrateur" />
+                      <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" text="Connexion en tant qu'administrateur" styleClass="bold"/>
                       <TextField fx:id="userNameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" promptText="Nom d'utilisateur">
                          <opaqueInsets>
                             <Insets />

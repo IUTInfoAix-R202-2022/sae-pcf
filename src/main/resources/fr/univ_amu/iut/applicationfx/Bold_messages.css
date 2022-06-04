@@ -1,3 +1,6 @@
 .bold {
     -fx-font-weight: bold;
 }
+.bigbold {
+    -fx-font-size: 18px;
+}

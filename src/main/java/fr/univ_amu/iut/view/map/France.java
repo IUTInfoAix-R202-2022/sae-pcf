@@ -1,6 +1,6 @@
 package fr.univ_amu.iut.view.map;
 
-import fr.univ_amu.iut.model.Academie;
+import fr.univ_amu.iut.DAO.model.Academie;
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
