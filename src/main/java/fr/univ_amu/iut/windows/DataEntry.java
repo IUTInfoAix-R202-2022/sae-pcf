@@ -3,6 +3,7 @@ package fr.univ_amu.iut.windows;
 import fr.univ_amu.iut.DAO.*;
 import fr.univ_amu.iut.DAO.entities.*;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dialogs.AddDataChoiceBoxDialog;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -317,7 +318,8 @@ public class DataEntry extends ScrollPane {
 
     @FXML
     private void addAThemeOfUse(){
-        //TODO inplement
+        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("thematique d'usage");
+        dialog.show();
     }
 
     @FXML
