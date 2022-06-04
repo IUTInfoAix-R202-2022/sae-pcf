@@ -12,11 +12,13 @@ public class DAOAcademicRegion implements fr.univ_amu.iut.DAO.DAOAcademicRegion 
     private final PreparedStatement findAllStatement;
     private final PreparedStatement getByIdStatement;
     private final PreparedStatement insertStatement;
+    private final PreparedStatement getNextIdStatement;
 
     public DAOAcademicRegion(){
         findAllStatement = Database.prepare("SELECT * FROM academicRegion");
         getByIdStatement = Database.prepare("SELECT * FROM academicRegion WHERE idAcademicRegion = ?");
         insertStatement = Database.prepareInsert("INSERT INTO academicRegion (idAcademicRegion, nameAcademicRegion) VALUES (?, ?)");
+        getNextIdStatement = Database.prepare("SELECT IdAcademicRegion FROM AcademicRegion WHERE IdAcademicRegion >=ALL (SELECT IdAcademicRegion FROM AcademicRegion)");
     }
 
     public static AcademicRegion extractAcademicRegion(ResultSet resultSet) throws SQLException {
@@ -57,6 +59,18 @@ public class DAOAcademicRegion implements fr.univ_amu.iut.DAO.DAOAcademicRegion 
             e.printStackTrace();
         }
         return academicRegion;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

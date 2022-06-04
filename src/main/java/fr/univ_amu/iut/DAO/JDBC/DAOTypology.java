@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.DAO.JDBC;
 
+import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.Typology;
 import javafx.scene.chart.PieChart;
 

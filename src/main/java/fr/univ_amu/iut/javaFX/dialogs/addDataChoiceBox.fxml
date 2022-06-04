@@ -9,7 +9,7 @@
       <VBox fx:id="vBox" alignment="CENTER" spacing="10.0">
          <children>
             <TextField fx:id="textField" alignment="CENTER" />
-            <Label fx:id="errorMessageLabel" alignment="CENTER" />
+            <Label fx:id="errorMessageLabel" alignment="CENTER" visible="false" />
          </children>
       </VBox>
    </content>
