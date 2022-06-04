@@ -155,7 +155,7 @@ public class DataEntry extends ScrollPane {
     void initializeChoiceBox(){
         themeOfUseList = DAOFactoryProducer.getFactory().createDaoThemeOfUse().findAll();
 
-        disciplines = DAOFactoryProducer.getFactory().createDiscipline().findAll();
+        disciplines = DAOFactoryProducer.getFactory().createDAODiscipline().findAll();
 
         degrees = DAOFactoryProducer.getFactory().createDaoDegree().findAll();
 
@@ -319,32 +319,101 @@ public class DataEntry extends ScrollPane {
     @FXML
     private void addAThemeOfUse(){
         AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("thematique d'usage");
-        dialog.show();
+        dialog.showAndWait();
+        if ( ! dialog.getResult().equals("")){
+            DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
+            ThemeOfUse themeOfUse = new ThemeOfUse();
+            themeOfUse.setId(daoThemeOfUse.getNextId());
+            themeOfUse.setName((String) dialog.getResult());
+
+            daoThemeOfUse.insert(themeOfUse);
+
+            ConnectionManager.getInstance().commit();
+
+            themeOfUseList = DAOFactoryProducer.getFactory().createDaoThemeOfUse().findAll();
+            choiceBoxThemeOfUse.getItems().clear();
+            addTextChoiceBoxThemeOfUse(themeOfUseList);
+        }
     }
 
     @FXML
     private void addADiscipline(){
-        //TODO inplement
+        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("Discipline");
+        dialog.showAndWait();
+        if ( ! dialog.getResult().equals("")){
+            DAODiscipline daoDiscipline = DAOFactoryProducer.getFactory().createDAODiscipline();
+            Discipline discipline = new Discipline();
+            discipline.setId(daoDiscipline.getNextId());
+            discipline.setName((String) dialog.getResult());
+
+            daoDiscipline.insert(discipline);
+
+            ConnectionManager.getInstance().commit();
+
+            disciplines = DAOFactoryProducer.getFactory().createDAODiscipline().findAll();
+            choiceBoxDiscipline.getItems().clear();
+            addTextChoiceBoxDiscipline(disciplines);
+        }
     }
 
     @FXML
     private void addADegree(){
-        //TODO inplement
+        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("Degrée");
+        dialog.showAndWait();
+        if ( ! dialog.getResult().equals("")){
+            DAODegree daoDegree = DAOFactoryProducer.getFactory().createDaoDegree();
+            Degree degree = new Degree();
+            degree.setId(daoDegree.getNextId());
+            degree.setName((String) dialog.getResult());
+
+            daoDegree.insert(degree);
+
+            ConnectionManager.getInstance().commit();
+
+            degrees = DAOFactoryProducer.getFactory().createDaoDegree().findAll();
+            choiceBoxDegree.getItems().clear();
+            addTextChoiceBoxDegree(degrees);
+        }
     }
 
     @FXML
     private void addAnAcademy(){
-        //TODO inplement
+        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("Academie");
+        dialog.showAndWait();
+        if ( ! dialog.getResult().equals("")){
+            DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
+            Academy academy = new Academy();
+            academy.setId(daoAcademy.getNextId());
+            academy.setName((String) dialog.getResult());
+
+            daoAcademy.insert(academy);
+
+            ConnectionManager.getInstance().commit();
+
+            academies = DAOFactoryProducer.getFactory().createDAOAcademy().findAll();
+            choiceBoxAcademy.getItems().clear();
+            addTextChoiceBoxAcademy(academies);
+        }
     }
 
     @FXML
     private void addAAcademicRegion(){
-        //TODO inplement
-    }
+        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("Region academique");
+        dialog.showAndWait();
+        if ( ! dialog.getResult().equals("")){
+            DAOAcademicRegion daoAcademicRegion = DAOFactoryProducer.getFactory().createDAOAcademicRegion();
+            AcademicRegion academicRegion = new AcademicRegion();
+            academicRegion.setId(daoAcademicRegion.getNextId());
+            academicRegion.setName((String) dialog.getResult());
 
-    @FXML
-    private void addATypeOfActors(){
-        //TODO inplement
+            daoAcademicRegion.insert(academicRegion);
+
+            ConnectionManager.getInstance().commit();
+
+            academicRegions = DAOFactoryProducer.getFactory().createDAOAcademicRegion().findAll();
+            choiceBoxAcademicRegion.getItems().clear();
+            addTextChoiceBoxAcademicRegion(academicRegions);
+        }
     }
 
     public void setTextChoiceBoxThemeOfUse(String textThemeOfUse) {
