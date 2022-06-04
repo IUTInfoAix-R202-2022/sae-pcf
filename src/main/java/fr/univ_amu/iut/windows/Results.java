@@ -28,23 +28,23 @@ public class Results extends GridPane {
         for (int i = 0; i < results.size(); ++i) {
             for (int j = 0; j <= 3; ++j) {
                 Button data;
-                switch (j) {
-                    case (0) -> {
+                switch (j){
+                    case(0):
                         data = new Button(results.get(i)[9]);
                         data.getStyleClass().add("IntituleButton");
-                    }
-                    case (1) -> {
+                        break;
+                    case(1):
                         data = new Button(results.get(i)[1]);
                         data.getStyleClass().add("ResultButton");
-                    }
-                    case (2) -> {
+                        break;
+                    case(2):
                         data = new Button(results.get(i)[2]);
                         data.getStyleClass().add("ResultButton");
-                    }
-                    default -> {
+                        break;
+                    default:
                         data = new Button(results.get(i)[10]);
                         data.getStyleClass().add("ResultButton");
-                    }
+
                 }
                 int finalI = i;
                 data.setOnAction(
@@ -53,17 +53,15 @@ public class Results extends GridPane {
                 this.add(data, j, i+1);
 
             }
-            if (Home.isConnected()) {
-                MenuButton adminBtn = new MenuButton("...");
-                setMargin(adminBtn, new Insets(0, 0, 0, 13));
-                adminBtn.getStyleClass().add("adminBtn");
-                MenuItem modify = new MenuItem("Modifier");
-                //TODO eventHandler of the modify button
-                MenuItem delete = new MenuItem("Supprimer");
-                //TODO eventHandler of the delete button
-                adminBtn.getItems().addAll(modify, delete);
-                this.add(adminBtn, 4, i + 1);
-            }
+            MenuButton adminBtn = new MenuButton("...");
+            setMargin(adminBtn, new Insets(0, 0, 0, 13));
+            adminBtn.getStyleClass().add("adminBtn");
+            MenuItem modify = new MenuItem("Modifier");
+            //TODO eventHandler of the modify button
+            MenuItem delete = new MenuItem("Supprimer");
+            //TODO eventHandler of the delete button
+            adminBtn.getItems().addAll(modify, delete);
+            this.add(adminBtn,4,i+1);
         }
     }
 }
