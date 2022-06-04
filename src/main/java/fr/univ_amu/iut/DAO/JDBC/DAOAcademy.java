@@ -12,11 +12,13 @@ public class DAOAcademy implements fr.univ_amu.iut.DAO.DAOAcademy {
     private final PreparedStatement findAllStatement;
     private final PreparedStatement getByIdStatement;
     private final PreparedStatement insertStatement;
+    private final PreparedStatement getNextIdStatement;
 
     public DAOAcademy(){
         findAllStatement = Database.prepare("SELECT * FROM academy");
         getByIdStatement = Database.prepare("SELECT * FROM academy WHERE idAcademy = ?");
         insertStatement = Database.prepareInsert("INSERT INTO academy (idAcademy, nameAcademy) VALUES (?, ?)");
+        getNextIdStatement = Database.prepare("SELECT IdAcademy FROM Academy WHERE IdAcademy >=ALL (SELECT IdAcademy FROM Academy)");
     }
 
     public static Academy extractAcademy(ResultSet resultSet) throws SQLException {
@@ -72,5 +74,17 @@ public class DAOAcademy implements fr.univ_amu.iut.DAO.DAOAcademy {
             }
         }
         return true;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

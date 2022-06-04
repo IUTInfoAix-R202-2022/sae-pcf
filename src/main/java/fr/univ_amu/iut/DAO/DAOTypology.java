@@ -8,6 +8,4 @@ public interface DAOTypology extends DAO<Typology,Integer> {
     boolean delete(Typology object);
 
     boolean update(Typology object);
-
-    int getNextId();
 }

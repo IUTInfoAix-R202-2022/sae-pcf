@@ -144,7 +144,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Type d'acteurs *">
                            <padding>
@@ -155,7 +155,6 @@
                            </font>
                         </Label>
                         <TextField fx:id="fieldTypeOfActors" />
-                        <Button fx:id="addButtonTypeOfActors" mnemonicParsing="false" onAction="#addATypeOfActors" text="+" />
                      </items>
                   </SplitPane>
                   <Label fx:id="labelNotFillTypeOfActors" styleClass="error" text="Veuillez remplir ce champ" visible="false" />

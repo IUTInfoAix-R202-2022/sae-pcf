@@ -12,11 +12,13 @@ public class DAODiscipline implements fr.univ_amu.iut.DAO.DAODiscipline {
     private final PreparedStatement findAllStatement;
     private final PreparedStatement getByIdStatement;
     private final PreparedStatement insertStatement;
+    private final PreparedStatement getNextIdStatement;
 
     public DAODiscipline(){
         findAllStatement = Database.prepare("SELECT * FROM Discipline");
         getByIdStatement = Database.prepare("SELECT * FROM Discipline WHERE idDiscipline = ?");
         insertStatement = Database.prepareInsert("INSERT INTO Discipline (idDiscipline, nameDiscipline) VALUES (?, ?)");
+        getNextIdStatement = Database.prepare("SELECT IdDiscipline FROM Discipline WHERE IdDiscipline >=ALL (SELECT IdDiscipline FROM Discipline)");
     }
 
     public static Discipline extractDiscipline(ResultSet resultSet) throws SQLException {
@@ -57,6 +59,18 @@ public class DAODiscipline implements fr.univ_amu.iut.DAO.DAODiscipline {
             e.printStackTrace();
         }
         return Discipline;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

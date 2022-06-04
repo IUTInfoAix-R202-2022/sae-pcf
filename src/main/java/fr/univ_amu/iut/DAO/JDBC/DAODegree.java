@@ -12,11 +12,13 @@ public class DAODegree implements fr.univ_amu.iut.DAO.DAODegree {
     private final PreparedStatement findAllStatement;
     private final PreparedStatement getByIdStatement;
     private final PreparedStatement insertStatement;
+    private final PreparedStatement getNextIdStatement;
 
     public DAODegree(){
         findAllStatement = Database.prepare("SELECT * FROM Degree");
         getByIdStatement = Database.prepare("SELECT * FROM Degree WHERE idDegree = ?");
         insertStatement = Database.prepareInsert("INSERT INTO Degree (idDegree, nameDegree) VALUES (?, ?)");
+        getNextIdStatement = Database.prepare("SELECT IdDegree FROM Degree WHERE IdDegree >=ALL (SELECT IdDegree FROM Degree)");
     }
 
     public static Degree extractDegree(ResultSet resultSet) throws SQLException {
@@ -57,6 +59,18 @@ public class DAODegree implements fr.univ_amu.iut.DAO.DAODegree {
             e.printStackTrace();
         }
         return Degree;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
