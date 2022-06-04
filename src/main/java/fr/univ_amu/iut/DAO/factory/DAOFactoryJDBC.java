@@ -28,7 +28,7 @@ public class DAOFactoryJDBC implements DAOFactory{
     }
 
     @Override
-    public fr.univ_amu.iut.DAO.DAODiscipline createDiscipline() {
+    public DAODiscipline createDAODiscipline(){
         return new DAODiscipline();
     }
 
@@ -41,4 +41,5 @@ public class DAOFactoryJDBC implements DAOFactory{
     public DAOTypology createDaoTypology() {
         return new DAOTypology();
     }
+
 }
