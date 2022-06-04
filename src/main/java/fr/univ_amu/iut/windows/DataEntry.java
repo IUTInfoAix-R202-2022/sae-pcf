@@ -333,6 +333,10 @@ public class DataEntry extends ScrollPane {
             themeOfUseList = DAOFactoryProducer.getFactory().createDaoThemeOfUse().findAll();
             choiceBoxThemeOfUse.getItems().clear();
             addTextChoiceBoxThemeOfUse(themeOfUseList);
+
+            if (choiceBoxThemeOfUse.getItems().contains(dialog.getResult())){
+                choiceBoxThemeOfUse.setValue(dialog.getResult());
+            }
         }
     }
 
@@ -353,6 +357,10 @@ public class DataEntry extends ScrollPane {
             disciplines = DAOFactoryProducer.getFactory().createDAODiscipline().findAll();
             choiceBoxDiscipline.getItems().clear();
             addTextChoiceBoxDiscipline(disciplines);
+
+            if (choiceBoxDiscipline.getItems().contains(dialog.getResult())){
+                choiceBoxDiscipline.setValue(dialog.getResult());
+            }
         }
     }
 
@@ -373,6 +381,10 @@ public class DataEntry extends ScrollPane {
             degrees = DAOFactoryProducer.getFactory().createDaoDegree().findAll();
             choiceBoxDegree.getItems().clear();
             addTextChoiceBoxDegree(degrees);
+
+            if (choiceBoxDegree.getItems().contains(dialog.getResult())){
+                choiceBoxDegree.setValue(dialog.getResult());
+            }
         }
     }
 
@@ -393,6 +405,10 @@ public class DataEntry extends ScrollPane {
             academies = DAOFactoryProducer.getFactory().createDAOAcademy().findAll();
             choiceBoxAcademy.getItems().clear();
             addTextChoiceBoxAcademy(academies);
+
+            if (choiceBoxAcademy.getItems().contains(dialog.getResult())){
+                choiceBoxAcademy.setValue(dialog.getResult());
+            }
         }
     }
 
@@ -413,6 +429,10 @@ public class DataEntry extends ScrollPane {
             academicRegions = DAOFactoryProducer.getFactory().createDAOAcademicRegion().findAll();
             choiceBoxAcademicRegion.getItems().clear();
             addTextChoiceBoxAcademicRegion(academicRegions);
+
+            if (choiceBoxAcademicRegion.getItems().contains(dialog.getResult())){
+                choiceBoxAcademicRegion.setValue(dialog.getResult());
+            }
         }
     }
 

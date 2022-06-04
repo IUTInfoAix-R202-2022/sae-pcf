@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.text.Font;
+import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class AddDataChoiceBoxDialog extends Dialog {
     public AddDataChoiceBoxDialog(String dataName){
         dialogPane = new AddDataChoiceBoxContent(dataName);
         this.setDialogPane(dialogPane);
+        this.initStyle(StageStyle.UNDECORATED);
 
         this.submitButton.setFont(Font.font("JetBrains Mono Regular"));
 

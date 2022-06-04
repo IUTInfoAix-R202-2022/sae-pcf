@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root styleClass="root" type="javafx.scene.control.DialogPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root style="-fx-border-color: #43464B; -fx-border-width: 1;" styleClass="root" type="javafx.scene.control.DialogPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox fx:id="vBox" alignment="CENTER" spacing="10.0">
          <children>
