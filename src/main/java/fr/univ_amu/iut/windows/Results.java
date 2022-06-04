@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.windows;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -43,6 +44,7 @@ public class Results extends GridPane {
                     default:
                         data = new Button(results.get(i)[10]);
                         data.getStyleClass().add("ResultButton");
+
                 }
                 int finalI = i;
                 data.setOnAction(
@@ -52,6 +54,8 @@ public class Results extends GridPane {
 
             }
             MenuButton adminBtn = new MenuButton("...");
+            setMargin(adminBtn, new Insets(0, 0, 0, 13));
+            adminBtn.getStyleClass().add("adminBtn");
             MenuItem modify = new MenuItem("Modifier");
             //TODO eventHandler of the modify button
             MenuItem delete = new MenuItem("Supprimer");
