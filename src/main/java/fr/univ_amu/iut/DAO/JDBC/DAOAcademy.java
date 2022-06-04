@@ -50,7 +50,7 @@ public class DAOAcademy implements fr.univ_amu.iut.DAO.DAOAcademy {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 academy = extractAcademy(resultSet);
             }
         } catch (SQLException e) {

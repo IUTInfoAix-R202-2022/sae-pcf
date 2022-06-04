@@ -10,4 +10,6 @@ public interface DAOTypology extends DAO<Typology,Integer> {
     boolean update(Typology object);
 
     int getNextId();
+
+    List<Typology> findByThemeId(int themeId);
 }
