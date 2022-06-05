@@ -65,23 +65,26 @@ public class Results extends GridPane {
                 this.add(data, j, i+1);
 
             }
-            MenuButton adminBtn = new MenuButton("...");
-            setMargin(adminBtn, new Insets(0, 0, 0, 13));
-            adminBtn.getStyleClass().add("adminBtn");
-            MenuItem modify = new MenuItem("Modifier");
 
-            int finalI1 = i;
-            modify.setOnAction(actionEvent -> {
-                EditDataDialog editDialog = new EditDataDialog();
-                editDialog.setTuple(results.get(finalI1));
-                editDialog.show();
+            if (Home.isConnected()) {
+                MenuButton adminBtn = new MenuButton("...");
+                setMargin(adminBtn, new Insets(0, 0, 0, 13));
+                adminBtn.getStyleClass().add("adminBtn");
+                MenuItem modify = new MenuItem("Modifier");
 
-            });
+                int finalI1 = i;
+                modify.setOnAction(actionEvent -> {
+                    EditDataDialog editDialog = new EditDataDialog();
+                    editDialog.setTuple(results.get(finalI1));
+                    editDialog.show();
 
-            MenuItem delete = new MenuItem("Supprimer");
-            //TODO eventHandler of the delete button
-            adminBtn.getItems().addAll(modify, delete);
-            this.add(adminBtn,4,i+1);
+                });
+
+                MenuItem delete = new MenuItem("Supprimer");
+                //TODO eventHandler of the delete button
+                adminBtn.getItems().addAll(modify, delete);
+                this.add(adminBtn, 4, i + 1);
+            }
         }
     }
 }

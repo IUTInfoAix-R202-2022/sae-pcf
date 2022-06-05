@@ -24,7 +24,6 @@ public class Theme extends Button {
         this.setTextAlignment(TextAlignment.CENTER);
 
         this.setOnAction(actionEvent -> {
-            ResultsTab resultsTab = new ResultsTab();
             Results results = new Results();
 
             DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
@@ -36,8 +35,7 @@ public class Theme extends Button {
             }
 
             results.addResults(stringsList);
-            resultsTab.getChildren().add(results);
-            Tabs.getInstance().addATab(name,resultsTab,true);
+            Tabs.getInstance().addATab(name,new ResultsTab(results),true);
         });
     }
 }
