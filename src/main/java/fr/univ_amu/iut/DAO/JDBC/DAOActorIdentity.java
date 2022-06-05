@@ -23,7 +23,7 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         findAllStatement = Database.prepare("SELECT * FROM actorIdentity");
         getByIdStatement = Database.prepare("SELECT * FROM actorIdentity WHERE idActorIdentity = ?");
         insertStatement = Database.prepareInsert("INSERT INTO actorIdentity (idActorIdentity, idTypology, name) VALUES (?, ?, ?)");
-        updateStatement = Database.prepare("UPDATE actorIdentity SET idActorIdentity = ?, idTypology = ?, name = ?, firstName = ?");
+        updateStatement = Database.prepare("UPDATE actorIdentity SET idTypology = ?, name = ?, firstName = ? WHERE idActorIdentity = ?");
         deleteStatement = Database.prepare("DELETE FROM actorIdentity WHERE idActorIdentity = ?");
         getNextIdStatement = Database.prepare("SELECT IdActorIdentity FROM ActorIdentity WHERE IdActorIdentity >=ALL (SELECT IdActorIdentity FROM ActorIdentity)");
     }
@@ -89,9 +89,9 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
     public boolean update(ActorIdentity object) {
         synchronized (Objects.requireNonNull(updateStatement)) {
             try {
-                updateStatement.setInt(1,object.getId());
-                updateStatement.setInt(2,object.getIdTypo());
-                updateStatement.setString(3,object.getName());
+                updateStatement.setInt(1,object.getIdTypo());
+                updateStatement.setString(2,object.getName());
+                updateStatement.setInt(3,object.getId());
                 updateStatement.executeUpdate();
             } catch (SQLException e) {
                 return false;

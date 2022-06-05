@@ -8,9 +8,9 @@ public class AcademicRegion {
     private String name;
 
     public static AcademicRegion findByName(List<AcademicRegion> academies, String name){
-        for (AcademicRegion AcademicRegion : academies){
-            if (Objects.equals(AcademicRegion.getName(),name)){
-                return AcademicRegion;
+        for (AcademicRegion academicRegion : academies){
+            if (Objects.equals(academicRegion.getName(),name)){
+                return academicRegion;
             }
         }
         return null;

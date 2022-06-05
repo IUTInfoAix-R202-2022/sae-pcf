@@ -170,7 +170,7 @@ public class DataEntry extends ScrollPane {
         addTextChoiceBoxAcademicRegion(academicRegions);
     }
 
-    private void clearFields(){
+    public void clearFields(){
         for (int i = 0; i < fieldsStringProperties.size(); ++i) {
             fieldsStringProperties.get(i).set("");
         }
@@ -295,6 +295,29 @@ public class DataEntry extends ScrollPane {
         return typology;
     }
 
+    public Typology getTypology(DAOTypology daoTypology){
+        Typology typology = new Typology();
+
+        typology.setId(Typology.findByResourceName(daoTypology.findAll(),getFieldsString()[7]).getId());
+
+        System.out.println(getFieldsString()[0]);
+
+        typology.setIdThemeOfUse(ThemeOfUse.findByName(this.themeOfUseList,getFieldsString()[0]).getId());
+        typology.setIdDiscipline(Discipline.findByName(this.disciplines,getFieldsString()[1]).getId());
+        typology.setIdDegree(Degree.findByName(this.degrees,getFieldsString()[2]).getId());
+        typology.setIdAcademy(Academy.findByName(this.academies,getFieldsString()[3]).getId());
+        if (!Objects.equals(getFieldsString()[4],"")){
+            typology.setIdAcademicRegion(AcademicRegion.findByName(this.academicRegions,getFieldsString()[4]).getId());
+        }
+        typology.setActorType(getFieldsString()[5]);
+        typology.setLink(getFieldsString()[6]);
+        typology.setResourceName(getFieldsString()[7]);
+        typology.setResourceType(getFieldsString()[8]);
+        typology.setCommentary(getFieldsString()[9]);
+
+        return typology;
+    }
+
     private void addActors(Typology typology){
         DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
         for (int i = 10; i < getFieldsString().length; ++i){
@@ -305,6 +328,22 @@ public class DataEntry extends ScrollPane {
 
             daoActorIdentity.insert(actorIdentity);
         }
+    }
+
+    public ArrayList<ActorIdentity> getActors(Typology typology){
+
+        DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
+
+        ArrayList<ActorIdentity> actorIdentities = new ArrayList<ActorIdentity>();
+        for (int i = 10; i < getFieldsString().length; ++i){
+            ActorIdentity actorIdentity = new ActorIdentity();
+            actorIdentity.setId(daoActorIdentity.getNextId());
+            actorIdentity.setIdTypo(typology.getId());
+            actorIdentity.setName(getFieldsString()[i]);
+
+            actorIdentities.add(actorIdentity);
+        }
+        return actorIdentities;
     }
 
     public String[] getFieldsString() { //return the array of strings of all controllers
@@ -366,7 +405,7 @@ public class DataEntry extends ScrollPane {
 
     @FXML
     private void addADegree(){
-        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("Degrée");
+        AddDataChoiceBoxDialog dialog = new AddDataChoiceBoxDialog("Degré");
         dialog.showAndWait();
         if ( ! dialog.getResult().equals("")){
             DAODegree daoDegree = DAOFactoryProducer.getFactory().createDaoDegree();

@@ -3,6 +3,9 @@ package fr.univ_amu.iut.DAO.entities;
 import fr.univ_amu.iut.DAO.*;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Typology {
 
     public static String[] getStrings(Typology typology){
@@ -29,6 +32,16 @@ public class Typology {
 
         return strings;
     }
+
+    public static Typology findByResourceName(List<Typology> typologies, String name){
+        for (Typology typology : typologies){
+            if (Objects.equals(typology.getResourceName(),name)){
+                return typology;
+            }
+        }
+        return null;
+    }
+
     private int id;
     private int idThemeOfUse;
     private int idDiscipline;
