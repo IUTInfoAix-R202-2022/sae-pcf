@@ -19,6 +19,7 @@ public class submitEntryTest extends ApplicationTest {
         write("admin");
         clickOn("#submitButton");
         clickOn("Saisie");
+        // Le clic pour selectionner cet valeur ne marche PAS!!! souvent, mais pas toujour
         clickOn("#choiceBoxThemeOfUse");
         clickOn("TNE");
         clickOn("#choiceBoxDiscipline");
