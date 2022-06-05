@@ -1,10 +1,12 @@
 package fr.univ_amu.iut.dialogs;
 
+import fr.univ_amu.iut.ApplicationMain;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class SettingsContent extends DialogPane {
 
@@ -30,9 +32,13 @@ public class SettingsContent extends DialogPane {
         ButtonType cancelButtonType = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
         this.getButtonTypes().addAll(cancelButtonType,submitButtonType);
 
-        //TODO Dynamic selection of language
-        choiceBox.getItems().addAll("Français","Anglais");
-        choiceBox.setValue("Français");
+        choiceBox.getItems().addAll(ApplicationMain.getAvailableLanguage());
+        if (Locale.getDefault().toString().equals("fr")){
+            choiceBox.setValue("Français");
+        }
+        else if (Locale.getDefault().toString().equals("en")){
+            choiceBox.setValue("English");
+        }
     }
 
     @FXML
@@ -43,5 +49,9 @@ public class SettingsContent extends DialogPane {
         else{
             toggleButton.setText("Activer");
         }
+    }
+
+    public ChoiceBox getChoiceBox(){
+        return this.choiceBox;
     }
 }

@@ -1,17 +1,26 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.ApplicationMain;
+import fr.univ_amu.iut.bundle.BundleManager;
 import fr.univ_amu.iut.dialogs.ContactDialog;
 import fr.univ_amu.iut.dialogs.SettingsDialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class MainWindow extends VBox {
+
     @FXML
     private Button buttonHelp;
 
@@ -36,13 +45,22 @@ public class MainWindow extends VBox {
 
     @FXML
     private void initialize() {
-
     }
 
     @FXML
     public void settings() {
         SettingsDialog settingsDialog = new SettingsDialog();
-        settingsDialog.showAndWait();
+        Optional<ButtonType> result = settingsDialog.showAndWait();
+        if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE){
+            if (settingsDialog.getChoiceBox().getValue().equals("Français")){
+                Locale.setDefault(Locale.FRENCH);
+            }
+            else if (settingsDialog.getChoiceBox().getValue().equals("English")){
+                Locale.setDefault(Locale.ENGLISH);
+            }
+
+            BundleManager.updateBundle();
+        }
     }
 
     @FXML

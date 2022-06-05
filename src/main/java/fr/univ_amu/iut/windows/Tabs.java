@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.bundle.BundleManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -44,8 +45,9 @@ public class Tabs extends Pane {
         mapTab.setContent(new MapTab());
     }
 
-    public void addATab(String tabTitle, Node content, boolean closeable) {
+    public void addATab(String tabTitle, Node content, boolean closeable, String id) {
         Tab newTab = new Tab(tabTitle);
+        newTab.setId(id);
         newTab.setClosable(closeable);
         newTab.getStyleClass().add("tabs");
         newTab.setContent(content);
