@@ -1,6 +1,5 @@
 package fr.univ_amu.iut.DAO.factory;
 
-import fr.univ_amu.iut.DAO.DAODiscipline;
 import fr.univ_amu.iut.DAO.JDBC.*;
 
 public interface DAOFactory {
@@ -8,7 +7,7 @@ public interface DAOFactory {
     DAOAcademy createDAOAcademy();
     DAOActorIdentity createDaoActorIdentity();
     DAODegree createDaoDegree();
-    DAODiscipline createDiscipline();
+    DAODiscipline createDAODiscipline();
     DAOThemeOfUse createDaoThemeOfUse();
     DAOTypology createDaoTypology();
 }

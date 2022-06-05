@@ -1,6 +1,47 @@
 package fr.univ_amu.iut.DAO.entities;
 
+import fr.univ_amu.iut.DAO.*;
+import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+
+import java.util.List;
+import java.util.Objects;
+
 public class Typology {
+
+    public static String[] getStrings(Typology typology){
+        DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
+        DAODiscipline daoDiscipline = DAOFactoryProducer.getFactory().createDAODiscipline();
+        DAODegree daoDegree = DAOFactoryProducer.getFactory().createDaoDegree();
+        DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
+        DAOAcademicRegion daoAcademicRegion = DAOFactoryProducer.getFactory().createDAOAcademicRegion();
+
+        String[] strings = {"","","","","","","","","","","",""};
+        strings[0] = Integer.toString(typology.getId());
+
+        strings[1] = daoThemeOfUse.getById(typology.getIdThemeOfUse()).getName();
+        strings[2] = daoDiscipline.getById(typology.getIdDiscipline()).getName();
+        strings[3] = daoDegree.getById(typology.getIdDegree()).getName();
+        strings[4] = daoAcademy.getById(typology.getIdAcademy()).getName();
+        strings[5] = daoAcademicRegion.getById(typology.getIdAcademicRegion()).getName();
+        strings[6] = typology.getActorType();
+        strings[7] = "nom";
+        strings[8] = typology.getLink();
+        strings[9] = typology.getResourceName();
+        strings[10] = typology.getResourceType();
+        strings[11] = typology.getCommentary();
+
+        return strings;
+    }
+
+    public static Typology findByResourceName(List<Typology> typologies, String name){
+        for (Typology typology : typologies){
+            if (Objects.equals(typology.getResourceName(),name)){
+                return typology;
+            }
+        }
+        return null;
+    }
+
     private int id;
     private int idThemeOfUse;
     private int idDiscipline;

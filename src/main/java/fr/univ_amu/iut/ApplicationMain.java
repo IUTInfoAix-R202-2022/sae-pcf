@@ -21,6 +21,9 @@ public class ApplicationMain extends Application {
     private VBox mainWindow;
     private Tabs tabs;
 
+    public static final double WINDOW_WIDTH = 1200;
+    public static final double WINDOW_HEIGHT = 700;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -44,16 +47,16 @@ public class ApplicationMain extends Application {
     @Override
     public void stop(){
         ConnectionManager.getInstance().closeConnection();
+        System.exit(0);
     }
 
     private void appBasis(Stage stage){
         stage.setResizable(false);
         stage.setTitle("Titre de l'application");
-        stage.setWidth(1200);
-        stage.setHeight(700);
+        stage.setWidth(WINDOW_WIDTH);
+        stage.setHeight(WINDOW_HEIGHT);
 
-        tabs = new Tabs();
-        tabs.addATab("Résultats", new ResultsTab(), true);
+        tabs = Tabs.getInstance();
     }
 
     private void loadCSS(){

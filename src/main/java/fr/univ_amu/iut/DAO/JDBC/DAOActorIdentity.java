@@ -17,13 +17,15 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
     private final PreparedStatement insertStatement;
     private final PreparedStatement updateStatement;
     private final PreparedStatement deleteStatement;
+    private final PreparedStatement getNextIdStatement;
 
     public DAOActorIdentity(){
         findAllStatement = Database.prepare("SELECT * FROM actorIdentity");
         getByIdStatement = Database.prepare("SELECT * FROM actorIdentity WHERE idActorIdentity = ?");
-        insertStatement = Database.prepareInsert("INSERT INTO actorIdentity (idActorIdentity, idTypology, name, firstName) VALUES (?, ?, ?, ?)");
-        updateStatement = Database.prepare("UPDATE actorIdentity SET idActorIdentity = ?, idTypology = ?, name = ?, firstName = ?");
+        insertStatement = Database.prepareInsert("INSERT INTO actorIdentity (idActorIdentity, idTypology, name) VALUES (?, ?, ?)");
+        updateStatement = Database.prepare("UPDATE actorIdentity SET idTypology = ?, name = ?, firstName = ? WHERE idActorIdentity = ?");
         deleteStatement = Database.prepare("DELETE FROM actorIdentity WHERE idActorIdentity = ?");
+        getNextIdStatement = Database.prepare("SELECT IdActorIdentity FROM ActorIdentity WHERE IdActorIdentity >=ALL (SELECT IdActorIdentity FROM ActorIdentity)");
     }
 
     public static ActorIdentity extractActorIdentity(ResultSet resultSet) throws SQLException {
@@ -31,7 +33,6 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         actorIdentity.setId(resultSet.getInt("idActorIdentity"));
         actorIdentity.setIdTypo(resultSet.getInt("idTypology"));
         actorIdentity.setName(resultSet.getString("name"));
-        actorIdentity.setFirstName(resultSet.getString("firstName"));
         return actorIdentity;
     }
 
@@ -59,7 +60,7 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 actorIdentity = extractActorIdentity(resultSet);
             }
         } catch (SQLException e) {
@@ -73,7 +74,8 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         synchronized (Objects.requireNonNull(insertStatement)) {
             try {
                 insertStatement.setInt(1,object.getId());
-                insertStatement.setString(2,object.getName());
+                insertStatement.setInt(2,object.getIdTypo());
+                insertStatement.setString(3,object.getName());
                 insertStatement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -87,10 +89,9 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
     public boolean update(ActorIdentity object) {
         synchronized (Objects.requireNonNull(updateStatement)) {
             try {
-                updateStatement.setInt(1,object.getId());
-                updateStatement.setInt(2,object.getIdTypo());
-                updateStatement.setString(3,object.getName());
-                updateStatement.setString(4,object.getFirstName());
+                updateStatement.setInt(1,object.getIdTypo());
+                updateStatement.setString(2,object.getName());
+                updateStatement.setInt(3,object.getId());
                 updateStatement.executeUpdate();
             } catch (SQLException e) {
                 return false;
@@ -110,5 +111,17 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
             }
         }
         return true;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

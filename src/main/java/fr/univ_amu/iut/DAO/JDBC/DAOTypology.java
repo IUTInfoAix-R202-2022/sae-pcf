@@ -1,6 +1,8 @@
 package fr.univ_amu.iut.DAO.JDBC;
 
+import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.Typology;
+import javafx.scene.chart.PieChart;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,13 +18,17 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     private final PreparedStatement insertStatement;
     private final PreparedStatement updateStatement;
     private final PreparedStatement deleteStatement;
+    private final PreparedStatement getNextIdStatement;
+    private final PreparedStatement getByThemeStatement;
 
     public DAOTypology(){
         findAllStatement = Database.prepare("SELECT * FROM Typology");
         getByIdStatement = Database.prepare("SELECT * FROM Typology WHERE idTypology = ?");
-        insertStatement = Database.prepareInsert("INSERT INTO Typology (idTypology, idTypology, name, firstName) VALUES (?, ?, ?, ?)");
-        updateStatement = Database.prepare("UPDATE Typology SET idTypology = ?, idTypology = ?, name = ?, firstName = ?");
+        insertStatement = Database.prepareInsert("INSERT INTO Typology (idTypology, idThemeOfUse, idDiscipline, idDegree, idAcademy, idAcademicRegion, actorType, link, resourceName, resourceType, commentary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        updateStatement = Database.prepare("UPDATE Typology SET idThemeOfUse = ?, idDiscipline = ?, idDegree = ?, idAcademy = ?, idAcademicRegion = ?, actorType = ?, link = ?, resourceName = ?, resourceType = ?, commentary = ? WHERE idTypology = ?");
         deleteStatement = Database.prepare("DELETE FROM Typology WHERE idTypology = ?");
+        getNextIdStatement = Database.prepare("SELECT IdTypology FROM Typology WHERE IdTypology >=ALL (SELECT IdTypology FROM Typology)");
+        getByThemeStatement = Database.prepare("SELECT * FROM Typology WHERE IdThemeOfUse = ?");
     }
 
     public static Typology extractTypology(ResultSet resultSet) throws SQLException {
@@ -41,9 +47,9 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         return Typology;
     }
 
-    private void extractTypology(ResultSet resultSet, List<Typology> actorIdentities) throws SQLException {
+    private void extractTypology(ResultSet resultSet, List<Typology> typologies) throws SQLException {
         while (resultSet.next()){
-            actorIdentities.add(extractTypology(resultSet));
+            typologies.add(extractTypology(resultSet));
         }
     }
 
@@ -104,18 +110,19 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     public boolean update(Typology object) {
         synchronized (Objects.requireNonNull(updateStatement)) {
             try {
-                updateStatement.setInt(1,object.getId());
-                updateStatement.setInt(2,object.getIdThemeOfUse());
-                updateStatement.setInt(3,object.getIdDiscipline());
-                updateStatement.setInt(4,object.getIdDegree());
-                updateStatement.setInt(5,object.getIdAcademy());
-                updateStatement.setInt(6,object.getIdAcademicRegion());
+                updateStatement.setInt(1,object.getIdThemeOfUse());
+                updateStatement.setInt(2,object.getIdDiscipline());
+                updateStatement.setInt(3,object.getIdDegree());
+                updateStatement.setInt(4,object.getIdAcademy());
+                updateStatement.setInt(5,object.getIdAcademicRegion());
 
-                updateStatement.setString(7,object.getActorType());
-                updateStatement.setString(8,object.getLink());
-                updateStatement.setString(9,object.getResourceName());
-                updateStatement.setString(10,object.getResourceType());
-                updateStatement.setString(11,object.getCommentary());
+                updateStatement.setString(6,object.getActorType());
+                updateStatement.setString(7,object.getLink());
+                updateStatement.setString(8,object.getResourceName());
+                updateStatement.setString(9,object.getResourceType());
+                updateStatement.setString(10,object.getCommentary());
+
+                updateStatement.setInt(11,object.getId()); //for the WHERE
 
                 updateStatement.executeUpdate();
             } catch (SQLException e) {
@@ -123,6 +130,33 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
             }
         }
         return true;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @Override
+    public List<Typology> findByThemeId(int themeId) {
+        List<Typology> typologies = new ArrayList<>();
+        synchronized (Objects.requireNonNull(getByThemeStatement)){
+            try {
+                getByThemeStatement.setInt(1,themeId);
+                ResultSet resultSet = getByThemeStatement.executeQuery();
+                extractTypology(resultSet,typologies);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return typologies;
     }
 
     @Override

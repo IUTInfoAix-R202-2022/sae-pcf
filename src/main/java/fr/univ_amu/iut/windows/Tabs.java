@@ -11,6 +11,15 @@ import java.io.IOException;
 
 public class Tabs extends Pane {
 
+    private static Tabs instance;
+
+    public static Tabs getInstance() {
+        if (instance == null){
+            instance = new Tabs();
+        }
+        return instance;
+    }
+
     @FXML
     TabPane tabs;
 
@@ -20,7 +29,7 @@ public class Tabs extends Pane {
     @FXML
     Tab mapTab;
 
-    public Tabs() {
+    private Tabs() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fr/univ_amu/iut/javaFX/windows/Tabs.fxml"));
         fxmlLoader.setRoot(this);
@@ -41,6 +50,7 @@ public class Tabs extends Pane {
         newTab.getStyleClass().add("tabs");
         newTab.setContent(content);
         tabs.getTabs().add(newTab);
+        tabs.getSelectionModel().select(newTab);
     }
 
 }

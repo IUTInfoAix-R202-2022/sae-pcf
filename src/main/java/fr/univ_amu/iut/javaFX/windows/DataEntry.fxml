@@ -9,7 +9,7 @@
    <content>
       <VBox spacing="50.0">
          <children>
-            <Label alignment="CENTER" text="Tout les champs avec la mention * doivent être remplis" styleClass="bigbold">
+            <Label alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis">
                <font>
                   <Font name="JetBrains Mono Regular" size="13.0" />
                </font>
@@ -40,7 +40,7 @@
                         <Insets />
                      </VBox.margin>
                   </SplitPane>
-                  <Label fx:id="labelNotFillThemeOfUse" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
+                  <Label fx:id="labelNotFillThemeOfUse" styleClass="error" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
                   <Insets left="150.0" />
@@ -62,7 +62,7 @@
                         <Button fx:id="addButtonDiscipline" mnemonicParsing="false" onAction="#addADiscipline" text="+" />
                      </items>
                   </SplitPane>
-                  <Label fx:id="labelNotFillDiscipline" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
+                  <Label fx:id="labelNotFillDiscipline" styleClass="error" text="Veuillez remplir ce champ" visible="false" />
               </children>
                <VBox.margin>
                   <Insets left="150.0" />
@@ -87,7 +87,7 @@
                         <Insets />
                      </VBox.margin>
                   </SplitPane>
-                  <Label fx:id="labelNotFillDegree" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
+                  <Label fx:id="labelNotFillDegree" styleClass="error" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
                   <Insets left="150.0" />
@@ -112,7 +112,7 @@
                         <Insets />
                      </VBox.margin>
                   </SplitPane>
-                  <Label fx:id="labelNotFillAcademy" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
+                  <Label fx:id="labelNotFillAcademy" styleClass="error" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
                   <Insets left="150.0" />
@@ -144,7 +144,7 @@
             </VBox>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
                         <Label prefWidth="300.0" text="Type d'acteurs *">
                            <padding>
@@ -155,10 +155,9 @@
                            </font>
                         </Label>
                         <TextField fx:id="fieldTypeOfActors" />
-                        <Button fx:id="addButtonTypeOfActors" mnemonicParsing="false" onAction="#addATypeOfActors" text="+" />
                      </items>
                   </SplitPane>
-                  <Label fx:id="labelNotFillTypeOfActors" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
+                  <Label fx:id="labelNotFillTypeOfActors" styleClass="error" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
                   <Insets left="150.0" />
@@ -181,17 +180,15 @@
                               <HBox spacing="20.0">
                                  <children>
                                     <TextField fx:id="fieldIdOfActorName" promptText="Nom" HBox.hgrow="ALWAYS" />
-                                    <TextField fx:id="fieldIdOfActorFirstName" promptText="Prénom" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
                               <HBox spacing="148.0">
                                  <children>
-                                    <Label fx:id="labelNotFillIdOfActorName" text="Veuillez remplir ce champ" styleClass="error" visible="false">
+                                    <Label fx:id="labelNotFillIdOfActorName" styleClass="error" text="Veuillez remplir ce champ" visible="false">
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </Label>
-                                    <Label fx:id="labelNotFillIdOfActorFirstName" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
                                  </children>
                               </HBox>
                               <Button fx:id="buttonAddIdOfActor" mnemonicParsing="false" onAction="#addIdOfActor" text="Ajouter un acteur" />
@@ -222,7 +219,7 @@
                         <TextField fx:id="fieldResourceLink" />
                      </items>
                   </SplitPane>
-                  <Label fx:id="labelNotFillResourceLink" text="Veuillez remplir ce champ" styleClass="error" visible="false" />
+                  <Label fx:id="labelNotFillResourceLink" styleClass="error" text="Veuillez remplir ce champ" visible="false" />
                </children>
                <VBox.margin>
                   <Insets left="150.0" />

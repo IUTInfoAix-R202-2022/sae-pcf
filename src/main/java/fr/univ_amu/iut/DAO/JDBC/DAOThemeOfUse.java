@@ -11,11 +11,13 @@ import java.util.Objects;
 public class DAOThemeOfUse implements fr.univ_amu.iut.DAO.DAOThemeOfUse {
     private final PreparedStatement findAllStatement;
     private final PreparedStatement getByIdStatement;
+    private final PreparedStatement getNextIdStatement;
     private final PreparedStatement insertStatement;
 
     public DAOThemeOfUse(){
         findAllStatement = Database.prepare("SELECT * FROM ThemeOfUse");
         getByIdStatement = Database.prepare("SELECT * FROM ThemeOfUse WHERE idThemeOfUse = ?");
+        getNextIdStatement = Database.prepare("SELECT IdThemeOfUse FROM ThemeOfUse WHERE IdThemeOfUse >=ALL (SELECT IdThemeOfUse FROM ThemeOfUse)");
         insertStatement = Database.prepareInsert("INSERT INTO ThemeOfUse (idThemeOfUse, nameThemeOfUse) VALUES (?, ?)");
     }
 
@@ -50,13 +52,25 @@ public class DAOThemeOfUse implements fr.univ_amu.iut.DAO.DAOThemeOfUse {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 ThemeOfUse = extractThemeOfUse(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return ThemeOfUse;
+    }
+
+    @Override
+    public int getNextId() {
+        try {
+            ResultSet resultSet = Objects.requireNonNull(getNextIdStatement).executeQuery();
+            resultSet.next();
+            return resultSet.getInt(1)+1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override

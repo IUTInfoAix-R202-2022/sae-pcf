@@ -30,5 +30,6 @@ public class MapScroll extends ScrollPane {
         StackPane map = new StackPane(france);
         map.setBackground(new Background(new BackgroundFill(france.getBackgroundColor(), CornerRadii.EMPTY, Insets.EMPTY)));
         this.setContent(map);
+        this.setMaxHeight(580);
     }
 }

@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.TextAlignment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class ThemeVisualisation extends GridPane {
                 column = 0;
             }
             this.add(themeList.get(i), column, row);
+
         }
     }
 
@@ -47,7 +49,7 @@ public class ThemeVisualisation extends GridPane {
 
         List<Theme> themeList = new ArrayList<>();
         for (ThemeOfUse themeOfUse : themeOfUseList){
-            themeList.add(new Theme(themeOfUse.getName()));
+            themeList.add(new Theme(themeOfUse.getName(),themeOfUse.getId()));
         }
 
         return themeList;

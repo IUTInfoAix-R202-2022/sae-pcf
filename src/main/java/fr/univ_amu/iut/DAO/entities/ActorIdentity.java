@@ -4,7 +4,6 @@ public class ActorIdentity {
     private int id;
     private int idTypo;
     private String name;
-    private String firstName;
 
     public ActorIdentity(){
 
@@ -32,13 +31,5 @@ public class ActorIdentity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 }
