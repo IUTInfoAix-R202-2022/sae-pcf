@@ -54,7 +54,7 @@ public class AddDataChoiceBoxDialog extends Dialog {
                             listFindAll.add(academicRegion.getName());
                         }
                         break;
-                    case "Degrée":
+                    case "Degré":
                         DAODegree daoDegree = DAOFactoryProducer.getFactory().createDaoDegree();
                         for ( Degree degree :daoDegree.findAll() ) {
                             listFindAll.add(degree.getName());
