@@ -18,6 +18,7 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
     private final PreparedStatement updateStatement;
     private final PreparedStatement deleteStatement;
     private final PreparedStatement getNextIdStatement;
+    private final PreparedStatement getByTypologyIdStatment;
 
     public DAOActorIdentity(){
         findAllStatement = Database.prepare("SELECT * FROM actorIdentity");
@@ -26,6 +27,7 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
         updateStatement = Database.prepare("UPDATE actorIdentity SET idTypology = ?, name = ?, firstName = ? WHERE idActorIdentity = ?");
         deleteStatement = Database.prepare("DELETE FROM actorIdentity WHERE idActorIdentity = ?");
         getNextIdStatement = Database.prepare("SELECT IdActorIdentity FROM ActorIdentity WHERE IdActorIdentity >=ALL (SELECT IdActorIdentity FROM ActorIdentity)");
+        getByTypologyIdStatment = Database.prepare("SELECT * FROM actorIdentity WHERE idTypology = ?");
     }
 
     public static ActorIdentity extractActorIdentity(ResultSet resultSet) throws SQLException {
@@ -123,5 +125,18 @@ public class DAOActorIdentity implements fr.univ_amu.iut.DAO.DAOActorIdentity {
             e.printStackTrace();
             return 0;
         }
+    }
+
+    @Override
+    public List<ActorIdentity> getByTypologyId(int typologyId) {
+        List<ActorIdentity> actorIdentities = new ArrayList<>();
+        try {
+            getByTypologyIdStatment.setInt(1, typologyId);
+            ResultSet resultSet = Objects.requireNonNull(getByTypologyIdStatment).executeQuery();
+            extractActorIdentity(resultSet, actorIdentities);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return actorIdentities;
     }
 }

@@ -71,7 +71,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 Typology = extractTypology(resultSet);
             }
         } catch (SQLException e) {
