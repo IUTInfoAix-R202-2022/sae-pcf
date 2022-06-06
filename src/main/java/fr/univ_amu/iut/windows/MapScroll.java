@@ -1,5 +1,8 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.DAO.DAOAcademy;
+import fr.univ_amu.iut.DAO.entities.Academy;
+import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
@@ -22,7 +25,10 @@ public class MapScroll extends ScrollPane {
                 .selectedColor(Color.web("#202077"))
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
-                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
+                    DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
+                    System.out.println(academiePath.getAcademie().getNom());
+                    Academy academy = Academy.findByName(daoAcademy.findAll(), academiePath.getAcademie().getNom().replace('\'',' '));
+                    MapTab.getInstance().generateThemesScrollByAcademy(academy);
                 })
                 .selectionEnabled(true)
                 .build();

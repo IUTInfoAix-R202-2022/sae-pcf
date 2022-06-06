@@ -1,6 +1,8 @@
 package fr.univ_amu.iut.DAO.JDBC;
 
+import fr.univ_amu.iut.DAO.entities.Academy;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
+import fr.univ_amu.iut.DAO.entities.Typology;
 
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class DAOThemeOfUse implements fr.univ_amu.iut.DAO.DAOThemeOfUse {
     private final PreparedStatement getNextIdStatement;
     private final PreparedStatement insertStatement;
     private final PreparedStatement getByNameStatement;
+    private final PreparedStatement getByAcademyStatement;
 
     public DAOThemeOfUse(){
         findAllStatement = Database.prepare("SELECT * FROM ThemeOfUse");
@@ -21,6 +24,7 @@ public class DAOThemeOfUse implements fr.univ_amu.iut.DAO.DAOThemeOfUse {
         getNextIdStatement = Database.prepare("SELECT IdThemeOfUse FROM ThemeOfUse WHERE IdThemeOfUse >=ALL (SELECT IdThemeOfUse FROM ThemeOfUse)");
         insertStatement = Database.prepareInsert("INSERT INTO ThemeOfUse (idThemeOfUse, nameThemeOfUse) VALUES (?, ?)");
         getByNameStatement = Database.prepare("SELECT * FROM ThemeOfUse WHERE NameThemeOfUse = ?");
+        getByAcademyStatement = Database.prepare("SELECT * FROM ThemeOfUse WHERE idThemeOfUse IN (SELECT idThemeOfUse FROM Typology WHERE idAcademy = ?)");
     }
 
     public static ThemeOfUse extractThemeOfUse(ResultSet resultSet) throws SQLException {
@@ -103,5 +107,20 @@ public class DAOThemeOfUse implements fr.univ_amu.iut.DAO.DAOThemeOfUse {
             e.printStackTrace();
         }
         return ThemeOfUse;
+    }
+
+    @Override
+    public List<ThemeOfUse> getByAcademy(Academy academy) {
+        List<ThemeOfUse> themeOfUses = new ArrayList<>();
+        synchronized (Objects.requireNonNull(getByAcademyStatement)){
+            try {
+                getByAcademyStatement.setInt(1, academy.getId());
+                ResultSet resultSet = getByAcademyStatement.executeQuery();
+                extractThemeOfUse(resultSet,themeOfUses);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return themeOfUses;
     }
 }
