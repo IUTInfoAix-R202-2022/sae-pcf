@@ -1,18 +1,23 @@
 package fr.univ_amu.iut.dialogs;
 
-import javafx.scene.control.Alert;
+import fr.univ_amu.iut.bundle.Bundleable;
 import javafx.scene.control.ButtonType;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.ResourceBundle;
 
-public class ContactDialog extends SimpleDialog{
+public class ContactDialog extends SimpleDialog implements Bundleable {
 
     private String URL;
+
+    private String header;
+    private String content;
     public ContactDialog(String URL) {
-        super("Vous allez être redirigé vers le site : " + URL, "Si vous confirmez cette action, votre navigateur va s'ouvrir, nous ne pouvons pas sécuriser cette action");
+        super();
+
+        generateBundle();
+
+        super.setHeader(header + " " + URL);
+        super.setContent(content);
         this.URL = URL;
     }
 
@@ -52,5 +57,13 @@ public class ContactDialog extends SimpleDialog{
         }
     }
 
+    @Override
+    public void generateBundle(){
+        super.generateBundle();
 
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("languages/dialogs/contactDialog");
+
+        this.header = resourceBundle.getString("header");
+        this.content = resourceBundle.getString("content");
+    }
 }

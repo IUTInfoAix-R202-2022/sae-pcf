@@ -29,7 +29,7 @@
              <center>
                 <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                    <children>
-                      <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" text="Connexion en tant qu'administrateur" styleClass="bold"/>
+                      <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" text="Connexion en tant qu'administrateur" styleClass="bold" fx:id="labelConnectionAsAdministrator"/>
                       <TextField fx:id="userNameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" promptText="Nom d'utilisateur">
                          <opaqueInsets>
                             <Insets />
