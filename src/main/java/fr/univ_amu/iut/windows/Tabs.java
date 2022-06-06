@@ -1,11 +1,11 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.bundle.BundleManager;
+import fr.univ_amu.iut.dialogs.LoadingDialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -13,6 +13,7 @@ import java.io.IOException;
 public class Tabs extends Pane {
 
     private static Tabs instance;
+    private LoadingDialog loadingDialog;
 
     public static Tabs getInstance() {
         if (instance == null){
@@ -54,5 +55,15 @@ public class Tabs extends Pane {
         tabs.getTabs().add(newTab);
         tabs.getSelectionModel().select(newTab);
     }
+
+    public void showLoading(String name){
+        this.loadingDialog = new LoadingDialog(name);
+        this.loadingDialog.show();
+    }
+
+    public LoadingDialog getLoadingDialog(){
+        return this.loadingDialog;
+    }
+
 
 }

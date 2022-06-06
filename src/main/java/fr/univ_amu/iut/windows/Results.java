@@ -1,10 +1,18 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.ApplicationMain;
+import fr.univ_amu.iut.DAO.ConnectionManager;
+import fr.univ_amu.iut.DAO.DAOTypology;
+import fr.univ_amu.iut.DAO.JDBC.DAOActorIdentity;
+import fr.univ_amu.iut.DAO.JDBC.Database;
+import fr.univ_amu.iut.DAO.entities.ActorIdentity;
+import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
@@ -65,23 +73,45 @@ public class Results extends GridPane {
                 this.add(data, j, i+1);
 
             }
-            MenuButton adminBtn = new MenuButton("...");
-            setMargin(adminBtn, new Insets(0, 0, 0, 13));
-            adminBtn.getStyleClass().add("adminBtn");
-            MenuItem modify = new MenuItem("Modifier");
+            if (Home.isConnected()) {  //Add admin MenuButton if the admin is connected
+                MenuButton adminBtn = new MenuButton("...");
+                setMargin(adminBtn, new Insets(0, 0, 0, 13));
+                adminBtn.getStyleClass().add("adminBtn");
 
-            int finalI1 = i;
-            modify.setOnAction(actionEvent -> {
-                EditDataDialog editDialog = new EditDataDialog();
-                editDialog.setTuple(results.get(finalI1));
-                editDialog.show();
 
-            });
+                MenuItem modify = new MenuItem("Modifier"); // modify button
 
-            MenuItem delete = new MenuItem("Supprimer");
-            //TODO eventHandler of the delete button
-            adminBtn.getItems().addAll(modify, delete);
-            this.add(adminBtn,4,i+1);
+                int finalI1 = i;
+                modify.setOnAction(actionEvent -> {   // event handler of the modify button
+                    EditDataDialog editDialog = new EditDataDialog();
+                    editDialog.setTuple(results.get(finalI1));
+                    editDialog.show();
+                });
+
+                MenuItem delete = new MenuItem("Supprimer"); //delete button
+
+                delete.setOnAction(actionEvent -> { // event handler of the delete button
+                    // Dialog for confirmation
+                    ConfirmationDialog confirmation = new ConfirmationDialog("Suppression dans la base de données.", "Les données associées vont être supprimées de la base de données.");
+                    confirmation.show();
+                    if (confirmation.getResult() == ButtonType.OK) {
+                        int typologyId = Integer.parseInt(results.get(finalI1)[0]);
+                        DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
+                        List<ActorIdentity> actorIdentities = daoActorIdentity.getByTypologyId(typologyId);
+                        for (ActorIdentity actorIdentityToDelete: actorIdentities) {
+                            daoActorIdentity.delete(actorIdentityToDelete);
+                        }
+
+                        DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
+                        daoTypology.delete(daoTypology.getById(typologyId));
+
+                        ConnectionManager.getInstance().commit();
+                    }
+                });
+
+                adminBtn.getItems().addAll(modify, delete); //add these buttons to the admin MenuButton
+                this.add(adminBtn, 4, i + 1); // add this MenuButton to the result
+            }
         }
     }
 }
