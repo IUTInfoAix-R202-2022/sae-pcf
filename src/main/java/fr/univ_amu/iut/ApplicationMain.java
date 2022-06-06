@@ -1,11 +1,6 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.DAO.ConnectionManager;
-import fr.univ_amu.iut.dialogs.ConfirmationDialog;
-import fr.univ_amu.iut.dialogs.ContactDialog;
-import fr.univ_amu.iut.windows.*;
-import javafx.scene.layout.Pane;
-import fr.univ_amu.iut.dialogs.EditDataDialog;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
 import fr.univ_amu.iut.windows.Tabs;
