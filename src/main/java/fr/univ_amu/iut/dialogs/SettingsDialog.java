@@ -1,16 +1,18 @@
 package fr.univ_amu.iut.dialogs;
 
-import javafx.fxml.FXML;
+import fr.univ_amu.iut.bundle.Bundleable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
-import javafx.scene.control.DialogPane;
 
-public class SettingsDialog extends Dialog {
+import java.util.ResourceBundle;
+
+public class SettingsDialog extends Dialog implements Bundleable {
 
     private SettingsContent settingsContent;
 
     public SettingsDialog(){
         settingsContent = new SettingsContent();
+
         this.setDialogPane(settingsContent);
     }
 
@@ -18,4 +20,10 @@ public class SettingsDialog extends Dialog {
         return settingsContent.getChoiceBox();
     }
 
+    @Override
+    public void generateBundle() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("languages/settings");
+
+        this.setTitle(resourceBundle.getString("title"));
+    }
 }

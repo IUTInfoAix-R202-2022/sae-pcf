@@ -51,6 +51,7 @@ public class MainWindow extends VBox {
     public void settings() {
         SettingsDialog settingsDialog = new SettingsDialog();
         Optional<ButtonType> result = settingsDialog.showAndWait();
+
         if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE){
             if (settingsDialog.getChoiceBox().getValue().equals("Français")){
                 Locale.setDefault(Locale.FRENCH);

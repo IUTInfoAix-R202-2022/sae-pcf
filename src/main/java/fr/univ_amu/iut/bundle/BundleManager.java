@@ -68,9 +68,35 @@ public class BundleManager {
             }
         }catch (NullPointerException ignored){}
 
+        //DataEntry
+        try{
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("languages/dataEntry");
+
+            TabPane tabPane = (TabPane) BundleManager.scene.lookup("#tabs");
+            for (Tab tab : tabPane.getTabs()){
+                if (tab.getId().equals("dataEntry")) {
+                    ((Label) tab.getContent().lookup("#allFieldsFill")).setText(resourceBundle.getString("allFieldsFill"));
+                    ((Label) tab.getContent().lookup("#themeOfUseLabel")).setText(resourceBundle.getString("themeOfUse"));
+                    ((Label) tab.getContent().lookup("#disciplineLabel")).setText(resourceBundle.getString("discipline"));
+                    ((Label) tab.getContent().lookup("#degreeLabel")).setText(resourceBundle.getString("degree"));
+                    ((Label) tab.getContent().lookup("#academyLabel")).setText(resourceBundle.getString("academy"));
+                    ((Label) tab.getContent().lookup("#academicRegionLabel")).setText(resourceBundle.getString("academicRegion"));
+                    ((Label) tab.getContent().lookup("#actorTypeLabel")).setText(resourceBundle.getString("actorType"));
+                    ((Label) tab.getContent().lookup("#actorIdentityLabel")).setText(resourceBundle.getString("actorIdentity"));
+                    ((TextField) tab.getContent().lookup("#fieldIdOfActorName")).setPromptText(resourceBundle.getString("name"));
+                    ((Button) tab.getContent().lookup("#buttonAddIdOfActor")).setText(resourceBundle.getString("addAnActor"));
+                    try {
+                        ((Button) tab.getContent().lookup("#removeButton")).setText(resourceBundle.getString("deleteAnActor"));
+                    }catch (NullPointerException ignored){}
+                    ((Label) tab.getContent().lookup("#resourceNameLabel")).setText(resourceBundle.getString("resourceName"));
+                    ((Label) tab.getContent().lookup("#resourceLinkLabel")).setText(resourceBundle.getString("resourceLink"));
+                    ((Label) tab.getContent().lookup("#sourceTypeLabel")).setText(resourceBundle.getString("sourceType"));
+                    ((Label) tab.getContent().lookup("#commentariesLabel")).setText(resourceBundle.getString("commentaries"));
+                    ((Button) tab.getContent().lookup("#submitNewDataButton")).setText(resourceBundle.getString("submit"));
+                }
+            }
+        }catch (NullPointerException ignored){}
     }
 
-    private BundleManager(){
-
-    }
+    private BundleManager(){}
 }
