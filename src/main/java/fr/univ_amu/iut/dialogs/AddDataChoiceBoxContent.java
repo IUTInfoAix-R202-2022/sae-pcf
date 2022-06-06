@@ -31,7 +31,7 @@ public class AddDataChoiceBoxContent extends DialogPane {
 
     public AddDataChoiceBoxContent(String dataName){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "/fr/univ_amu/iut/javaFX/dialogs/addDataChoiceBox.fxml"));
+                "/fr/univ_amu/iut/javaFX/dialogs/AddDataChoiceBox.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
