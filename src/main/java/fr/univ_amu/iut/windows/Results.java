@@ -2,9 +2,11 @@ package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.ApplicationMain;
 import fr.univ_amu.iut.DAO.ConnectionManager;
+import fr.univ_amu.iut.DAO.DAOAcademy;
 import fr.univ_amu.iut.DAO.DAOThemeOfUse;
 import fr.univ_amu.iut.DAO.DAOTypology;
 import fr.univ_amu.iut.DAO.JDBC.DAOActorIdentity;
+import fr.univ_amu.iut.DAO.entities.Academy;
 import fr.univ_amu.iut.DAO.entities.ActorIdentity;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
@@ -44,7 +46,7 @@ public class Results extends GridPane {
         this.tabIndex = tabIndex;
     }
 
-    public void addResults(List<String[]> results) {
+    public void addResults(List<String[]> results, String type) {
         for (int i = 0; i < results.size(); ++i) {
             for (int j = 0; j <= 3; ++j) {
                 Button data;
@@ -105,6 +107,9 @@ public class Results extends GridPane {
                         DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
                         ThemeOfUse actualTheme = daoThemeOfUse.getById(daoThemeOfUse.getByName(results.get(finalI1)[1]).getId());  //we get the current theme before commit changes on the database
 
+                        DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
+                        Academy actualAcademy = Academy.findByName(daoAcademy.findAll(),results.get(finalI1)[4]);//we get the current academy before commit changes on the database
+
                         int typologyId = Integer.parseInt(results.get(finalI1)[0]);
 
                         DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
@@ -118,8 +123,14 @@ public class Results extends GridPane {
                         daoTypology.delete(daoTypology.getById(typologyId));
 
                         ConnectionManager.getInstance().commit();
-
-                        Theme.addThemeTab(actualTheme);    //Add the new result tab without deleted raw
+                        switch (type){
+                            case "theme" :
+                                Theme.addThemeTab(actualTheme);    //Add the new result tab without deleted raw
+                                break;
+                            case "academicTheme" :
+                                AcademicTheme.addThemeTab(actualTheme, actualAcademy);
+                                break;
+                        }
 
                         Tabs.getInstance().remove(this.tabIndex); // Delete this tab because it's now deprecated
                     }

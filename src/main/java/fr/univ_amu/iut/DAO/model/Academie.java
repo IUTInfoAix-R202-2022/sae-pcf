@@ -27,7 +27,7 @@ public class Academie {
     @Transient
     public static Academie Martinique = new Academie("MA", "Académie de la Martinique", RegionAcademique.Martinique);
     @Transient
-    public static Academie Reunion = new Academie("RE", "Académie de La Réunion", RegionAcademique.Reunion);
+    public static Academie Reunion = new Academie("RE", "Académie de la Réunion", RegionAcademique.Reunion);
     @Transient
     public static Academie Limoges = new Academie("LI", "Académie de Limoges", RegionAcademique.NouvelleAquitaine);
     @Transient
