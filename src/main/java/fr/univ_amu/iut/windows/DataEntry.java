@@ -3,6 +3,7 @@ package fr.univ_amu.iut.windows;
 import fr.univ_amu.iut.DAO.*;
 import fr.univ_amu.iut.DAO.entities.*;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.bundle.Bundleable;
 import fr.univ_amu.iut.dialogs.AddDataChoiceBoxDialog;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,7 +18,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.*;
 
-public class DataEntry extends ScrollPane {
+public class DataEntry extends ScrollPane implements Bundleable {
 
     private List<ThemeOfUse> themeOfUseList;
     private List<Discipline> disciplines;
@@ -38,6 +39,41 @@ public class DataEntry extends ScrollPane {
         }
     }
 
+    @FXML
+    private Label allFieldsFill;
+
+    @FXML
+    private Label themeOfUseLabel;
+
+    @FXML
+    private Label disciplineLabel;
+
+    @FXML
+    private Label degreeLabel;
+
+    @FXML
+    private Label academyLabel;
+
+    @FXML
+    private Label academicRegionLabel;
+
+    @FXML
+    private Label actorTypeLabel;
+
+    @FXML
+    private Label actorIdentityLabel;
+
+    @FXML
+    private Label resourceLinkLabel;
+
+    @FXML
+    private Label resourceNameLabel;
+
+    @FXML
+    private Label sourceTypeLabel;
+
+    @FXML
+    private Label commentariesLabel;
     @FXML
     private ChoiceBox choiceBoxThemeOfUse;
 
@@ -98,6 +134,8 @@ public class DataEntry extends ScrollPane {
     @FXML
     private Button submitNewDataButton;
 
+    Button removeButton = new Button("Supprimer un acteur");
+
     private ArrayList<StringProperty> fieldsStringProperties = new ArrayList<StringProperty>();
     private ArrayList<StringProperty> requiredFieldsStringProperties = new ArrayList<StringProperty>();
     private ArrayList<Label> requiredFieldsNotFilledLabels;
@@ -111,6 +149,10 @@ public class DataEntry extends ScrollPane {
         requiredFieldsNotFilledLabels = new ArrayList (List.of(new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName, labelNotFillResourceLink}));
 
         initializeChoiceBox();
+
+        removeButton.setId("removeButton");
+
+        generateBundle();
     }
 
     void initializeFieldsStringProperties(){
@@ -198,7 +240,7 @@ public class DataEntry extends ScrollPane {
     private HBox newHBoxIdActor(){
         TextField name = new TextField();
 
-        name.setPromptText("Nom");
+        name.setPromptText(fieldIdOfActorName.getPromptText());
 
         HBox.setHgrow(name, Priority.ALWAYS);
 
@@ -232,7 +274,6 @@ public class DataEntry extends ScrollPane {
     @FXML
     private void addIdOfActor(){
         if (vBoxIdOfActor.getChildren().size() == 3){
-            Button removeButton = new Button("Supprimer un acteur");
             removeButton.setOnAction(actionEvent -> {
                 vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 4, vBoxIdOfActor.getChildren().size() - 2);
                 if (vBoxIdOfActor.getChildren().size() == 4) {
@@ -574,4 +615,31 @@ public class DataEntry extends ScrollPane {
         this.submitNewDataButton.setVisible(false);
     }
 
+    @FXML
+    private Button buttonAddIdOfActor;
+    @Override
+    public void generateBundle() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("languages/dataEntry");
+
+        allFieldsFill.setText(resourceBundle.getString("allFieldsFill"));
+        themeOfUseLabel.setText(resourceBundle.getString("themeOfUse"));
+        disciplineLabel.setText(resourceBundle.getString("discipline"));
+        degreeLabel.setText(resourceBundle.getString("degree"));
+        academyLabel.setText(resourceBundle.getString("academy"));
+        academicRegionLabel.setText(resourceBundle.getString("academicRegion"));
+        actorTypeLabel.setText(resourceBundle.getString("actorType"));
+        actorIdentityLabel.setText(resourceBundle.getString("actorIdentity"));
+        fieldIdOfActorName.setPromptText(resourceBundle.getString("name"));
+        buttonAddIdOfActor.setText(resourceBundle.getString("addAnActor"));
+        removeButton.setText(resourceBundle.getString("deleteAnActor"));
+        resourceNameLabel.setText(resourceBundle.getString("resourceName"));
+        resourceLinkLabel.setText(resourceBundle.getString("resourceLink"));
+        sourceTypeLabel.setText(resourceBundle.getString("sourceType"));
+        commentariesLabel.setText(resourceBundle.getString("commentaries"));
+        submitNewDataButton.setText(resourceBundle.getString("submit"));
+
+        for (Label label : requiredFieldsNotFilledLabels){
+            label.setText(resourceBundle.getString("error"));
+        }
+    }
 }

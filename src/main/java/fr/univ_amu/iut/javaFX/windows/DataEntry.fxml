@@ -9,7 +9,7 @@
    <content>
       <VBox spacing="50.0">
          <children>
-            <Label alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis">
+            <Label alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis" fx:id="allFieldsFill">
                <font>
                   <Font name="JetBrains Mono Regular" size="13.0" />
                </font>
@@ -21,7 +21,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Thématique d'usage *">
+                        <Label prefWidth="300.0" text="Thématique d'usage *" fx:id="themeOfUseLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -50,7 +50,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Discipline *">
+                        <Label prefWidth="300.0" text="Discipline *" fx:id="disciplineLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -72,7 +72,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Degré *">
+                        <Label prefWidth="300.0" text="Degré *" fx:id="degreeLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -97,7 +97,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Académie *">
+                        <Label prefWidth="300.0" text="Académie *" fx:id="academyLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -122,7 +122,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Région académique">
+                        <Label prefWidth="300.0" text="Région académique" fx:id="academicRegionLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -146,7 +146,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Type d'acteurs *">
+                        <Label prefWidth="300.0" text="Type d'acteurs *" fx:id="actorTypeLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -167,7 +167,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Identité des acteurs *">
+                        <Label prefWidth="300.0" text="Identité des acteurs *" fx:id="actorIdentityLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -208,7 +208,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Lien de la ressource *">
+                        <Label prefWidth="300.0" text="Lien de la ressource *" fx:id="resourceLinkLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -229,7 +229,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Nom de la ressource">
+                        <Label prefWidth="300.0" text="Nom de la ressource" fx:id="resourceNameLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -252,7 +252,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Type de source">
+                        <Label prefWidth="300.0" text="Type de source" fx:id="sourceTypeLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -275,7 +275,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label alignment="TOP_LEFT" prefWidth="300.0" text="Commentaires">
+                        <Label alignment="TOP_LEFT" prefWidth="300.0" text="Commentaires" fx:id="commentariesLabel">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>

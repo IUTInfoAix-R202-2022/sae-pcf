@@ -9,6 +9,8 @@ import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.Typology;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
+import fr.univ_amu.iut.ApplicationMain;
+
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +21,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.util.List;
 
@@ -42,26 +45,43 @@ public class DetailedResult extends FlowPane {
         for (int i = 0; i < labels.length; ++i) {
             Label columnLabel = new Label(labels[i]);
             columnLabel.getStyleClass().add("columnLabel");
-            VBox vBox = new VBox(columnLabel);
+          
+            VBox column = new VBox(columnLabel);
             if (i == 6){ // for display all the names of actors identities
                 for (ActorIdentity actor: actorIdentities) {
-                    Text columnText = new Text(actor.getName());
-                    vBox.getChildren().add(columnText);
+                    Label columnText = new Text(actor.getName());
+                    columnText.getStyleClass().add("columnText");
+                    column.getChildren().add(columnText);
+                    columnText.setPadding(new Insets(5, 3, 3, 3));
+                    columnText.getStyleClass().add("columnText");
+                    columnText.setWrapText(true);
+                    columnText.setMaxWidth((ApplicationMain.WINDOW_WIDTH / 4 ));
+                    columnText.setTextAlignment(TextAlignment.CENTER);
                 }
             }
             else {
-                Text columnText = new Text(singleResult[i+1]);
-                vBox.getChildren().add(columnText);
+                Label columnText = new Text(singleResult[i+1]);
+                columnText.getStyleClass().add("columnText");
+                column.getChildren().add(columnText);
+                columnText.setPadding(new Insets(5, 3, 3, 3));
+                columnText.getStyleClass().add("columnText");
+                columnText.setWrapText(true);
+                columnText.setMaxWidth((ApplicationMain.WINDOW_WIDTH / 4 ));
+                columnText.setTextAlignment(TextAlignment.CENTER);
             }
-            Insets paddingVBox = new Insets(0,0,0,2);
-            vBox.setPadding(paddingVBox);
-            vBox.setStyle("-fx-border-width : 2");
-            vBox.setStyle("-fx-border-color :  white white white black");
-            this.getChildren().add(vBox);
+
+            column.setAlignment(Pos.TOP_CENTER);
+            column.getStyleClass().add("resultColumn");
+
+            columnLabel.setMaxWidth(Double.MAX_VALUE);
+
+            this.getChildren().add(column);
         }
-        this.setHgap(13);
-        this.setVgap(60);
-        this.setAlignment(Pos.TOP_CENTER);
+        setHgap(13);
+        setVgap(30);
+        setAlignment(Pos.TOP_LEFT);
+        setPadding(new Insets(13, 25, 0, 25));
+        getStyleClass().add("DetailedTab");
 
         if (Home.isConnected()) {
             Button modifyBtn = new Button("Modifier");

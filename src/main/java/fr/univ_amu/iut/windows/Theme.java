@@ -71,7 +71,7 @@ public class Theme extends Button {
                         Results results = new Results(Tabs.getInstance().getTabPaneSize());
                         results.addResults(stringsList);
                         resultsTab.getChildren().add(results);
-
+                      
                         Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true);
 
                         Tabs.getInstance().getLoadingDialog().endLoad();

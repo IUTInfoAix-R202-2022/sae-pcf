@@ -1,0 +1,8 @@
+.root {
+    /*-fx-background-image: url("background.jpg");*/
+    -fx-background-color: #FFF;
+}
+
+.transparentBG {
+    -fx-background-color: #FFF;
+}

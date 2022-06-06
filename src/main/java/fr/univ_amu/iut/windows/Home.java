@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.ApplicationMain;
+import fr.univ_amu.iut.bundle.BundleManager;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class Home extends Pane {
     private static boolean connected = false;
@@ -45,6 +47,12 @@ public class Home extends Pane {
 
     @FXML
     private Label errorMessage;
+
+    @FXML
+    private Button dataAccessButton;
+
+    @FXML
+    private Label labelConnectionAsAdministrator;
 
     @FXML
     void submit(){
