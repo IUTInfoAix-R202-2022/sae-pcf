@@ -14,8 +14,11 @@ public class Typology {
         DAODegree daoDegree = DAOFactoryProducer.getFactory().createDaoDegree();
         DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
         DAOAcademicRegion daoAcademicRegion = DAOFactoryProducer.getFactory().createDAOAcademicRegion();
+        DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
 
-        String[] strings = {"","","","","","","","","","","",""};
+        List<ActorIdentity> actorIdentities = daoActorIdentity.getByTypologyId(typology.getId());
+
+        String[] strings = new String[11+actorIdentities.size()];
         strings[0] = Integer.toString(typology.getId());
 
         strings[1] = daoThemeOfUse.getById(typology.getIdThemeOfUse()).getName();
@@ -24,11 +27,14 @@ public class Typology {
         strings[4] = daoAcademy.getById(typology.getIdAcademy()).getName();
         strings[5] = daoAcademicRegion.getById(typology.getIdAcademicRegion()).getName();
         strings[6] = typology.getActorType();
-        strings[7] = "nom";
-        strings[8] = typology.getLink();
-        strings[9] = typology.getResourceName();
-        strings[10] = typology.getResourceType();
-        strings[11] = typology.getCommentary();
+        strings[7] = typology.getLink();
+        strings[8] = typology.getResourceName();
+        strings[9] = typology.getResourceType();
+        strings[10] = typology.getCommentary();
+
+        for (int i = 0; i < actorIdentities.size(); ++i) {
+            strings[i+11] = actorIdentities.get(i).getName();
+        }
 
         return strings;
     }

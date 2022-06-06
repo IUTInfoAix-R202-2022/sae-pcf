@@ -40,16 +40,18 @@ public class DetailedResult extends FlowPane {
         List<ActorIdentity> actorIdentities = daoActorIdentity.getByTypologyId(typology.getId());  //create list of actors from typology
 
         String[] labels = {"Thématique d'usage", "Discipline ", "Degré", "Académie", "Région académique",
-                "Type d'acteurs", "Identité des acteurs", "Lien de la ressource", "Nom de la ressource",
-                "Type de source", "Commentaires"};
+                "Type d'acteurs", "Lien de la ressource", "Nom de la ressource",
+                "Type de source", "Commentaires", "Identité des acteurs"};
+
         for (int i = 0; i < labels.length; ++i) {
             Label columnLabel = new Label(labels[i]);
             columnLabel.getStyleClass().add("columnLabel");
           
             VBox column = new VBox(columnLabel);
-            if (i == 6){ // for display all the names of actors identities
-                for (ActorIdentity actor: actorIdentities) {
-                    Label columnText = new Text(actor.getName());
+
+            if (i == labels.length-1){ // for display all the names of actors identities
+                for (int j = i+1; j < singleResult.length; ++j) { // j = i +1 because singleResult[0] is the id
+                    Label columnText = new Label(singleResult[j]);
                     columnText.getStyleClass().add("columnText");
                     column.getChildren().add(columnText);
                     columnText.setPadding(new Insets(5, 3, 3, 3));
@@ -60,7 +62,7 @@ public class DetailedResult extends FlowPane {
                 }
             }
             else {
-                Label columnText = new Text(singleResult[i+1]);
+                Label columnText = new Label(singleResult[i+1]);
                 columnText.getStyleClass().add("columnText");
                 column.getChildren().add(columnText);
                 columnText.setPadding(new Insets(5, 3, 3, 3));

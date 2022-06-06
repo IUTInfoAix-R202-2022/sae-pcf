@@ -12,10 +12,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
+import java.util.*;
 
 public class EditDataDialog extends DialogPane{
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -87,11 +84,16 @@ public class EditDataDialog extends DialogPane{
         this.dataEntry.setTextChoiceBoxAcademy(tuple[4]);
         this.dataEntry.setTextChoiceBoxAcademicRegion(tuple[5]);
         this.dataEntry.setFieldTypeOfActors(tuple[6]);
-        this.dataEntry.setNames(new String[]{tuple[7]});
-        this.dataEntry.setFieldResourceLink(tuple[8]);
-        this.dataEntry.setFieldResourceName(tuple[9]);
-        this.dataEntry.setFieldSourceType(tuple[10]);
-        this.dataEntry.setFieldComment(tuple[11]);
+        this.dataEntry.setFieldResourceLink(tuple[7]);
+        this.dataEntry.setFieldResourceName(tuple[8]);
+        this.dataEntry.setFieldSourceType(tuple[9]);
+        this.dataEntry.setFieldComment(tuple[10]);
+
+        String[] names = new String[tuple.length-11];
+        for (int i = 0; i < names.length; ++i) {
+            names[i] = tuple[i+11];
+        }
+        this.dataEntry.setNames(names);
     }
 
 

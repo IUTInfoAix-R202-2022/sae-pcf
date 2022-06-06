@@ -72,7 +72,7 @@ public class Theme extends Button {
                         results.addResults(stringsList);
                         resultsTab.getChildren().add(results);
                       
-                        Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true);
+                        Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true,null);
 
                         Tabs.getInstance().getLoadingDialog().endLoad();
                     }

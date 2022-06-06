@@ -43,7 +43,7 @@ public class AddDataChoiceBoxContent extends DialogPane {
 
         dialogNameLabel.setText("Ajouter un(e) " + dataName + " à la base de données");
         errorMessageLabel.setText("Ce(tte) " + dataName + " est déja présente dans la base de données");
-        detailsArea.setText("Dans ce dialogue vous pouvez ecrire un(e) nouveau/nouvelle " + dataName + " qui sera ajouté(e) à la base de données");
+        detailsArea.setText("Dans ce dialogue vous pouvez écrire un(e) nouveau/nouvelle " + dataName + " qui sera ajouté(e) à la base de données");
         detailsArea.setBorder(Border.EMPTY);
         detailsArea.setBackground(Background.EMPTY);
     }

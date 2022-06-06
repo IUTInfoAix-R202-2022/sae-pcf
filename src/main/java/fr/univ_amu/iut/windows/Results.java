@@ -68,7 +68,7 @@ public class Results extends GridPane {
                 }
                 int finalI = i;
                 data.setOnAction(
-                        actionEvent -> Tabs.getInstance().addATab("Random tab name", new DetailedResult(results.get(finalI),Tabs.getInstance().getTabPaneSize()), true)
+                        actionEvent -> Tabs.getInstance().addATab("Random tab name", new DetailedResult(results.get(finalI),Tabs.getInstance().getTabPaneSize()), true,null)
                 );
 
                 data.setWrapText(true);
