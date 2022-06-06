@@ -48,6 +48,7 @@ public class Tabs extends Pane {
         Tab newTab = new Tab(tabTitle);
         newTab.setClosable(closeable);
         newTab.getStyleClass().add("tabs");
+        newTab.getStyleClass().add("transparentBG");
         newTab.setContent(content);
         tabs.getTabs().add(newTab);
         tabs.getSelectionModel().select(newTab);

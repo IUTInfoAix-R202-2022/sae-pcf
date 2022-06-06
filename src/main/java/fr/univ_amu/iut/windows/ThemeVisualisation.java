@@ -21,8 +21,8 @@ public class ThemeVisualisation extends GridPane {
     private List<ThemeOfUse> themeOfUseList;
 
     public ThemeVisualisation() {
-        this.setPrefWidth(1200);
         this.setAlignment(Pos.TOP_CENTER);
+        this.getStyleClass().add("transparentBG");
         //gridPane.setHgap(13);
         //gridPane.setVgap(13);
         addThemes(this.getThemes());

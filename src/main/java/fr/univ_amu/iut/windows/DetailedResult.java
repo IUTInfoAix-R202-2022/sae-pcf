@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.ApplicationMain;
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,6 +10,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.beans.EventHandler;
 
@@ -21,17 +23,28 @@ public class DetailedResult extends FlowPane {
         for (int i = 0; i < labels.length; i++) {
             Label columnLabel = new Label(labels[i]);
             columnLabel.getStyleClass().add("columnLabel");
-            Text columnText = new Text(singleResult[i+1]);
-            VBox vBox = new VBox(columnLabel, columnText);
-            Insets paddingVBox = new Insets(0,0,0,2);
-            vBox.setPadding(paddingVBox);
-            vBox.setStyle("-fx-border-width : 2");
-            vBox.setStyle("-fx-border-color :  white white white black");
-            this.getChildren().add(vBox);
+
+            Label columnText = new Label(singleResult[i+1]);
+            columnText.getStyleClass().add("columnText");
+            VBox column = new VBox(columnLabel, columnText);
+            column.setAlignment(Pos.TOP_CENTER);
+            column.getStyleClass().add("resultColumn");
+            columnText.setWrapText(true);
+            columnLabel.setMaxWidth(Double.MAX_VALUE);
+
+            columnText.setPadding(new Insets(5, 3, 3, 3));
+            columnLabel.setPadding(new Insets(3, 3, 3, 3));
+
+            columnText.setMaxWidth((ApplicationMain.WINDOW_WIDTH / 4 ));
+            columnText.setTextAlignment(TextAlignment.CENTER);
+
+            this.getChildren().add(column);
         }
-        this.setHgap(13);
-        this.setVgap(60);
-        this.setAlignment(Pos.TOP_CENTER);
+        setHgap(13);
+        setVgap(30);
+        setAlignment(Pos.TOP_LEFT);
+        setPadding(new Insets(13, 25, 0, 25));
+        getStyleClass().add("DetailedTab");
 
         if (Home.isConnected()) {
             Button modifyBtn = new Button("Modifier");

@@ -25,6 +25,7 @@ public class Results extends GridPane {
         this.setHgap(8);
         this.setVgap(5);
 
+
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -62,6 +63,8 @@ public class Results extends GridPane {
                 data.setWrapText(true);
                 data.setMaxWidth((ApplicationMain.WINDOW_WIDTH / 4 ));
                 data.setTextAlignment(TextAlignment.CENTER);
+                data.setMaxHeight(Double.POSITIVE_INFINITY);
+
                 this.add(data, j, i+1);
 
             }
