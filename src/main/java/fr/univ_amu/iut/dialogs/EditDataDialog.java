@@ -34,43 +34,49 @@ public class EditDataDialog extends DialogPane{
     }
 
     public void show(){
-        DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
-        ArrayList<ActorIdentity> initialActorIdentities = dataEntry.getActors(dataEntry.getTypology(daoTypology));
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get().getButtonData() == ButtonBar.ButtonData.OK_DONE){
             if (!dataEntry.requiredFieldsManagement()){
                 this.show();
             }
-            DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
+            ConfirmationDialog confirmation = new ConfirmationDialog("Sauvegarde dans la base de données.", "Les données saisis vont être enregistrées dans la base de données.");
+            confirmation.show();
+            if (confirmation.getResult() == ButtonType.OK) {
+                DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
+                ArrayList<ActorIdentity> initialActorIdentities = dataEntry.getActors(dataEntry.getTypology(daoTypology));
+                DAOActorIdentity daoActorIdentity = DAOFactoryProducer.getFactory().createDaoActorIdentity();
 
-            Typology typology = dataEntry.getTypology(daoTypology);
-            daoTypology.update(typology);
+                Typology typology = dataEntry.getTypology(daoTypology);
+                daoTypology.update(typology);
 
-            ArrayList<ActorIdentity> actorIdentities = dataEntry.getActors(typology);
+                ArrayList<ActorIdentity> actorIdentities = dataEntry.getActors(typology);
 
-            if (initialActorIdentities.size() > actorIdentities.size()){
-                for (ActorIdentity actorIdentity : initialActorIdentities ) {
-                    daoActorIdentity.delete(actorIdentity);
-                }
-                for (ActorIdentity actorIdentity : actorIdentities) {
-                    daoActorIdentity.insert(actorIdentity);
-                }
-            }
-            else {
-                for (int i = 0; i < initialActorIdentities.size(); ++i) {
-                    if ( ! initialActorIdentities.get(i).getName().equals(actorIdentities.get(i).getName())){
-                        actorIdentities.get(i).setId(initialActorIdentities.get(i).getId());
-                        daoActorIdentity.update(actorIdentities.get(i));
+                if (initialActorIdentities.size() > actorIdentities.size()) {
+                    for (ActorIdentity actorIdentity : initialActorIdentities) {
+                        daoActorIdentity.delete(actorIdentity);
+                    }
+                    for (ActorIdentity actorIdentity : actorIdentities) {
+                        daoActorIdentity.insert(actorIdentity);
+                    }
+                } else {
+                    for (int i = 0; i < initialActorIdentities.size(); ++i) {
+                        if (!initialActorIdentities.get(i).getName().equals(actorIdentities.get(i).getName())) {
+                            actorIdentities.get(i).setId(initialActorIdentities.get(i).getId());
+                            daoActorIdentity.update(actorIdentities.get(i));
+                        }
+                    }
+                    for (int i = initialActorIdentities.size(); i < actorIdentities.size(); ++i) {
+                        daoActorIdentity.insert(actorIdentities.get(i));
                     }
                 }
-                for (int i = initialActorIdentities.size(); i < actorIdentities.size(); ++i) {
-                    daoActorIdentity.insert(actorIdentities.get(i));
-                }
+
+                ConnectionManager.getInstance().commit();
+
+                dataEntry.clearFields();
             }
-
-            ConnectionManager.getInstance().commit();
-
-            dataEntry.clearFields();
+            else{
+                this.show();
+            }
         }
     }
 
