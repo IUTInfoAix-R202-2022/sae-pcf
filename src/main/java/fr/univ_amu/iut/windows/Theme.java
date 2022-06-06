@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.DAO.DAOTypology;
+import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.Typology;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import javafx.application.Platform;
@@ -26,51 +27,56 @@ public class Theme extends Button {
         this.setTextAlignment(TextAlignment.CENTER);
 
         this.setOnAction(actionEvent -> {
-            Tabs.getInstance().showLoading("résultat "+this.name);
-
-            Executors.newCachedThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    butonAction();   //Run on another thread to have a loading bar
-                }
-            });
+            butonAction();
         });
     }
 
     private void butonAction(){
+        ThemeOfUse actualTheme = new ThemeOfUse();
+        actualTheme.setName(this.name);
+        actualTheme.setId(this.id);
+        this.addThemeTab(actualTheme);
+    }
 
-        DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
-        List<Typology> typologies = daoTypology.findByThemeId(this.id);
-        Platform.runLater(new Runnable() {
+    public static void addThemeTab(ThemeOfUse themeOfUse){
+        Tabs.getInstance().showLoading("résultat "+themeOfUse.getName());
+        Executors.newCachedThreadPool().execute(new Runnable() {
             @Override
-            public void run() {  //run on fx thread because it's GUI change
-                Tabs.getInstance().getLoadingDialog().addProgressToProgressBar(0.2);
-            }
-        });
+            public void run() { //Run on another thread to have a loading bar
+                DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
+                List<Typology> typologies = daoTypology.findByThemeId(themeOfUse.getId());
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {  //run on fx thread because it's GUI change
+                        Tabs.getInstance().getLoadingDialog().addProgressToProgressBar(0.2);
+                    }
+                });
 
-        List<String[]> stringsList = new ArrayList<>();
-        for (Typology typology : typologies){
-            stringsList.add(Typology.getStrings(typology));
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Tabs.getInstance().getLoadingDialog().addProgressToProgressBar(0.8 / typologies.size()); //run on fx thread because it's GUI change
-                    Tabs.getInstance().getLoadingDialog().setLoadingDetails("Chargement de la ressource \""+typology.getResourceName()+"\"");
+                List<String[]> stringsList = new ArrayList<>();
+                for (Typology typology : typologies){
+                    stringsList.add(Typology.getStrings(typology));
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Tabs.getInstance().getLoadingDialog().addProgressToProgressBar(0.8 / typologies.size()); //run on fx thread because it's GUI change
+                            Tabs.getInstance().getLoadingDialog().setLoadingDetails("Chargement de la ressource \""+typology.getResourceName()+"\"");
+                        }
+                    });
                 }
-            });
-        }
 
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {   //run on fx thread because it's GUI change
-                ResultsTab resultsTab = new ResultsTab();
-                Results results = new Results();
-                results.addResults(stringsList);
-                resultsTab.getChildren().add(results);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {   //run on fx thread because it's GUI change
+                        ResultsTab resultsTab = new ResultsTab();
+                        Results results = new Results(Tabs.getInstance().getTabPaneSize());
+                        results.addResults(stringsList);
+                        resultsTab.getChildren().add(results);
+                      
+                        Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true);
 
-                Tabs.getInstance().addATab(name,resultsTab,true,null);
-
-                Tabs.getInstance().getLoadingDialog().endLoad();
+                        Tabs.getInstance().getLoadingDialog().endLoad();
+                    }
+                });
             }
         });
     }

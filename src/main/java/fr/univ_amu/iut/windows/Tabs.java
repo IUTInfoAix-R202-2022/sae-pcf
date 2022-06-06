@@ -57,6 +57,14 @@ public class Tabs extends Pane {
         tabs.getSelectionModel().select(newTab);
     }
 
+    public void remove(int index){
+        tabs.getTabs().remove(index);
+    }
+
+    public int getTabPaneSize(){
+        return tabs.getTabs().size();
+    }
+
     public void showLoading(String name){
         this.loadingDialog = new LoadingDialog(name);
         this.loadingDialog.show();

@@ -13,5 +13,4 @@ public interface DAOTypology extends DAO<Typology,Integer> {
 
     List<Typology> findByThemeId(int themeId);
 
-
 }

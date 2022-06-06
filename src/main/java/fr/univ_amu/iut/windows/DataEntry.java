@@ -318,8 +318,6 @@ public class DataEntry extends ScrollPane implements Bundleable {
 
         typology.setId(daoTypology.getNextId());
 
-        System.out.println(getFieldsString()[0]);
-
         typology.setIdThemeOfUse(ThemeOfUse.findByName(this.themeOfUseList,getFieldsString()[0]).getId());
         typology.setIdDiscipline(Discipline.findByName(this.disciplines,getFieldsString()[1]).getId());
         typology.setIdDegree(Degree.findByName(this.degrees,getFieldsString()[2]).getId());
@@ -340,8 +338,6 @@ public class DataEntry extends ScrollPane implements Bundleable {
         Typology typology = new Typology();
 
         typology.setId(Typology.findByResourceName(daoTypology.findAll(),getFieldsString()[7]).getId());
-
-        System.out.println(getFieldsString()[0]);
 
         typology.setIdThemeOfUse(ThemeOfUse.findByName(this.themeOfUseList,getFieldsString()[0]).getId());
         typology.setIdDiscipline(Discipline.findByName(this.disciplines,getFieldsString()[1]).getId());
