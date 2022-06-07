@@ -38,6 +38,7 @@ public class DataEntry extends ScrollPane implements Bundleable {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        this.setFitToWidth(true);
     }
 
     @FXML

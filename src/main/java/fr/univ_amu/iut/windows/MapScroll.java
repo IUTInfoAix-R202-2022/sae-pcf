@@ -36,5 +36,6 @@ public class MapScroll extends ScrollPane {
         map.setBackground(new Background(new BackgroundFill(france.getBackgroundColor(), CornerRadii.EMPTY, Insets.EMPTY)));
         this.setContent(map);
         this.setMaxHeight(580);
+        this.setPadding(new Insets(0, 0, 13, 0));
     }
 }

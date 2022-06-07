@@ -16,7 +16,6 @@ public class MapTheme extends GridPane {
     private List<ThemeOfUse> themeOfUseList;
 
     public MapTheme(Academy academy) {
-        this.getStyleClass().add("transparentBG");
         this.addThemes(this.getThemes(academy));
     }
 

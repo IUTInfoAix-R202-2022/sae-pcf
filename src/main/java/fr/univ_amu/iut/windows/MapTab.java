@@ -11,12 +11,15 @@ public class MapTab extends HBox {
 
     private MapTab () {
         this.setSpacing(25);
+        this.getStyleClass().add("transparentBG");
         this.setPadding(new Insets(13, 13, 13, 13));
         this.themesScroll = new ScrollPane(new MapTheme(new Academy()));
         this.themesScroll.getStyleClass().add("transparentBG");
         this.themesScroll.setMinWidth(550);
         this.themesScroll.setMaxHeight(580);
-        this.getChildren().addAll(new MapScroll(), this.themesScroll);
+        MapScroll mapScroll = new MapScroll();
+        setMargin(mapScroll, new Insets(0, 0, 25, 0));
+        this.getChildren().addAll(mapScroll, this.themesScroll);
     }
 
     public static MapTab getInstance(){

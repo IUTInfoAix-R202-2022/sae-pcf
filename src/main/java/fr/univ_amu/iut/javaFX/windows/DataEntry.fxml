@@ -5,21 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" styleClass="transparentBG" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox spacing="50.0">
+      <VBox spacing="50.0" alignment="TOP_CENTER">
          <children>
             <Label fx:id="allFieldsFill" alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis">
                <font>
                   <Font name="JetBrains Mono Regular" size="13.0" />
                </font>
-               <VBox.margin>
-                  <Insets left="150.0" top="10.0" />
-               </VBox.margin>
             </Label>
             <VBox>
                <children>
-                  <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
+                  <SplitPane dividerPositions="0.5, 0.5">
                      <items>
                         <Label fx:id="themeOfUseLabel" prefWidth="300.0" text="Thématique d'usage *">
                            <padding>
@@ -205,7 +202,7 @@
                   <Insets left="150.0" />
                </VBox.margin>
             </VBox>
-            <VBox>
+            <VBox styleClass="transparentBG">
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
