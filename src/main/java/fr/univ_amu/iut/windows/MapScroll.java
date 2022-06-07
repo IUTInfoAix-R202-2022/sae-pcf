@@ -26,7 +26,6 @@ public class MapScroll extends ScrollPane {
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
                     DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
-                    System.out.println(academiePath.getAcademie().getNom());
                     Academy academy = Academy.findByName(daoAcademy.findAll(), academiePath.getAcademie().getNom().replace('\'',' '));
                     MapTab.getInstance().generateThemesScrollByAcademy(academy);
                 })
