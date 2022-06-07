@@ -52,7 +52,7 @@
 }
 
 .resultColumn {
-    -fx-border-color: #3700B3;
+        -fx-border-color: #3700B3;
     -fx-background-color: #FFF;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .columnText {
-    -fx-text-fill: #6200EE;
+    -fx-text-fill: #000;
 }
 
 .DetailedTab {

@@ -32,6 +32,7 @@ public class DetailedResult extends FlowPane {
 
     public DetailedResult(String[] singleResult, int tabIndex) {
         this.tabIndex = tabIndex;
+        this.getStyleClass().add("transparentBG");
 
         DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
         Typology typology = daoTypology.getById(Integer.parseInt(singleResult[0]));  //create typology from id
@@ -45,6 +46,7 @@ public class DetailedResult extends FlowPane {
 
         for (int i = 0; i < labels.length; ++i) {
             Label columnLabel = new Label(labels[i]);
+            columnLabel.setPadding(new Insets(2, 3, 2, 3));
             columnLabel.getStyleClass().add("columnLabel");
           
             VBox column = new VBox(columnLabel);
