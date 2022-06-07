@@ -57,19 +57,19 @@ public class ApplicationMain extends Application {
 
     @Override
     public void stop(){
-        ConnectionManager.getInstance().closeConnection();
+        ConnectionManager.getInstance().closeConnection(); // We correctly close the database connection on stop
 
-        System.exit(0);
+        System.exit(0); // for correctly end the program
     }
 
     private void appBasis(Stage stage){
-        stage.setResizable(false);
+        stage.setResizable(false);   // We decided to make a not responsive window
         stage.setTitle("Cartographie des usages numériques");
         stage.getIcons().add(new Image("fr/univ_amu/iut/applicationfx/icon.png"));
         stage.setWidth(WINDOW_WIDTH);
         stage.setHeight(WINDOW_HEIGHT);
 
-        tabs = Tabs.getInstance();
+        tabs = Tabs.getInstance();   // The TabPane is an instance because the TabPane is always displayed after log in
     }
 
     private void loadCSS(){
@@ -84,21 +84,21 @@ public class ApplicationMain extends Application {
 
     public void accessToData(){
         if (Home.isConnected()){
-            tabs.addATab("Saisie",new DataEntry(),false,"dataEntry");
+            tabs.addATab("Saisie",new DataEntry(),false,"dataEntry");  // Add the dataEntry tab only for the admin
         }
         mainWindow.getChildren().set(1,tabs);
 
-        BundleManager.updateBundle();
+        BundleManager.updateBundle();  // Loading the language bundle
     }
 
-    public void addHelp(Node node){
-        this.mainStackPane.getChildren().add(node);
-        this.mainStackPane.getScene().setOnMouseClicked(mouseEvent -> {
-            this.mainStackPane.getChildren().remove(node);
+    public void addHelp(Node node){   // method for display a node to the screen, if this node is clicked, it disappears
+        this.mainStackPane.getChildren().add(node);  // add the node to the main StackPane it will display the node at front in the scene
+        this.mainStackPane.getScene().setOnMouseClicked(mouseEvent -> {  // add an EventHandler for this node when clicked
+            this.mainStackPane.getChildren().remove(node);  // this EventHandler remove the node from the StackPane
         });
     }
 
     public static ApplicationMain getInstance(){
         return instance;
-    }
+    }  // Return the instance of ApplicationMain because there is just one main
 }
