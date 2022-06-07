@@ -64,7 +64,8 @@ public class ApplicationMain extends Application {
 
     private void appBasis(Stage stage){
         stage.setResizable(false);
-        stage.setTitle("Titre de l'application");
+        stage.setTitle("Cartographie des usages numériques");
+        stage.getIcons().add(new Image("fr/univ_amu/iut/applicationfx/icon.png"));
         stage.setWidth(WINDOW_WIDTH);
         stage.setHeight(WINDOW_HEIGHT);
 
