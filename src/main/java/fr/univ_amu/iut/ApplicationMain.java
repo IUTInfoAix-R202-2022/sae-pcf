@@ -112,8 +112,4 @@ public class ApplicationMain extends Application {
             this.mainStackPane.getChildren().remove(node);  // this EventHandler remove the node from the StackPane
         });
     }
-
-    public static ApplicationMain getInstance(){
-        return instance;
-    }  // Return the instance of ApplicationMain because there is just one main
 }
