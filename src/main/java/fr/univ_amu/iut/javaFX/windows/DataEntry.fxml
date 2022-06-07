@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root  prefHeight="700.0" prefWidth="1200" styleClass="transparentBG" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="700.0" prefWidth="1200" styleClass="transparentBG" type="javafx.scene.control.ScrollPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox spacing="50.0" alignment="TOP_CENTER">
+      <VBox alignment="TOP_CENTER" spacing="50.0">
          <children>
             <Label fx:id="allFieldsFill" alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis">
                <font>
@@ -292,12 +292,15 @@
                   <Insets left="150.0" />
                </VBox.margin>
             </VBox>
+            <HBox alignment="BASELINE_RIGHT">
             <Button fx:id="submitNewDataButton" mnemonicParsing="false" onAction="#submit" text="Soumettre">
-               <VBox.margin>
-                  <Insets bottom="200.0" left="600.0" />
-               </VBox.margin>
-            </Button>
-
+                  <padding>
+                     <Insets bottom="13.0" left="13.0" right="13.0" top="13.0" />
+                  </padding></Button>
+               <padding>
+                  <Insets bottom="100.0" />
+               </padding>
+            </HBox>
          </children>
       </VBox>
    </content>
