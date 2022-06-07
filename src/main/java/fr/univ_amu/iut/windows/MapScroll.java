@@ -1,5 +1,8 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.DAO.DAOAcademy;
+import fr.univ_amu.iut.DAO.entities.Academy;
+import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
@@ -14,15 +17,17 @@ import javafx.scene.paint.Color;
 public class MapScroll extends ScrollPane {
     public MapScroll() {
         France france = FranceBuilder.create()
-                .backgroundColor(Color.web("#f4f4f4"))
-                .fillColor(Color.web("#f4f4f4"))
-                .strokeColor(Color.web("#00587d"))
-                .hoverColor(Color.web("#5e00ed"))
+                .backgroundColor(Color.TRANSPARENT)
+                .fillColor(Color.web("#FFF"))
+                .strokeColor(Color.web("#000"))
+                .hoverColor(Color.web("#6200EE"))
                 //.pressedColor(Color.web("#6cee85"))
-                .selectedColor(Color.web("#202077"))
+                .selectedColor(Color.web("#3700B3"))
                 .mousePressHandler(evt -> {
                     AcademiePath academiePath = (AcademiePath) evt.getSource();
-                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
+                    DAOAcademy daoAcademy = DAOFactoryProducer.getFactory().createDAOAcademy();
+                    Academy academy = Academy.findByName(daoAcademy.findAll(), academiePath.getAcademie().getNom().replace('\'',' '));
+                    MapTab.getInstance().generateThemesScrollByAcademy(academy);
                 })
                 .selectionEnabled(true)
                 .build();

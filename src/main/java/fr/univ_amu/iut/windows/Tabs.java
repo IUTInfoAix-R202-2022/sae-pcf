@@ -1,10 +1,11 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.bundle.BundleManager;
+import fr.univ_amu.iut.dialogs.LoadingDialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class Tabs extends Pane {
 
     private static Tabs instance;
+    private LoadingDialog loadingDialog;
 
     public static Tabs getInstance() {
         if (instance == null){
@@ -41,16 +43,36 @@ public class Tabs extends Pane {
             throw new RuntimeException(exception);
         }
         themeTab.setContent(new ThemeScroll());
-        mapTab.setContent(new MapTab());
+        mapTab.setContent(MapTab.getInstance());
     }
 
-    public void addATab(String tabTitle, Node content, boolean closeable) {
+    public void addATab(String tabTitle, Node content, boolean closeable, String id) {
         Tab newTab = new Tab(tabTitle);
+        newTab.setId(id);
         newTab.setClosable(closeable);
         newTab.getStyleClass().add("tabs");
+        newTab.getStyleClass().add("transparentBG");
         newTab.setContent(content);
         tabs.getTabs().add(newTab);
         tabs.getSelectionModel().select(newTab);
     }
+
+    public void remove(int index){
+        tabs.getTabs().remove(index);
+    }
+
+    public int getTabPaneSize(){
+        return tabs.getTabs().size();
+    }
+
+    public void showLoading(String name){
+        this.loadingDialog = new LoadingDialog(name);
+        this.loadingDialog.show();
+    }
+
+    public LoadingDialog getLoadingDialog(){
+        return this.loadingDialog;
+    }
+
 
 }

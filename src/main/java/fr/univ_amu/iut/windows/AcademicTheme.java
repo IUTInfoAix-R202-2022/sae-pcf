@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.DAO.DAOTypology;
+import fr.univ_amu.iut.DAO.entities.Academy;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.Typology;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
@@ -12,11 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-public class Theme extends Button {
+public class AcademicTheme extends Button {
+    private Academy academy;
     private String name;
     private int id;
 
-    public Theme(String textButton, int id) {
+    public AcademicTheme(String textButton, int id, Academy academy) {
+        this.academy = academy;
         name = textButton;
         this.id = id;
 
@@ -35,16 +38,16 @@ public class Theme extends Button {
         ThemeOfUse actualTheme = new ThemeOfUse();
         actualTheme.setName(this.name);
         actualTheme.setId(this.id);
-        addThemeTab(actualTheme);
+        this.addThemeTab(actualTheme,this.academy);
     }
 
-    public static void addThemeTab(ThemeOfUse themeOfUse){
+    public static void addThemeTab(ThemeOfUse themeOfUse, Academy academy){
         Tabs.getInstance().showLoading("résultat "+themeOfUse.getName());
         Executors.newCachedThreadPool().execute(new Runnable() {
             @Override
             public void run() { //Run on another thread to have a loading bar
                 DAOTypology daoTypology = DAOFactoryProducer.getFactory().createDaoTypology();
-                List<Typology> typologies = daoTypology.findByThemeId(themeOfUse.getId());
+                List<Typology> typologies = daoTypology.getByAcademicThemeId(themeOfUse.getId(),academy.getId());
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {  //run on fx thread because it's GUI change
@@ -69,9 +72,9 @@ public class Theme extends Button {
                     public void run() {   //run on fx thread because it's GUI change
                         ResultsTab resultsTab = new ResultsTab();
                         Results results = new Results(Tabs.getInstance().getTabPaneSize());
-                        results.addResults(stringsList, "theme");
+                        results.addResults(stringsList,"academicTheme");
                         resultsTab.setResults(results);
-                      
+
                         Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true,null);
 
                         Tabs.getInstance().getLoadingDialog().endLoad();

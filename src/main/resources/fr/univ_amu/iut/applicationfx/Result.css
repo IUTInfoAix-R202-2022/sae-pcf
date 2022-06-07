@@ -1,34 +1,33 @@
 .IntituleButton {
-    -fx-background-color: #202077;
-    -fx-border-color: #202077;
+    -fx-background-color: #3700B3;
+    -fx-border-color: #3700B3;
     -fx-text-fill: #FFFFFF;
 }
 
 .IntituleButton:hover {
-    -fx-background-color: #202077;
+    -fx-background-color: #3700B3;
 }
 
 .ResultButton {
-    -fx-border-color: #202077;
-    -fx-text-fill: #6c6c6c;
+    -fx-border-color: #3700B3;
+    -fx-text-fill: #000;
 }
 
 .ResultButton:hover {
-    -fx-border-color: #456acf;
-    -fx-background-color: #FFFFFF;
-    -fx-text-fill: #456acf;
+    -fx-background-color: #FFF;
+    -fx-text-fill: #000;
 }
 
 .ResultTitles {
-    -fx-text-fill: #202077;
+    -fx-text-fill: #6200EE;
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-text-alignment: CENTER;
     -fx-padding: 12px;
 }
 
 .adminBtn {
-    -fx-border-color: #202077;
+    -fx-border-color: #3700B3;
     -fx-text-fill: #FFF;
     -fx-background-color: #FFF;
     -fx-font-size: 14px;
@@ -42,4 +41,29 @@
 
 .adminBtn > .arrow-button, .adminBtn > .arrow-button > .arrow {
     -fx-padding: 0;
+}
+
+.menu-item:hover, .menu-item:focused {
+    -fx-background-color: #6200EE;
+}
+
+.menu-item:hover .label, .menu-item:focused .label {
+    -fx-text-fill: #FFF;
+}
+
+.resultColumn {
+    -fx-border-color: #3700B3;
+    -fx-background-color: #FFF;
+}
+
+.columnLabel {
+    -fx-text-fill: #FFF;
+    -fx-background-color: #6200EE;
+}
+
+.columnText {
+    -fx-text-fill: #6200EE;
+}
+
+.DetailedTab {
 }

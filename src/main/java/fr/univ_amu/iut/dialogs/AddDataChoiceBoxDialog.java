@@ -27,7 +27,6 @@ public class AddDataChoiceBoxDialog extends Dialog {
     public AddDataChoiceBoxDialog(String dataName){
         dialogPane = new AddDataChoiceBoxContent(dataName);
         this.setDialogPane(dialogPane);
-        this.initStyle(StageStyle.UNDECORATED);
 
         this.submitButton.setFont(Font.font("JetBrains Mono Regular"));
 

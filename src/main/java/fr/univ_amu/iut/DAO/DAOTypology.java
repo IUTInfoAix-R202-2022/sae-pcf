@@ -13,5 +13,5 @@ public interface DAOTypology extends DAO<Typology,Integer> {
 
     List<Typology> findByThemeId(int themeId);
 
-
+    List<Typology> getByAcademicThemeId(int themeId, int academicId);
 }

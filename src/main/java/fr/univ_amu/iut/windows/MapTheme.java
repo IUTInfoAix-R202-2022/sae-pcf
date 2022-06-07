@@ -1,6 +1,7 @@
 package fr.univ_amu.iut.windows;
 
 import fr.univ_amu.iut.DAO.DAOThemeOfUse;
+import fr.univ_amu.iut.DAO.entities.Academy;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import javafx.geometry.Insets;
@@ -14,11 +15,12 @@ import java.util.List;
 public class MapTheme extends GridPane {
     private List<ThemeOfUse> themeOfUseList;
 
-    public MapTheme() {
-        this.addThemes(this.getThemes());
+    public MapTheme(Academy academy) {
+        this.getStyleClass().add("transparentBG");
+        this.addThemes(this.getThemes(academy));
     }
 
-    public void addThemes(List<Theme> themeList) {
+    public void addThemes(List<AcademicTheme> themeList) {
         int column = 0, row = 0;
 
         for (int i = 0; i < themeList.size(); i++, column++) {
@@ -32,13 +34,13 @@ public class MapTheme extends GridPane {
         }
     }
 
-    public List<Theme> getThemes() {
+    public List<AcademicTheme> getThemes(Academy academy) {
         DAOThemeOfUse daoThemeOfUse = DAOFactoryProducer.getFactory().createDaoThemeOfUse();
-        this.themeOfUseList = daoThemeOfUse.findAll();
+        this.themeOfUseList = daoThemeOfUse.getByAcademy(academy);
 
-        List<Theme> themeList = new ArrayList<>();
+        List<AcademicTheme> themeList = new ArrayList<>();
         for (ThemeOfUse themeOfUse : themeOfUseList){
-            themeList.add(new Theme(themeOfUse.getName(),themeOfUse.getId()));
+            themeList.add(new AcademicTheme(themeOfUse.getName(),themeOfUse.getId(), academy));
         }
 
         return themeList;

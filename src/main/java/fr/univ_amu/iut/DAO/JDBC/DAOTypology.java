@@ -20,6 +20,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
     private final PreparedStatement deleteStatement;
     private final PreparedStatement getNextIdStatement;
     private final PreparedStatement getByThemeStatement;
+    private final PreparedStatement getByAcademicThemeIdStatement;
 
     public DAOTypology(){
         findAllStatement = Database.prepare("SELECT * FROM Typology");
@@ -29,6 +30,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         deleteStatement = Database.prepare("DELETE FROM Typology WHERE idTypology = ?");
         getNextIdStatement = Database.prepare("SELECT IdTypology FROM Typology WHERE IdTypology >=ALL (SELECT IdTypology FROM Typology)");
         getByThemeStatement = Database.prepare("SELECT * FROM Typology WHERE IdThemeOfUse = ?");
+        getByAcademicThemeIdStatement = Database.prepare("SELECT * FROM Typology WHERE IdThemeOfUse = ? AND IdAcademy = ?");
     }
 
     public static Typology extractTypology(ResultSet resultSet) throws SQLException {
@@ -71,7 +73,7 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         try {
             Objects.requireNonNull(getByIdStatement).setInt(1,id);
             ResultSet resultSet = getByIdStatement.executeQuery();
-            if (resultSet.first()){
+            if (resultSet.next()){
                 Typology = extractTypology(resultSet);
             }
         } catch (SQLException e) {
@@ -149,8 +151,24 @@ public class DAOTypology implements fr.univ_amu.iut.DAO.DAOTypology {
         List<Typology> typologies = new ArrayList<>();
         synchronized (Objects.requireNonNull(getByThemeStatement)){
             try {
-                getByThemeStatement.setInt(1,themeId);
+                getByThemeStatement.setInt(1, themeId);
                 ResultSet resultSet = getByThemeStatement.executeQuery();
+                extractTypology(resultSet,typologies);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return typologies;
+    }
+
+    @Override
+    public List<Typology> getByAcademicThemeId(int themeId, int academicId) {
+        List<Typology> typologies = new ArrayList<>();
+        synchronized (Objects.requireNonNull(getByAcademicThemeIdStatement)){
+            try {
+                getByAcademicThemeIdStatement.setInt(1, themeId);
+                getByAcademicThemeIdStatement.setInt(2, academicId);
+                ResultSet resultSet = getByAcademicThemeIdStatement.executeQuery();
                 extractTypology(resultSet,typologies);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
