@@ -1,8 +1,14 @@
 .root {
-    /*-fx-background-image: url("background.jpg");*/
-    -fx-background-color: #FFF;
+    -fx-background-image: url("background_app.jpg");
 }
 
 .transparentBG {
-    -fx-background-color: #FFF;
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
 }

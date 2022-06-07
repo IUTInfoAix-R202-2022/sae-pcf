@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.windows;
 
+import fr.univ_amu.iut.ApplicationMain;
 import fr.univ_amu.iut.DAO.DAOThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
@@ -22,6 +23,9 @@ public class ThemeVisualisation extends GridPane {
 
     public ThemeVisualisation() {
         this.setAlignment(Pos.TOP_CENTER);
+        this.setPrefWidth(ApplicationMain.WINDOW_WIDTH);
+        setMargin(this, new Insets(13));
+        this.setPadding(new Insets(13));
         this.getStyleClass().add("transparentBG");
         //gridPane.setHgap(13);
         //gridPane.setVgap(13);

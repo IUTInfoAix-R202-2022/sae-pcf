@@ -35,7 +35,7 @@ public class Theme extends Button {
         ThemeOfUse actualTheme = new ThemeOfUse();
         actualTheme.setName(this.name);
         actualTheme.setId(this.id);
-        this.addThemeTab(actualTheme);
+        addThemeTab(actualTheme);
     }
 
     public static void addThemeTab(ThemeOfUse themeOfUse){
@@ -70,7 +70,7 @@ public class Theme extends Button {
                         ResultsTab resultsTab = new ResultsTab();
                         Results results = new Results(Tabs.getInstance().getTabPaneSize());
                         results.addResults(stringsList, "theme");
-                        resultsTab.getChildren().add(results);
+                        resultsTab.setResults(results);
                       
                         Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true,null);
 
