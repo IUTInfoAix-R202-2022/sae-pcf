@@ -9,7 +9,7 @@
    <content>
       <VBox alignment="TOP_CENTER" spacing="50.0">
          <children>
-            <Label fx:id="allFieldsFill" alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis">
+            <Label fx:id="allFieldsFill" alignment="CENTER" styleClass="bigbold, entryLabel" text="Tout les champs avec la mention * doivent être remplis">
                <font>
                   <Font name="JetBrains Mono Regular" size="13.0" />
                </font>
@@ -18,7 +18,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5">
                      <items>
-                        <Label fx:id="themeOfUseLabel" prefWidth="300.0" text="Thématique d'usage *">
+                        <Label fx:id="themeOfUseLabel" prefWidth="300.0" styleClass="entryLabel" text="Thématique d'usage *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -47,7 +47,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="disciplineLabel" prefWidth="300.0" text="Discipline *">
+                        <Label fx:id="disciplineLabel" prefWidth="300.0" styleClass="entryLabel" text="Discipline *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -69,7 +69,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="degreeLabel" prefWidth="300.0" text="Degré *">
+                        <Label fx:id="degreeLabel" prefWidth="300.0" styleClass="entryLabel" text="Degré *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -94,7 +94,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="academyLabel" prefWidth="300.0" text="Académie *">
+                        <Label fx:id="academyLabel" prefWidth="300.0" styleClass="entryLabel" text="Académie *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -119,7 +119,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="academicRegionLabel" prefWidth="300.0" text="Région académique">
+                        <Label fx:id="academicRegionLabel" prefWidth="300.0" styleClass="entryLabel" text="Région académique">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -143,7 +143,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="actorTypeLabel" prefWidth="300.0" text="Type d'acteurs *">
+                        <Label fx:id="actorTypeLabel" prefWidth="300.0" styleClass="entryLabel" text="Type d'acteurs *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -164,7 +164,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="actorIdentityLabel" prefWidth="300.0" text="Identité des acteurs *">
+                        <Label fx:id="actorIdentityLabel" prefWidth="300.0" styleClass="entryLabel" text="Identité des acteurs *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -206,7 +206,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="resourceLinkLabel" prefWidth="300.0" text="Lien de la ressource *">
+                        <Label fx:id="resourceLinkLabel" prefWidth="300.0" styleClass="entryLabel" text="Lien de la ressource *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -227,7 +227,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="resourceNameLabel" prefWidth="300.0" text="Nom de la ressource">
+                        <Label fx:id="resourceNameLabel" prefWidth="300.0" styleClass="entryLabel" text="Nom de la ressource">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -250,7 +250,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="sourceTypeLabel" prefWidth="300.0" text="Type de source">
+                        <Label fx:id="sourceTypeLabel" prefWidth="300.0" styleClass="entryLabel"  text="Type de source">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -273,7 +273,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label fx:id="commentariesLabel" alignment="TOP_LEFT" prefWidth="300.0" text="Commentaires">
+                        <Label fx:id="commentariesLabel" alignment="TOP_LEFT" styleClass="entryLabel"  prefWidth="300.0" text="Commentaires">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>

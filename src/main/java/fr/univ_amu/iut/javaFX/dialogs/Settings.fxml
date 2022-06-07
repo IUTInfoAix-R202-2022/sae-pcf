@@ -19,7 +19,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="30.0">
                <children>
-                  <Label text="Thème sombre :" fx:id="darkThemeLabel"/>
+                  <Label text="Changer de thème :" fx:id="darkThemeLabel"/>
                   <ToggleButton fx:id="toggleButton" mnemonicParsing="false" onAction="#changeTheme" text="Thème sombre" />
                </children>
                <VBox.margin>

@@ -10,7 +10,6 @@ import fr.univ_amu.iut.windows.Tabs;
 import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,7 +22,7 @@ public class ApplicationMain extends Application {
         return AVAILABLE_LANGUAGE;
     }
 
-    private Scene root;
+    private static Scene root;
     private VBox mainWindow;
     private Tabs tabs;
     private StackPane mainStackPane;
@@ -31,6 +30,7 @@ public class ApplicationMain extends Application {
 
     public static final double WINDOW_WIDTH = 1200;
     public static final double WINDOW_HEIGHT = 700;
+    public static boolean DARKTHEMEENABLED = false;
 
     public static void main(String[] args) {
         launch(args);
@@ -82,6 +82,10 @@ public class ApplicationMain extends Application {
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/ThemeButtons.css");
     }
 
+    public static void loadACSSFile(String url) {
+        root.getStylesheets().add(url);
+    }
+
     public void accessToData(){
         if (Home.isConnected()){
             tabs.addATab("Saisie",new DataEntry(),false,"dataEntry");
@@ -100,5 +104,9 @@ public class ApplicationMain extends Application {
 
     public static ApplicationMain getInstance(){
         return instance;
+    }
+
+    public static javafx.collections.ObservableList<String> getStyleSheets() {
+        return root.getStylesheets();
     }
 }
