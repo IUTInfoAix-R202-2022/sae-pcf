@@ -10,7 +10,6 @@ import fr.univ_amu.iut.windows.Tabs;
 import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,7 +22,14 @@ public class ApplicationMain extends Application {
         return AVAILABLE_LANGUAGE;
     }
 
-    private Scene root;
+    public static ApplicationMain getInstance(){
+        return instance;
+    }
+
+    public static javafx.collections.ObservableList<String> getStyleSheets() {
+        return root.getStylesheets();
+    }
+    private static Scene root;
     private VBox mainWindow;
     private Tabs tabs;
     private StackPane mainStackPane;
@@ -31,6 +37,7 @@ public class ApplicationMain extends Application {
 
     public static final double WINDOW_WIDTH = 1200;
     public static final double WINDOW_HEIGHT = 700;
+    public static boolean DARKTHEMEENABLED = false;
 
     public static void main(String[] args) {
         launch(args);
@@ -80,6 +87,14 @@ public class ApplicationMain extends Application {
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Error_messages.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Bold_messages.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/ThemeButtons.css");
+    }
+
+    public static void unloadDarkCSS(){
+        root.getStylesheets().remove(root.getStylesheets().size()-1);
+    }
+
+    public static void loadACSSFile(String url) {
+        root.getStylesheets().add(url);
     }
 
     public void accessToData(){

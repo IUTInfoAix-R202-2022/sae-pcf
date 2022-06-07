@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
+import java.awt.desktop.AppForegroundListener;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -56,9 +57,17 @@ public class SettingsContent extends DialogPane implements Bundleable {
 
     @FXML
     public void changeTheme(){
-        if (toggleButton.isSelected()){
+        if (toggleButton.isSelected()) {
+            if (!ApplicationMain.DARKTHEMEENABLED) {
+                ApplicationMain.DARKTHEMEENABLED = true;
+                ApplicationMain.loadACSSFile("/fr/univ_amu/iut/applicationfx/darkTheme.css");
+
+            }
         }
-        else{
+
+        else if (!toggleButton.isSelected()) {
+            ApplicationMain.DARKTHEMEENABLED = false;
+            ApplicationMain.unloadDarkCSS();
         }
     }
 

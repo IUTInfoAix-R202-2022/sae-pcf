@@ -1,0 +1,47 @@
+.root {
+    -fx-background-image: url("dark_background.png");
+}
+
+.transparentBG {
+    -fx-background-color: rgba(0, 0, 0, 0.55);
+}
+
+.button {
+    -fx-background-color: #181818;
+    -fx-text-fill: #FFF;
+}
+
+.split-pane {
+    -fx-background-color: #181818;
+}
+
+.ResultButton:hover {
+    -fx-background-color: #181818;
+}
+
+.adminBtn {
+    -fx-text-fill: #FFF;
+    -fx-background-color: #181818;
+}
+
+.tab-pane .headers-region .tab .tab-container .tab-close-button {
+    -fx-background-color: #181818;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #181818;
+    -fx-border-color: #6200EE;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #181818;
+    -fx-border-color: #6200EE;
+}
+
+.bold {
+    -fx-text-fill: #FFF;
+}
+
+.entryLabel {
+    -fx-text-fill: #FFF;
+}

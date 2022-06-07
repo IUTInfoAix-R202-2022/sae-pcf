@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.dialogs;
 
+import fr.univ_amu.iut.ApplicationMain;
 import fr.univ_amu.iut.bundle.Bundleable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;
@@ -14,6 +15,10 @@ public class SettingsDialog extends Dialog implements Bundleable {
         settingsContent = new SettingsContent();
 
         this.setDialogPane(settingsContent);
+
+        if(ApplicationMain.DARKTHEMEENABLED){
+            settingsContent.getToggleButton().setSelected(true);
+        }
     }
 
     public ChoiceBox getChoiceBox(){

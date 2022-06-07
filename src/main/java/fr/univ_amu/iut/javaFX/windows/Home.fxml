@@ -58,7 +58,7 @@
                         <padding>
                            <Insets bottom="5.0" left="8.0" right="8.0" top="5.0" />
                         </padding></Label>
-                     <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submit" text="Soumettre">
+                     <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submit" text="Connexion">
                         <VBox.margin>
                            <Insets />
                         </VBox.margin>
