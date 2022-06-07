@@ -65,7 +65,7 @@ public class DetailedResult extends FlowPane {
                     columnText.setTextAlignment(TextAlignment.CENTER);
                 }
             }
-            else if (labels[i] == "Lien de la ressource"){
+            else if (labels[i].equals("Lien de la ressource")){
                 Button linkButton = new Button("Accèder au lien");
                 linkButton.getStyleClass().add("button");
                 linkButton.setId("linkButton");
