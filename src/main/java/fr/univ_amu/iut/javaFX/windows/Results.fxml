@@ -5,10 +5,10 @@
 
 <fx:root alignment="TOP_CENTER" gridLinesVisible="false" type="javafx.scene.layout.GridPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Intitulés" styleClass="ResultTitles"/>
-      <Label text="Usages" GridPane.columnIndex="1" styleClass="ResultTitles"/>
-      <Label text="Disciplines" GridPane.columnIndex="2" styleClass="ResultTitles"/>
-      <Label text="Types de ressources" GridPane.columnIndex="3" styleClass="ResultTitles"/>
+      <Label fx:id="entitledLabel" styleClass="ResultTitles" text="Intitulés" />
+      <Label fx:id="useLabel" styleClass="ResultTitles" text="Usages" GridPane.columnIndex="1" />
+      <Label fx:id="disciplineLabel" styleClass="ResultTitles" text="Disciplines" GridPane.columnIndex="2" />
+      <Label fx:id="resourceType" styleClass="ResultTitles" text="Types de ressources" GridPane.columnIndex="3" />
    </children>
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" />

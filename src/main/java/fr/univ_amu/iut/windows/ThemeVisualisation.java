@@ -3,6 +3,7 @@ package fr.univ_amu.iut.windows;
 import fr.univ_amu.iut.DAO.DAOThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.bundle.BundleManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -39,7 +40,6 @@ public class ThemeVisualisation extends GridPane {
                 column = 0;
             }
             this.add(themeList.get(i), column, row);
-
         }
     }
 

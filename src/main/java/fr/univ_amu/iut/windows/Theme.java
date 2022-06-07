@@ -4,6 +4,7 @@ import fr.univ_amu.iut.DAO.DAOTypology;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.entities.Typology;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.bundle.BundleManager;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.text.TextAlignment;

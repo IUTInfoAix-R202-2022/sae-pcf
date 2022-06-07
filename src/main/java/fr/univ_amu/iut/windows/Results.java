@@ -10,6 +10,7 @@ import fr.univ_amu.iut.DAO.entities.Academy;
 import fr.univ_amu.iut.DAO.entities.ActorIdentity;
 import fr.univ_amu.iut.DAO.entities.ThemeOfUse;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.bundle.BundleManager;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import javafx.fxml.FXMLLoader;
@@ -70,7 +71,10 @@ public class Results extends GridPane {
                 }
                 int finalI = i;
                 data.setOnAction(
-                        actionEvent -> Tabs.getInstance().addATab("Random tab name", new DetailedResult(results.get(finalI),Tabs.getInstance().getTabPaneSize()), true,null)
+                        actionEvent -> {
+                            Tabs.getInstance().addATab("Random tab name", new DetailedResult(results.get(finalI), Tabs.getInstance().getTabPaneSize()), true, "detailedResult");
+                            BundleManager.updateBundle();
+                        }
                 );
 
                 data.setWrapText(true);
@@ -83,11 +87,13 @@ public class Results extends GridPane {
             }
             if (Home.isConnected()) {  //Add admin MenuButton if the admin is connected
                 MenuButton adminBtn = new MenuButton("...");
+                adminBtn.setId("adminButton");
                 setMargin(adminBtn, new Insets(0, 0, 0, 13));
                 adminBtn.getStyleClass().add("adminBtn");
 
 
                 MenuItem modify = new MenuItem("Modifier"); // modify button
+                modify.setId("modifyMenuItem");
 
                 int finalI1 = i;
                 modify.setOnAction(actionEvent -> {   // event handler of the modify button
@@ -97,6 +103,7 @@ public class Results extends GridPane {
                 });
 
                 MenuItem delete = new MenuItem("Supprimer"); //delete button
+                delete.setId("deleteMenuItem");
 
                 delete.setOnAction(actionEvent -> { // event handler of the delete button
                     // Dialog for confirmation
