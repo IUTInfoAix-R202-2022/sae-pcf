@@ -57,18 +57,18 @@ public class SettingsContent extends DialogPane implements Bundleable {
 
     @FXML
     public void changeTheme(){
-        if (toggleButton.isSelected()){
+        if (toggleButton.isSelected()) {
             if (!ApplicationMain.DARKTHEMEENABLED) {
                 toggleButton.setText("Thème clair");
                 ApplicationMain.DARKTHEMEENABLED = true;
                 ApplicationMain.loadACSSFile("/fr/univ_amu/iut/applicationfx/darkTheme.css");
-            }
-            else {
-                toggleButton.setText("Thème sombre");
-                ApplicationMain.DARKTHEMEENABLED = false;
-                //getStylesheets().remove();
 
             }
+        }
+
+        else if (!toggleButton.isSelected()) {
+            ApplicationMain.DARKTHEMEENABLED = false;
+            ApplicationMain.unloadDarkCSS();
         }
     }
 
