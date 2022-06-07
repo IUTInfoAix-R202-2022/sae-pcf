@@ -10,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -66,8 +68,10 @@ public class MainWindow extends VBox {
 
     @FXML
     public void help() {
-        System.out.println("Help button clicked !");
-        //TODO Implements help button (tutorial)
+        Image image = new Image("fr/univ_amu/iut/images/screenHomePageEN.png");
+        ImageView imageView = new ImageView(image);
+
+        ApplicationMain.getInstance().addHelp(imageView);
     }
 
     @FXML

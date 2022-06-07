@@ -2,26 +2,19 @@ package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.DAO.ConnectionManager;
 import fr.univ_amu.iut.bundle.BundleManager;
-import fr.univ_amu.iut.dialogs.ConfirmationDialog;
-import fr.univ_amu.iut.dialogs.ContactDialog;
-import fr.univ_amu.iut.windows.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import fr.univ_amu.iut.dialogs.EditDataDialog;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
 import fr.univ_amu.iut.windows.DataEntry;
 import fr.univ_amu.iut.windows.Home;
 import fr.univ_amu.iut.windows.Tabs;
 import fr.univ_amu.iut.windows.MainWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.*;
-import java.net.URL;
 import java.util.Locale;
 
 public class ApplicationMain extends Application {
@@ -33,6 +26,8 @@ public class ApplicationMain extends Application {
     private Scene root;
     private VBox mainWindow;
     private Tabs tabs;
+    private StackPane mainStackPane;
+    static private ApplicationMain instance;
 
     public static final double WINDOW_WIDTH = 1200;
     public static final double WINDOW_HEIGHT = 700;
@@ -48,13 +43,13 @@ public class ApplicationMain extends Application {
         appBasis(stage);
 
         ConnectionManager.getInstance();
-
         mainWindow = new MainWindow();
+        mainStackPane = new StackPane(mainWindow);
         mainWindow.getChildren().add(new Home(this));
-        root = new Scene(mainWindow);
+        root = new Scene(mainStackPane);
         loadCSS();
-
         BundleManager.setup(root);
+        instance = this;
 
         stage.setScene(root);
         stage.show();
@@ -93,5 +88,16 @@ public class ApplicationMain extends Application {
         mainWindow.getChildren().set(1,tabs);
 
         BundleManager.updateBundle();
+    }
+
+    public void addHelp(Node node){
+        this.mainStackPane.getChildren().add(node);
+        this.mainStackPane.getScene().setOnMouseClicked(mouseEvent -> {
+            this.mainStackPane.getChildren().remove(node);
+        });
+    }
+
+    public static ApplicationMain getInstance(){
+        return instance;
     }
 }
