@@ -3,17 +3,17 @@ package fr.univ_amu.iut.DAO;
 import java.sql.*;
 import java.sql.SQLException;
 
-public class ConnectionManager {
+public class ConnectionManager { // This file is used to initialise connection with the database
     private static final String URL = "jdbc:postgresql://rogue.db.elephantsql.com/zizafbet";
     private static final String LOGIN = "zizafbet";
     private static final String PASSWORD = "UJSPDbZ3RxceJ1mpEwRtfPCeTqnXmnYx";
-    private static ConnectionManager instance;
+    private static ConnectionManager instance;  // There is just one connection with database
     private Connection connection;
 
     private ConnectionManager(){
     }
 
-    public void closeConnection(){
+    public void closeConnection(){ // Method called at the close of the application to correctly close the connection with database
         try {
             connection.close();
         } catch (SQLException e) {
@@ -33,7 +33,7 @@ public class ConnectionManager {
         }
     }
 
-    public static ConnectionManager getInstance(){
+    public static ConnectionManager getInstance(){ // return the actual ConnectionManager or create it if it's not exist
         if (instance == null){
             instance = new ConnectionManager();
             try {
