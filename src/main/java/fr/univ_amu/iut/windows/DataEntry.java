@@ -3,6 +3,7 @@ package fr.univ_amu.iut.windows;
 import fr.univ_amu.iut.DAO.*;
 import fr.univ_amu.iut.DAO.entities.*;
 import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.bundle.BundleManager;
 import fr.univ_amu.iut.bundle.Bundleable;
 import fr.univ_amu.iut.dialogs.AddDataChoiceBoxDialog;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
@@ -134,7 +135,8 @@ public class DataEntry extends ScrollPane implements Bundleable {
     @FXML
     private Button submitNewDataButton;
 
-    Button removeButton = new Button("Supprimer un acteur");
+    @FXML
+    private Button removeButton;
 
     private ArrayList<StringProperty> fieldsStringProperties = new ArrayList<StringProperty>();
     private ArrayList<StringProperty> requiredFieldsStringProperties = new ArrayList<StringProperty>();
@@ -148,9 +150,9 @@ public class DataEntry extends ScrollPane implements Bundleable {
 
         requiredFieldsNotFilledLabels = new ArrayList (List.of(new Label[]{labelNotFillThemeOfUse, labelNotFillDiscipline, labelNotFillDegree, labelNotFillAcademy, labelNotFillTypeOfActors, labelNotFillIdOfActorName, labelNotFillResourceLink}));
 
-        initializeChoiceBox();
+        removeButton.setVisible(false);
 
-        removeButton.setId("removeButton");
+        initializeChoiceBox();
 
         generateBundle();
     }
@@ -273,19 +275,11 @@ public class DataEntry extends ScrollPane implements Bundleable {
 
     @FXML
     private void addIdOfActor(){
-        if (vBoxIdOfActor.getChildren().size() == 3){
-            removeButton.setOnAction(actionEvent -> {
-                vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 4, vBoxIdOfActor.getChildren().size() - 2);
-                if (vBoxIdOfActor.getChildren().size() == 4) {
-                    vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 1);
-                }
-                fieldsStringProperties.remove(fieldsStringProperties.size() - 1);
-
-                requiredFieldsStringProperties.remove(requiredFieldsStringProperties.size() - 1);
-
-                requiredFieldsNotFilledLabels.remove(requiredFieldsNotFilledLabels.size() - 1);
-            });
-            vBoxIdOfActor.getChildren().add(removeButton);
+        if (vBoxIdOfActor.getChildren().size() >= 4){
+            removeButton.setVisible(true);
+        }
+        else{
+            removeButton.setVisible(false);
         }
         HBox fieldsId = newHBoxIdActor();
         HBox labelsId = newHBoxIdActorNotFillLabel();
@@ -293,6 +287,19 @@ public class DataEntry extends ScrollPane implements Bundleable {
         vBoxIdOfActor.getChildren().add(vBoxIdOfActor.getChildren().size()-2,fieldsId);
         vBoxIdOfActor.getChildren().add(vBoxIdOfActor.getChildren().size()-2,labelsId);
 
+    }
+
+    @FXML
+    private void removeAnActor(){
+        vBoxIdOfActor.getChildren().remove(vBoxIdOfActor.getChildren().size() - 4, vBoxIdOfActor.getChildren().size() - 2);
+        if (vBoxIdOfActor.getChildren().size() <= 4) {
+            removeButton.setVisible(false);
+        }
+        fieldsStringProperties.remove(fieldsStringProperties.size() - 1);
+
+        requiredFieldsStringProperties.remove(requiredFieldsStringProperties.size() - 1);
+
+        requiredFieldsNotFilledLabels.remove(requiredFieldsNotFilledLabels.size() - 1);
     }
 
     @FXML
