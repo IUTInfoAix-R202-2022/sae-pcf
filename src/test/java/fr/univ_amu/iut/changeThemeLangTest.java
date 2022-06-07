@@ -16,9 +16,9 @@ public class changeThemeLangTest extends ApplicationTest {
     public void changethemelangtest() {
         clickOn("#buttonSettings");
         clickOn("#choiceBox");
-        clickOn("Anglais");
+        clickOn("English");
         clickOn("#toggleButton");
-        clickOn("Soumettre");
+        clickOn(800, 370);
     }
 
     @Override

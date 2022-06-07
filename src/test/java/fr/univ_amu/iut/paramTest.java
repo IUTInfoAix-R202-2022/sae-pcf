@@ -13,8 +13,8 @@ import static org.testfx.util.NodeQueryUtils.hasText;
 public class paramTest extends ApplicationTest {
     @Test
     public void paramtest() {
-        verifyThat("#buttonSettings", hasText("Paramètres"));
         clickOn("#buttonSettings");
+        clickOn("Annuler");
     }
 
 

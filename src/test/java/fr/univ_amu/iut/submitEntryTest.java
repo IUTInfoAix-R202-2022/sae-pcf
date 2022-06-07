@@ -12,16 +12,16 @@ import static org.testfx.api.FxAssert.verifyThat;
 @ExtendWith(ApplicationExtension.class)
 public class submitEntryTest extends ApplicationTest {
     @Test
-    public void submitentrytest() {
+    public void submitentrytest() throws InterruptedException {
+        // Faire ce test en dehors des autres test !!!
         clickOn("#userNameField");
         write("admin");
         clickOn("#passwordField");
         write("admin");
         clickOn("#submitButton");
-        clickOn("Saisie");
-        // Le clic pour selectionner cet valeur ne marche PAS!!! souvent, mais pas toujour
+        clickOn("Saisi");
         clickOn("#choiceBoxThemeOfUse");
-        clickOn("TNE");
+        clickOn("Tiers lab");
         clickOn("#choiceBoxDiscipline");
         clickOn("EPS");
         clickOn("#choiceBoxDegree");
@@ -47,8 +47,6 @@ public class submitEntryTest extends ApplicationTest {
         write("Test");
         clickOn("#fieldIdOfActorName");
         write("Ganassi");
-        clickOn("#fieldIdOfActorFirstName");
-        write("Alexandre");
         clickOn("#fieldResourceLink");
         write("Test");
         scroll(VerticalDirection.DOWN);
@@ -65,6 +63,23 @@ public class submitEntryTest extends ApplicationTest {
         scroll(VerticalDirection.DOWN);
         scroll(VerticalDirection.DOWN);
         clickOn("#submitNewDataButton");
+        clickOn("OK");
+        clickOn("Thèmes");
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        clickOn("Tiers lab");
+        sleep(1000);
+        clickOn(1000, 180);
+        clickOn("Modifier");
+        clickOn("#choiceBoxAcademy");
+        clickOn("Académie de Nice");
+        clickOn(1260,760);
+        clickOn("OK");
+        clickOn(1000, 180);
+        clickOn("Supprimer");
         clickOn("OK");
     }
     @Override

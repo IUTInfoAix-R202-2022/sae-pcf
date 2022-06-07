@@ -1,5 +1,6 @@
 package fr.univ_amu.iut;
 
+import javafx.geometry.VerticalDirection;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,8 +14,22 @@ import static org.testfx.util.NodeQueryUtils.hasText;
 public class mapTest extends ApplicationTest {
     @Test
     public void cartetest() {
-        clickOn("#dataAccessButton");
+        clickOn("#userNameField");
+        write("admin");
+        clickOn("#passwordField");
+        write("admin");
+        clickOn("#submitButton");
         clickOn("#mapTab");
+        clickOn(500, 600);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        scroll(VerticalDirection.DOWN);
+        clickOn(700, 500);
+        clickOn("Ludification");
     }
     @Override
     public void start(Stage primaryStage) throws Exception {

@@ -15,6 +15,7 @@ public class changeThemeTest extends ApplicationTest {
     public void changethemetest() {
         clickOn("#buttonSettings");
         clickOn("#toggleButton");
+        clickOn(800, 370);
     }
 
     @Override

@@ -14,7 +14,8 @@ public class changeLanguageEngTest extends ApplicationTest {
     public void changelanguageengtest() {
         clickOn("#buttonSettings");
         clickOn("#choiceBox");
-        clickOn("Anglais");
+        clickOn("English");
+        clickOn(800, 370);
     }
 
     @Override

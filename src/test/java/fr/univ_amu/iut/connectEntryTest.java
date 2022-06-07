@@ -17,7 +17,7 @@ public class connectEntryTest extends ApplicationTest {
         clickOn("#passwordField");
         write("admin");
         clickOn("#submitButton");
-        clickOn("Saisie");
+        clickOn("Saisi");
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
