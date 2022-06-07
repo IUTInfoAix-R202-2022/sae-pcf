@@ -59,7 +59,6 @@ public class SettingsContent extends DialogPane implements Bundleable {
     public void changeTheme(){
         if (toggleButton.isSelected()) {
             if (!ApplicationMain.DARKTHEMEENABLED) {
-                toggleButton.setText("Thème clair");
                 ApplicationMain.DARKTHEMEENABLED = true;
                 ApplicationMain.loadACSSFile("/fr/univ_amu/iut/applicationfx/darkTheme.css");
 

@@ -22,6 +22,13 @@ public class ApplicationMain extends Application {
         return AVAILABLE_LANGUAGE;
     }
 
+    public static ApplicationMain getInstance(){
+        return instance;
+    }
+
+    public static javafx.collections.ObservableList<String> getStyleSheets() {
+        return root.getStylesheets();
+    }
     private static Scene root;
     private VBox mainWindow;
     private Tabs tabs;
@@ -82,6 +89,10 @@ public class ApplicationMain extends Application {
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/ThemeButtons.css");
     }
 
+    public static void unloadDarkCSS(){
+        root.getStylesheets().remove(root.getStylesheets().size()-1);
+    }
+
     public static void loadACSSFile(String url) {
         root.getStylesheets().add(url);
     }
@@ -100,13 +111,5 @@ public class ApplicationMain extends Application {
         this.mainStackPane.getScene().setOnMouseClicked(mouseEvent -> {
             this.mainStackPane.getChildren().remove(node);
         });
-    }
-
-    public static ApplicationMain getInstance(){
-        return instance;
-    }
-
-    public static javafx.collections.ObservableList<String> getStyleSheets() {
-        return root.getStylesheets();
     }
 }
