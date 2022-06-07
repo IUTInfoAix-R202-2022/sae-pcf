@@ -45,6 +45,7 @@ public class DetailedResult extends FlowPane {
 
         for (int i = 0; i < labels.length; ++i) {
             Label columnLabel = new Label(labels[i]);
+            columnLabel.setId("columnLabel");
             columnLabel.getStyleClass().add("columnLabel");
           
             VBox column = new VBox(columnLabel);
@@ -87,6 +88,7 @@ public class DetailedResult extends FlowPane {
 
         if (Home.isConnected()) {
             Button modifyBtn = new Button("Modifier");
+            modifyBtn.setId("modifyButton");
 
             modifyBtn.setOnAction(actionEvent -> {
                 EditDataDialog editDialog = new EditDataDialog();
@@ -95,6 +97,7 @@ public class DetailedResult extends FlowPane {
             });
 
             Button deleteBtn = new Button("Supprimer");
+            deleteBtn.setId("deleteButton");
 
             deleteBtn.setOnAction(actionEvent -> { // event handler of the delete button
                 // Dialog for confirmation
