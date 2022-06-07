@@ -184,6 +184,10 @@ public class BundleManager {
             for (Node n : deleteButtons){
                 ((Button) n).setText(resourceBundle.getString("delete"));
             }
+            Set<Node> linkButtons = tabPane.lookupAll("#linkButton");
+            for (Node n : linkButtons){
+                ((Button) n).setText(resourceBundle.getString("linkButton"));
+            }
 
         }catch (NullPointerException ignored){}
     }

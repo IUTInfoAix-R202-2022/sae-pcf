@@ -23,6 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Results extends GridPane {
@@ -53,7 +54,7 @@ public class Results extends GridPane {
                 Button data;
                 switch (j){
                     case(0):
-                        data = new Button(results.get(i)[9]);
+                        data = new Button(results.get(i)[8]);
                         data.getStyleClass().add("IntituleButton");
                         break;
                     case(1):
@@ -65,14 +66,14 @@ public class Results extends GridPane {
                         data.getStyleClass().add("ResultButton");
                         break;
                     default:
-                        data = new Button(results.get(i)[10]);
+                        data = new Button(results.get(i)[9]);
                         data.getStyleClass().add("ResultButton");
 
                 }
                 int finalI = i;
                 data.setOnAction(
                         actionEvent -> {
-                            Tabs.getInstance().addATab("Random tab name", new DetailedResult(results.get(finalI), Tabs.getInstance().getTabPaneSize()), true, "detailedResult");
+                            Tabs.getInstance().addATab(results.get(finalI)[8], new DetailedResult(results.get(finalI), Tabs.getInstance().getTabPaneSize()), true, "detailedResult");
                             BundleManager.updateBundle();
                         }
                 );

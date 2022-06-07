@@ -11,6 +11,7 @@ import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import fr.univ_amu.iut.ApplicationMain;
 
+import fr.univ_amu.iut.dialogs.ContactDialog;
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -61,6 +62,17 @@ public class DetailedResult extends FlowPane {
                     columnText.setMaxWidth((ApplicationMain.WINDOW_WIDTH / 4 ));
                     columnText.setTextAlignment(TextAlignment.CENTER);
                 }
+            }
+            else if (labels[i] == "Lien de la ressource"){
+                Button linkButton = new Button("Accèder au lien");
+                linkButton.getStyleClass().add("button");
+                linkButton.setId("linkButton");
+                int finalI = i;
+                linkButton.setOnAction(actionEvent -> {
+                    ContactDialog contactDialog = new ContactDialog(singleResult[finalI + 1]);
+                    contactDialog.show();
+                });
+                column.getChildren().add(linkButton);
             }
             else {
                 Label columnText = new Label(singleResult[i+1]);
