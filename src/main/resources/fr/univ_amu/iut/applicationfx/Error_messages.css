@@ -1,3 +1,4 @@
 .error {
     -fx-text-fill: #B00020;
+    -fx-background-color: rgba(255, 255, 255, 0.55);
 }

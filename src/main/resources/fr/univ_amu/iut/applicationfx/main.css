@@ -12,4 +12,15 @@
 
 .transparentBG {
     -fx-background-color: rgba(255,255, 255, 0.55);
+
+}
+
+.split-pane {
+    -fx-border-color: #3700B3;
+    -fx-background-color: #FFF;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: #3700B3;
+    -fx-padding: 0 2px 0 0 2px;
 }
