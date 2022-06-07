@@ -68,10 +68,42 @@ public class MainWindow extends VBox {
 
     @FXML
     public void help() {
-        Image image = new Image("fr/univ_amu/iut/images/screenHomePageEN.png");
-        ImageView imageView = new ImageView(image);
-
-        ApplicationMain.getInstance().addHelp(imageView);
+        if (Locale.getDefault() == Locale.FRENCH){
+            if (Home.isConnected()){
+                if (this.getChildren().get(1).equals(Tabs.getInstance())){
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenMainPageAdminFR.png")));
+                }
+                else{
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenHomePageFR.png")));
+                }
+            }
+            else {
+                if (this.getChildren().get(1).equals(Tabs.getInstance())){
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenMainPageFR.png")));
+                }
+                else{
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenHomePageFR.png")));
+                }
+            }
+        }
+        else if (Locale.getDefault() == Locale.ENGLISH){
+            if (Home.isConnected()){
+                if (this.getChildren().get(1).equals(Tabs.getInstance())){
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenMainPageAdminEN.png")));
+                }
+                else{
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenHomePageEN.png")));
+                }
+            }
+            else {
+                if (this.getChildren().get(1).equals(Tabs.getInstance())){
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenMainPageEN.png")));
+                }
+                else{
+                    ApplicationMain.getInstance().addHelp(new ImageView(new Image("fr/univ_amu/iut/images/screenHomePageEN.png")));
+                }
+            }
+        }
     }
 
     @FXML
