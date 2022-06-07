@@ -4,7 +4,9 @@ import fr.univ_amu.iut.windows.Tabs;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.scene.control.*;
 
@@ -17,16 +19,18 @@ public class BundleManager {
 
     public static void updateBundle(){
         //MainWindow
-        ResourceBundle updateBundleMainWindow = ResourceBundle.getBundle("languages/mainWindow");
+        try {
+            ResourceBundle updateBundleMainWindow = ResourceBundle.getBundle("languages/mainWindow");
 
-        Button buttonSettings = (Button) BundleManager.scene.lookup("#buttonSettings");
-        buttonSettings.setText(updateBundleMainWindow.getString("settings"));
+            Button buttonSettings = (Button) BundleManager.scene.lookup("#buttonSettings");
+            buttonSettings.setText(updateBundleMainWindow.getString("settings"));
 
-        Button buttonContact = (Button)  BundleManager.scene.lookup("#buttonContact");
-        buttonContact.setText(updateBundleMainWindow.getString("contact"));
+            Button buttonContact = (Button) BundleManager.scene.lookup("#buttonContact");
+            buttonContact.setText(updateBundleMainWindow.getString("contact"));
 
-        Button buttonHelp = (Button) BundleManager.scene.lookup("#buttonHelp");
-        buttonHelp.setText(updateBundleMainWindow.getString("help"));
+            Button buttonHelp = (Button) BundleManager.scene.lookup("#buttonHelp");
+            buttonHelp.setText(updateBundleMainWindow.getString("help"));
+        }catch (NullPointerException ignored){}
 
         //Home
         try {
@@ -85,9 +89,7 @@ public class BundleManager {
                     ((Label) tab.getContent().lookup("#actorIdentityLabel")).setText(resourceBundle.getString("actorIdentity"));
                     ((TextField) tab.getContent().lookup("#fieldIdOfActorName")).setPromptText(resourceBundle.getString("name"));
                     ((Button) tab.getContent().lookup("#buttonAddIdOfActor")).setText(resourceBundle.getString("addAnActor"));
-                    try {
-                        ((Button) tab.getContent().lookup("#removeButton")).setText(resourceBundle.getString("deleteAnActor"));
-                    }catch (NullPointerException ignored){}
+                    ((Button) tab.getContent().lookup("#removeButton")).setText(resourceBundle.getString("deleteAnActor"));
                     ((Label) tab.getContent().lookup("#resourceNameLabel")).setText(resourceBundle.getString("resourceName"));
                     ((Label) tab.getContent().lookup("#resourceLinkLabel")).setText(resourceBundle.getString("resourceLink"));
                     ((Label) tab.getContent().lookup("#sourceTypeLabel")).setText(resourceBundle.getString("sourceType"));
@@ -95,6 +97,98 @@ public class BundleManager {
                     ((Button) tab.getContent().lookup("#submitNewDataButton")).setText(resourceBundle.getString("submit"));
                 }
             }
+        }catch (NullPointerException ignored){}
+
+        try{
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("languages/results");
+
+            ((Label) BundleManager.scene.lookup("#entitledLabel")).setText(resourceBundle.getString("entitled"));
+            ((Label) BundleManager.scene.lookup("#useLabel")).setText(resourceBundle.getString("use"));
+            ((Label) BundleManager.scene.lookup("#disciplineLabel")).setText(resourceBundle.getString("discipline"));
+            ((Label) BundleManager.scene.lookup("#resourceType")).setText(resourceBundle.getString("resourceType"));
+
+            try {
+                MenuButton menuButton = (MenuButton) BundleManager.scene.lookup("#adminButton");
+                List<MenuItem> menuItems = menuButton.getItems();
+                for (MenuItem menuItem : menuItems){
+                    if (menuItem.getId().equals("modifyMenuItem")){
+                        menuItem.setText(resourceBundle.getString("modify"));
+                    }
+                    else if (menuItem.getId().equals("deleteMenuItem")){
+                        menuItem.setText(resourceBundle.getString("delete"));
+                    }
+                }
+            }catch (NullPointerException ignored){}
+
+        }catch (NullPointerException ignored){}
+
+        //DetailedResult
+        try{
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("languages/detailedResult");
+
+            TabPane tabPane = (TabPane) BundleManager.scene.lookup("#tabs");
+            for (Tab tab : tabPane.getTabs()){
+                Set<Node> set = tab.getContent().lookupAll("#columnLabel");
+                int index = 0;
+                for (Node node : set) {
+                    switch(index){
+                        case 0:
+                            ((Label) node).setText(resourceBundle.getString("themeOfUse"));
+                            break;
+                        case 1:
+                            ((Label) node).setText(resourceBundle.getString("discipline"));
+                            break;
+                        case 2:
+                            ((Label) node).setText(resourceBundle.getString("degree"));
+                            break;
+                        case 3:
+                            ((Label) node).setText(resourceBundle.getString("academy"));
+                            break;
+                        case 4:
+                            ((Label) node).setText(resourceBundle.getString("academicRegion"));
+                            break;
+                        case 5:
+                            ((Label) node).setText(resourceBundle.getString("actorType"));
+                            break;
+                        case 6:
+                            ((Label) node).setText(resourceBundle.getString("resourceLink"));
+                            break;
+                        case 7:
+                            ((Label) node).setText(resourceBundle.getString("resourceName"));
+                            break;
+                        case 8:
+                            ((Label) node).setText(resourceBundle.getString("sourceType"));
+                            break;
+                        case 9:
+                            ((Label) node).setText(resourceBundle.getString("commentaries"));
+                            break;
+                        case 10:
+                            ((Label) node).setText(resourceBundle.getString("actorIdentity"));
+                            break;
+                    }
+
+                    if (index == 10){
+                        index = 0;
+                    }
+                    else{
+                        ++index;
+                    }
+                }
+            }
+
+            Set<Node> modifyButtons = tabPane.lookupAll("#modifyButton");
+            for (Node n : modifyButtons){
+                ((Button) n).setText(resourceBundle.getString("modify"));
+            }
+            Set<Node> deleteButtons = tabPane.lookupAll("#deleteButton");
+            for (Node n : deleteButtons){
+                ((Button) n).setText(resourceBundle.getString("delete"));
+            }
+            Set<Node> linkButtons = tabPane.lookupAll("#linkButton");
+            for (Node n : linkButtons){
+                ((Button) n).setText(resourceBundle.getString("linkButton"));
+            }
+
         }catch (NullPointerException ignored){}
     }
 

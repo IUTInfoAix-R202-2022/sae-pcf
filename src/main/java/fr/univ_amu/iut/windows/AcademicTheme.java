@@ -73,7 +73,7 @@ public class AcademicTheme extends Button {
                         ResultsTab resultsTab = new ResultsTab();
                         Results results = new Results(Tabs.getInstance().getTabPaneSize());
                         results.addResults(stringsList,"academicTheme");
-                        resultsTab.getChildren().add(results);
+                        resultsTab.setResults(results);
 
                         Tabs.getInstance().addATab(themeOfUse.getName(),resultsTab,true,null);
 

@@ -9,7 +9,7 @@
    <content>
       <VBox spacing="50.0">
          <children>
-            <Label alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis" fx:id="allFieldsFill">
+            <Label fx:id="allFieldsFill" alignment="CENTER" styleClass="bigbold" text="Tout les champs avec la mention * doivent être remplis">
                <font>
                   <Font name="JetBrains Mono Regular" size="13.0" />
                </font>
@@ -21,7 +21,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Thématique d'usage *" fx:id="themeOfUseLabel">
+                        <Label fx:id="themeOfUseLabel" prefWidth="300.0" text="Thématique d'usage *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -50,7 +50,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Discipline *" fx:id="disciplineLabel">
+                        <Label fx:id="disciplineLabel" prefWidth="300.0" text="Discipline *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -72,7 +72,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Degré *" fx:id="degreeLabel">
+                        <Label fx:id="degreeLabel" prefWidth="300.0" text="Degré *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -97,7 +97,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Académie *" fx:id="academyLabel">
+                        <Label fx:id="academyLabel" prefWidth="300.0" text="Académie *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -122,7 +122,7 @@
                <children>
                   <SplitPane dividerPositions="0.5, 0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Région académique" fx:id="academicRegionLabel">
+                        <Label fx:id="academicRegionLabel" prefWidth="300.0" text="Région académique">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -146,7 +146,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Type d'acteurs *" fx:id="actorTypeLabel">
+                        <Label fx:id="actorTypeLabel" prefWidth="300.0" text="Type d'acteurs *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -167,7 +167,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Identité des acteurs *" fx:id="actorIdentityLabel">
+                        <Label fx:id="actorIdentityLabel" prefWidth="300.0" text="Identité des acteurs *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -192,6 +192,7 @@
                                  </children>
                               </HBox>
                               <Button fx:id="buttonAddIdOfActor" mnemonicParsing="false" onAction="#addIdOfActor" text="Ajouter un acteur" />
+                              <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeAnActor" text="Supprimer un acteur" />
                            </children>
                            <opaqueInsets>
                               <Insets />
@@ -208,7 +209,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Lien de la ressource *" fx:id="resourceLinkLabel">
+                        <Label fx:id="resourceLinkLabel" prefWidth="300.0" text="Lien de la ressource *">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -229,7 +230,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Nom de la ressource" fx:id="resourceNameLabel">
+                        <Label fx:id="resourceNameLabel" prefWidth="300.0" text="Nom de la ressource">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -252,7 +253,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label prefWidth="300.0" text="Type de source" fx:id="sourceTypeLabel">
+                        <Label fx:id="sourceTypeLabel" prefWidth="300.0" text="Type de source">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>
@@ -275,7 +276,7 @@
                <children>
                   <SplitPane dividerPositions="0.5" prefWidth="900.0">
                      <items>
-                        <Label alignment="TOP_LEFT" prefWidth="300.0" text="Commentaires" fx:id="commentariesLabel">
+                        <Label fx:id="commentariesLabel" alignment="TOP_LEFT" prefWidth="300.0" text="Commentaires">
                            <padding>
                               <Insets left="5.0" right="50.0" />
                            </padding>

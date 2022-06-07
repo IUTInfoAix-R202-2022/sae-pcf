@@ -11,6 +11,7 @@ import fr.univ_amu.iut.DAO.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dialogs.ConfirmationDialog;
 import fr.univ_amu.iut.ApplicationMain;
 
+import fr.univ_amu.iut.dialogs.ContactDialog;
 import fr.univ_amu.iut.dialogs.EditDataDialog;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -45,6 +46,7 @@ public class DetailedResult extends FlowPane {
 
         for (int i = 0; i < labels.length; ++i) {
             Label columnLabel = new Label(labels[i]);
+            columnLabel.setId("columnLabel");
             columnLabel.getStyleClass().add("columnLabel");
           
             VBox column = new VBox(columnLabel);
@@ -60,6 +62,17 @@ public class DetailedResult extends FlowPane {
                     columnText.setMaxWidth((ApplicationMain.WINDOW_WIDTH / 4 ));
                     columnText.setTextAlignment(TextAlignment.CENTER);
                 }
+            }
+            else if (labels[i] == "Lien de la ressource"){
+                Button linkButton = new Button("Accèder au lien");
+                linkButton.getStyleClass().add("button");
+                linkButton.setId("linkButton");
+                int finalI = i;
+                linkButton.setOnAction(actionEvent -> {
+                    ContactDialog contactDialog = new ContactDialog(singleResult[finalI + 1]);
+                    contactDialog.show();
+                });
+                column.getChildren().add(linkButton);
             }
             else {
                 Label columnText = new Label(singleResult[i+1]);
@@ -87,6 +100,7 @@ public class DetailedResult extends FlowPane {
 
         if (Home.isConnected()) {
             Button modifyBtn = new Button("Modifier");
+            modifyBtn.setId("modifyButton");
 
             modifyBtn.setOnAction(actionEvent -> {
                 EditDataDialog editDialog = new EditDataDialog();
@@ -95,6 +109,7 @@ public class DetailedResult extends FlowPane {
             });
 
             Button deleteBtn = new Button("Supprimer");
+            deleteBtn.setId("deleteButton");
 
             deleteBtn.setOnAction(actionEvent -> { // event handler of the delete button
                 // Dialog for confirmation

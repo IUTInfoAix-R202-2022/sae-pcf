@@ -55,6 +55,8 @@ public class Tabs extends Pane {
         newTab.setContent(content);
         tabs.getTabs().add(newTab);
         tabs.getSelectionModel().select(newTab);
+
+        BundleManager.updateBundle();
     }
 
     public void remove(int index){
