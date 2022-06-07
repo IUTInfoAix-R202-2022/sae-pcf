@@ -72,10 +72,10 @@ public class ApplicationMain extends Application {
     }
 
     private void loadCSS(){
-        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Buttons.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/DarkButtons.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/main.css");
-        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Tabs.css");
-        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Result.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/DarkTabs.css");
+        root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/DarkResult.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Error_messages.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/Bold_messages.css");
         root.getStylesheets().add("/fr/univ_amu/iut/applicationfx/ThemeButtons.css");
